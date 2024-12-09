@@ -19,61 +19,149 @@ $(document).ready(function() {
 // START Catalog Tile Stylings
 let catalogTileStyle = document.createElement('style');
 catalogTileStyle.textContent = `
+.sj-page-catalog #skilljar-content:after {
+    height: 0;
+}
+
+.sj-page-catalog .course-listing-section {
+    position: relative;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    gap: 16px;
+}
+
+.sj-page-catalog .course-listing-section .coursebox-container {
+    margin: 0;
+    flex: 1 1 100%;
+}
+
+@media all and (min-width: 480px) {
+    .sj-page-catalog .course-listing-section .coursebox-container {
+        flex: 1 1 50%;
+    }
+}
+
+@media all and (min-width: 768px) {
+    .sj-page-catalog .course-listing-section .coursebox-container {
+        flex:  0 1 32%;
+    }
+}
+
+.sj-page-catalog .course-listing-section .coursebox-container[data-tags*="separator"] {
+    flex: 1 1 100%;
+}
+
+section.course-listing-section:nth-child(odd):before {
+    content: '';
+    background: var(--section-background-color);
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
 /* General Tile Stylings */
 #skilljar-content .coursebox-container {
     border: 1px solid var(--gray-300);
     /* tile border is off by default */
-    border-radius: 2px;
+    border-radius: var(--border-radius);
     /* rounded tile edges */
-    box-shadow: 0 4px 6px 1px rgba(0, 0, 0, .1);
-    /* shadow behind tiles */
     transition: transform 0.5s, box-shadow 0.2s;
     /* do not modify - for hover effect */
 }
 
+#skilljar-content .coursebox-container.sj-catalog-page {
+    border-top: 4px solid var(--purple) !important;
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page .coursebox-image {
+    display: none;
+}
+
 /* Hover effects for Tiles */
 #skilljar-content .coursebox-container:hover {
-    border-bottom: 4px solid var(--purple-500);
     /* color of bottom border - appears on hover */
-    transform: translateY(-5px);
     /* do not modify */
     transition: 0.2s;
     /* do not modify */
 }
 
+/* Focus effects for Tiles */
+#skilljar-content .coursebox-container:focus {
+    box-shadow: var(--focus-boxshadow);
+    /* color of bottom border - appears on hover */
+    transform: translateY(-5px);
+}
+
 /* Tile Title stylings */
-#skilljar-content .coursebox-container .coursebox-text {
-    /* removed */
+#skilljar-content .coursebox-container:not([data-tags*="separator"]) .coursebox-text {
+    color: var(--brand-black);
+    padding: var(--coursebox-text-padding);
+}
+
+
+#skilljar-content .coursebox-container:not([data-tags*="separator"]):hover .coursebox-text {
+    color: var(--blue-700);
+    text-decoration: underline;
 }
 
 /* Tile short description stylings */
-#skilljar-content .coursebox-container .coursebox-text-description {
-/* removed */
+#skilljar-content .coursebox-container:not([data-tags*="separator"]) .coursebox-text-description {
+    padding: var(--coursebox-text-padding);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-comfortable);
+    font-size: var(--font-size-med);
+    color: var(--gray-700);
+    margin-top: 8px;
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page {
+    border-top: 4px solid var(--purple) !important;
+    padding: 0 0 32px;
+}
+
+.coursebox-container.course.sj-catalog-page .coursebox-text:before {
+    content: "Catalog";
+    background-color: var(--purple-100);
+    color: var(--purple-700);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: var(--font-weight-bold);
+    padding: 4px;
+    font-size: var(--font-size-tiny);
+    display: inline-block;
+    margin-right: 100%;
+    white-space: nowrap;
+    text-decoration: none !important;
+    margin-bottom: 6px;
 }
 
 /* Line break above Catalog Tile Callout */
 #skilljar-content .sj-courseboxes-v2:not(.search).coursebox-container .coursebox-callout {
-    border-top: 1px solid #BBBBBB;
+    border-top: 1px solid var(--gray-300);
     /* color of line break above tile CTA */
 }
 
-/* Hide line break on course tiles only */
 a.coursebox-container[data-course] .coursebox-callout {
-    display: none !important;
+    display: none !important; /* Hide line break on course tiles only */
 }
 
-/* remove legacy path tile stylings */
-a.coursebox-container.sj-course-series:before,
-a.coursebox-container.sj-path:before,
-a.coursebox-container.sj-course-series:after,
-a.coursebox-container.sj-path:after {
-    
-}
-
-/* Center align tiles */
 #catalog-courses {
-    justify-content: center;
-    /* change 'center' to 'left' for left aligned tiles */
+    justify-content: left; /* Left align tiles */
+}
+
+.sj-page-catalog:not(.sj-page-catalog-root) #catalog-courses {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }`;
 document.head.append(catalogTileStyle);
 // END Catalog Tile Stylings
@@ -164,58 +252,221 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // END Course/Path Detail Page Styling
 
+// START Ribbon styling for course cards
+let ribbonStyle = document.createElement('style');
+ribbonStyle.textContent = `
+.sj-ribbon-wrapper .sj-ribbon-registered { 
+    background: var(--blue) !important;
+    border-color: var(--blue) !important;
+    color: #FFFFFF !important;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete { 
+    background: var(--lime) !important;
+    border-color: var(--lime) !important;
+    color: var(--lime-900) !important;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete .sj-ribbon-text {
+    display: none !important; /* hide COMPLETE default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete:after {
+    content:"Complete!"; /* add COMPLETE custom ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed { 
+    background: var(--lime) !important;
+    border-color: var(--lime) !important;
+    color: var(--lime-900) !important;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed .sj-ribbon-text { 
+   display: none !important; /* hide PASSED default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed:after { 
+    content: 'Passed!' !important; /* add PASSED custom ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed { 
+    background: var(--red) !important;
+    border-color: var(--red) !important;
+    color: var(--red-900) !important;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed .sj-ribbon-text { 
+   display: none !important; /* hide FAILED default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed:after { 
+    content: 'Didn't pass' !important; /* add FAILED custom ribbon text */
+}`;
+document.head.append(ribbonStyle);
+// END Ribbon styling for course cards
+
+// START Catalog Page Filter Bar Styling
+let catalogFilterBarStyle = document.createElement('style');
+catalogFilterBarStyle.textContent = ` 
+.search #catalog-search-info {
+    background: var(--blue-900);
+    font-weight: inherit;
+    position: relative;
+    padding: 8px 0;
+    width: var(--max-width-lg);
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.search #catalog-search-info:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: var(--blue-900);
+    width: 100vw;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+}
+
+.search #catalog-search-info .filter-option {
+    background: #FFFFFF;
+    border-radius: var(--border-radius-buttons);
+}
+
+.search #catalog-search-info .filter-option .link-color {
+    transition: 0.25s color;
+}
+
+.search #catalog-search-info .filter-option:hover .link-color {
+    color: var(--blue-700) !important;
+}
+
+.search #catalog-search-info .filter-option:active .link-color {
+    color: var(--blue-800) !important;
+}
+
+.filter-option .fa-stack .fa-circle {
+    display: block;
+    color: #FFFFFF;
+    border: 1px solid var(--gray-300);
+    border-radius: 100%;
+    font-size: inherit;
+}
+
+.filter-option .fa-stack > svg {
+    width: 1em;
+    border: 1px solid var(--gray-300);
+    border-radius: 100%;
+}
+
+.filter-option.checked .fa-stack .fa-circle {
+    display: none;
+}
+
+.filter-option>span {
+    vertical-align: text-bottom;
+}
+
+@media(max-width: 962px) {
+    .search #catalog-search-info {
+        padding: 8px 15px;
+    }
+}`;
+document.head.append(catalogFilterBarStyle);
+// END Catalog Page Filter Bar Styling
+
 // START Floating Filter Bar Styling
 let floatingFilterBarStyle = document.createElement('style');
 floatingFilterBarStyle.textContent = ` 
-  /* remove border and background color of left nav */
-  .catalog-filters #catalog-left-nav {
-    background-color: transparent;
-    border: unset;
-  }
+/* remove border and background color of left nav */
+.catalog-filters #catalog-left-nav {
+    background-color: #FFFFFF;
+    border-right-color: var(--gray-300);
+}
 
-  /* floating filter bar stylings */
-  .catalog-filters #catalog-left-nav .catalog-left-nav-wrapper {
-    border-radius: 4px;
-    box-shadow: 0 2px 12px 4px rgba(0, 0, 0, .15);
-    padding: 24px;
+/* floating filter bar stylings */
+.catalog-filters #catalog-left-nav .catalog-left-nav-wrapper {
     overflow-y: scroll;
     width: 100%;
     scrollbar-width: none;
     background-color: #FFFFFF;
-  }
+}
 
-  /* add right margin to filter name */
-  .filter-option .filter-counter {
+#catalog-left-nav .filter-group-title {
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 1px solid var(--gray-300);
+    padding-bottom: 0.75rem;
+}
+
+#catalog-left-nav .filter-group-title.filter-group-collapsed {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+#catalog-left-nav .tag-labels {
+    padding-bottom: 16px;
+}
+
+#catalog-left-nav .tag-labels .filter-option-tag {
+    font-size: var(--font-size-med);
+}
+
+.filter-option .filter-name {
+    font-weight: var(--font-weight-normal);
+    color: var(--gray-700);
+}
+
+/* add right margin to filter name */
+.filter-option .filter-counter {
     margin-left: 5px;
-  }
+    color: var(--gray-300);
+    font-size: inherit;
+}
 
-  /* hide expand/collapse all button - isn't useful */
-  a#catalog-filter-expand-collapse {
+/* hide expand/collapse all button - isn't useful */
+a#catalog-filter-expand-collapse {
     display: none;
-  }
+}
 
-  /* lower margin below search box */
-  .catalog-search-input-group {
+#catalog-left-nav .filter-group-title.filter-group-expanded > svg {
+    color: var(--gray-700);
+}
+
+#catalog-left-nav .filter-group-title.filter-group-collapsed > svg {
+    color: var(--gray-700);
+    transform: rotate(270deg);
+}
+
+/* lower margin below search box */
+.catalog-search-input-group {
     margin-bottom: 10px;
-  }
+}
 
-  /* left align courses in search results */
-  .search .catalog-center-width {
+/* ensure hero is hidden for global search results */
+.search .catalog-header {
+    display: none !important;
+}
+
+/* left align courses in search results */
+.search .catalog-center-width {
     max-width: unset !important;
-  }`;
+}`;
 document.head.append(floatingFilterBarStyle);
 // END Floating Filter Bar Styling
 
 // START Login / Signup Page Stylings
 let loginSignupStyle = document.createElement('style');
 loginSignupStyle.textContent = `
-/* CODE BELOW HERE DOES NOT NEED TO BE EDITED */
 /* background image or color */
 .sj-page-login #skilljar-content,
 .sj-page-signup #skilljar-content {
-    background: var(--login-page-background);
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
+    background: var(--login-page-background) !important; /* background color or image behind form */
+    background: transparent !important;
+    background-size: cover;
 }
 
 /* login form stylings */
@@ -363,24 +614,24 @@ document.addEventListener('DOMContentLoaded', function() {
         var loginNote = document.querySelector('.sj-text-login-note');
         var signUpText = document.createElement('p');
         signUpText.classList.add('lp-sign-up-text');
-        signUpText.innerHTML = 'Need an account? <a href="' + document.querySelector('.sj-text-sign-up').getAttribute('href') + '">Sign up.</a>';
+        signUpText.innerHTML = 'Need an account? <a href="' + document.querySelector('.sj-text-sign-up').getAttribute('href') + '">Sign up</a>';
         loginNote.parentNode.insertBefore(signUpText, loginNote.nextSibling);
         /* remove social media providers and adjust CSS if they exist */
         document.querySelector('.sj-text-login-note').parentElement.style.width = '100%';
         document.querySelector('.socialaccount_providers').parentElement.style.display = 'none';
     }
+
     /* signup page - add custom link to get to the login page */
     var signUpPage = document.querySelector('.sj-page-signup');
-
     if (signUpPage) {
         var loginContent = document.getElementById('login-content');
         var signInHref = document.querySelector('.sj-text-sign-in').getAttribute('href');
         var signupPageHeader = document.createElement('h1');
         signupPageHeader.classList.add('signup-custom-header');
-        signupPageHeader.textContent = 'Sign up for Administrate Learning Campus';
+        signupPageHeader.textContent = 'Sign up for Administrate University';
         var signupPageCustomLink = document.createElement('p');
         signupPageCustomLink.classList.add('signup-custom-link');
-        signupPageCustomLink.innerHTML = 'Already have an account? <a href="' + signInHref + '">Sign in.</a>';
+        signupPageCustomLink.innerHTML = 'Already have an account? <a href="' + signInHref + '">Sign in</a>';
         loginContent.insertBefore(signupPageCustomLink, loginContent.firstChild);
         loginContent.insertBefore(signupPageHeader, signupPageCustomLink);
         /* remove social media providers and adjust CSS if they exist */
@@ -391,7 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // END Login / Signup Page Stylings
 
 // START Create Course Separators on Pages
-var textAlignment = 'center' /* change value to 'left' for left aligned sections */
+var textAlignment = 'left' /* change value to 'left' for left aligned sections */
 /* This section removes the text '[separator]' from the course title */
 /* Used so admins can easily identify separator courses in the admin backend */
 document.addEventListener('DOMContentLoaded', function() {
@@ -407,57 +658,72 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// END Create Course Separators on Pages
 
-let courseBoxStyle = document.createElement('style');
-courseBoxStyle.textContent = ` 
-  /* Set font size for separator titles */
-  a.coursebox-container[data-tags*="separator"] .coursebox-text {
-    font-size: 30px !important;
-  }
+// START Add sections on homepage
+document.addEventListener('DOMContentLoaded', function() {
+    var catalogRoot = document.querySelector('.sj-page-catalog-root');
+    if (catalogRoot) {
+        var separatorCourseboxContainers = document.querySelectorAll('a.coursebox-container[data-tags*="separator"]');
+        separatorCourseboxContainers.forEach(function(container) {
+            $("<section class='course-listing-section'>").insertAfter($(container).parent()).append($(container).nextAll().addBack());
+        });
+    };
+});
+// END Add sections on homepage
 
-  /* Set font size for separator sub-titles */
-  a.coursebox-container[data-tags*="separator"] .coursebox-text-description {
-    font-size: 18px !important;
-    margin: 10px 0 0 !important;
-  }
+// START Create Course Separators Styles for Catalog Pages
+let separatorCourseboxStyle = document.createElement('style');
+separatorCourseboxStyle.textContent = `
+/* Set font size for separator titles */
+a.coursebox-container[data-tags*="separator"] .coursebox-text {
+    font-size: var(--font-size-large-2) !important;
+    padding: 0; 
+}
 
-  /* remove conflicting standard tile styles */
-  a.coursebox-container[data-tags*="separator"]:after {
+/* Set font size for separator sub-titles */
+a.coursebox-container[data-tags*="separator"] .coursebox-text-description {
+    color: var(--gray-700) !important;
+    font-size: var(--font-size-med-2) !important;
+    font-weight: var(--font-weight-light) !important;
+    line-height: var(--line-height-comfortable);
+    margin: 10px 0 16px !important;
+    max-width: 750px;
+    padding: 0;
+}
+
+/* remove conflicting standard tile styles */
+a.coursebox-container[data-tags*="separator"]:after {
     display: none !important;
-  }
+}
 
-  /* remove all standard course tile styling, add 100% page width */
-  a.coursebox-container[data-tags*="separator"] {
-    padding: 20px !important;
-    width: 87% !important;
+/* remove all standard course tile styling, add 100% page width */
+a.coursebox-container[data-tags*="separator"] {
+    padding: 0 !important;
+    width: 100% !important;
     min-height: unset !important;
     background-color: transparent !important;
     box-shadow: none !important;
     pointer-events: none !important;
     border: none !important;
-  }
+}
 
-  /* Hide course price/CTA text, tile image. Hide separator courses from search */
-  a.coursebox-container[data-tags*="separator"] .storefront-price,
-  .search a.coursebox-container[data-tags*="separator"],
-  a.coursebox-container[data-tags*="separator"] .coursebox-image,
-  a.coursebox-container[data-tags*="separator"] .coursebox-callout {
+/* Hide course price/CTA text, tile image. Hide separator courses from search */
+a.coursebox-container[data-tags*="separator"] .storefront-price,
+.search a.coursebox-container[data-tags*="separator"],
+a.coursebox-container[data-tags*="separator"] .coursebox-image,
+a.coursebox-container[data-tags*="separator"] .coursebox-callout {
     display: none !important;
-  }`;
-document.head.append(courseBoxStyle);
-// END Create Course Separators on Pages
+}`;
+document.head.append(separatorCourseboxStyle);
+// END Create Course Separators Styles for Catalog Pages
 
 // START Nested Header Drop Down links - Add to Global Code Snippet
 var HEADER_LINKS = {
     /* start nested header link */
     "Learn": {
       "nestedLinks": {
-        "Home": {
-          "href": "/",
-          "target": "_self",
-          /* open in same tab */
-        },
-        "All Courses": {
+        "All courses": {
           "href": "/page/course-catalog",
           "target": "_self",
           /* open in same tab */
@@ -477,16 +743,20 @@ var HEADER_LINKS = {
           "href": "https://support.getadministrate.com/hc/en-us/categories/115001277127-Release-Notes",
           "target": "_self",
         },
-        "Documentation": {
+        "Support Portal": {
           "href": "https://support.getadministrate.com/hc/en-us",
-          "target": "_blank",
+          "target": "_self",
+        },
+        "Developer Portal": {
+          "href": "https://developer.getadministrate.com/",
+          "target": "_self",
         },
       }
     },
     /* end nested header link */
     /* start static header link */
     "My courses": {
-      "href": "/accounts/profile/",
+      "href": "/accounts/profile#profile-path-table",
       "target": "_self",
     },
 /* end static header link */
@@ -494,55 +764,57 @@ var HEADER_LINKS = {
 
 /* DO NOT MODIFY ANYTHING BELOW THIS LINE */
 let headerStyle = document.createElement('style');
-headerStyle.textContent =
-    ` 
-  #header {
+headerStyle.textContent = ` 
+#header {
     background-color: #ffffff;
     border-bottom: 1px solid var(--gray-300);
     box-shadow: 3px 0 10px rgb(0 0 0 / 20%);
-  }
+}
 
-  #header .header-center-img.header-logo-svg {
-    height: 25px !important;
-  }
-
-  #header .header-nested-wrapper {
+#header .header-nested-wrapper {
     padding: 0;
-  }
+}
 
-  #header .header-nested-wrapper .header-nested-links {
+#header .header-nested-wrapper .header-nested-links,
+#header #header-drop {
     background-color: var(--header-background-color);
     border: var(--header-border);
     box-shadow: var(--header-boxshadow);
-    left: 16px;
-    opacity: 0;
-    padding: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 100%;
-    transform: translateY(-8px);
-    transition: .25s ease;
-    z-index: 99;
-    border-radius: 2px;
-  }
+    padding: 8px 0;
+    min-width: 200px;
+}
 
-  #header .header-link-container {
+#header .header-link-container {
     height: 100%;
-  }
+}
 
-  #header .header-nested-wrapper .header-nested-links .header-link {
+#header #header-right .catalog-search-input-group .catalog-search-input, 
+#header #header-right .sortable-multiselect-search-input-group .catalog-search-input {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+}
+
+#header .header-nested-wrapper .header-nested-links .header-link {
     width: 100%;
-  }
+}
 
-  #header .header-nested-wrapper .header-nested-links .header-link.active {
-    border-left: 2px solid var(--purple-500);
-  }
+#header #header-drop.f-dropdown li {
+    font-size: var(--font-size-med);
+    padding: 0;
+}
 
-  #header .header-nested-wrapper .header-nested-links .header-link {
+#header #header-right .header-nested-wrapper .header-nested-links .header-link,
+#header #header-drop.f-dropdown li a {
     margin: 2px 0!important;
-  }
+}
 
-  .header-link {
+#header .header-nested-wrapper .header-nested-links .header-link.active,
+#header #header-drop.f-dropdown li a.active {
+    border-left: 2px solid var(--purple-500);
+}
+
+#header-right .header-link,
+#header #header-drop.f-dropdown li a {
     color: var(--gray-800);
     white-space: nowrap;
     border-radius: 2px;
@@ -551,56 +823,206 @@ headerStyle.textContent =
     height: 100%;
     display: flex;
     align-items: center;
-  }
+}
 
-  .header-link:hover {
+@media only screen and (max-width: 875px) {
+    .no-tags.search-location-header_right .burger {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+body.cbp-spmenu-open #header .burger .burger-text {
+    display: none;
+}
+
+#header .header-left .burger-text {
+    margin-left: 4px;
+}
+
+#header #header-drop.f-dropdown li a > span {
+    color: inherit;
+}
+
+#header-right .header-link:hover,
+#header #header-drop.f-dropdown li a:hover {
     color: var(--purple-500);
     background: var(--purple-100);
-  }
+}
 
-  .header-link:focus {
+.header-link:focus,
+#header #header-drop.f-dropdown li a:focus {
     box-shadow: var(--focus-boxshadow);
-  }
+}
 
-  .header-mobile-dropdown {
+.header-mobile-dropdown {
     background-color: var(--header-background-color);
     top: 45px;
     position: absolute;
-  }
+}
 
-  #header .header-link-parent-icon,
-  .header-mobile-dropdown .header-link-parent-icon,
-  .header-link .header-external-link-icon {
+.header-mobile-dropdown .header-nested-wrapper .header-nested-links .header-link {
+    margin-left: 0;
+}
+
+#header .header-link-parent-icon,
+.header-mobile-dropdown .header-link-parent-icon,
+.header-link .header-external-link-icon {
     margin-left: 5px;
-  }
+    color: var(--gray-400);
+}
 
-  .header-mobile-dropdown .header-link {
+.header-mobile-dropdown .header-link {
     color: var(--header-link-color);
-  }
+}
 
-  #header #header-right .login-link {
+#header #header-right .login-link {
     background: linear-gradient(90deg, rgba(105, 60, 226, 1) 0%, rgba(98, 73, 228, 1) 32%, rgba(82, 93, 231, 1) 55%, rgba(70, 106, 233, 1) 71%, rgba(70, 106, 233, 1) 100%);
     border-radius: 0px;
     color: var(--header-login-text-color);
     margin-right: 0;
     padding: 12px 24px;
-  }
+}
 
-  #header #header-right .login-link:hover {
+#header #header-right .login-link:hover {
     background: #6A3CE3 !important;
-  }
+}
 
-  .header-mobile-menu-bars {
+.header-mobile-menu-bars {
     color: var(--gray-800);
-  }
+}
 
-  .header-link:focus {
+.header-link:focus {
     box-shadow: var(--focus-boxshadow);
-  }
+}
 
-  @media(max-width: 962px) {
+#header #header-right .header-dropdown-button img {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray-300);
+}
+
+@media(max-width: 962px) {
     #header-right .header-mobile-menu {
-      display: block;
+        width: 30px;
+    }
+
+    #left-nav-button {
+        display: flex;
+        flex-direction: column;
+        width: 30px !important;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+    }
+
+    #left-nav-button .fa-search {
+        font-size: 22px;
+    }
+
+    #left-nav-button:hover {
+        background: transparent;
+        color: inherit;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu,
+    .cbp-spmenu-open #left-nav-button {
+        display: flex;
+        background: var(--blue-100);
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:hover,
+    .cbp-spmenu-open #left-nav-button:hover {
+        background: var(--blue-200);
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:active,
+    .cbp-spmenu-open #left-nav-button:active {
+        background: var(--blue-300);
+        color: inherit;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:focus,
+    .cbp-spmenu-open #left-nav-button:focus {
+        box-shadow: var(--focus-boxshadow);
+    }
+
+    .mobile-menu-open .header-mobile-menu-close,
+    .cbp-spmenu-open #left-nav-button .header-mobile-menu-close {
+        font-size: 16px;
+        color: var(--blue-800);
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:active .header-mobile-menu-close,
+    .cbp-spmenu-open #left-nav-button:active svg {
+        color: var(--brand-black);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-link:not(.back-to-catalog) {
+        padding: 12px 32px !important
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link {
+        font-size: var(--font-size-sm);
+        text-transform: uppercase;
+        font-weight: var(--font-weight-semibold);
+        color: var(--gray-500);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link:hover {
+        color: var(--gray-500);
+        background: inherit;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link:focus {
+        box-shadow: none;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-link-parent-icon {
+        display: none !important;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper:not(:first-child) {
+        margin-top: 16px !important;
+    }
+    
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper .header-link {
+        width: 100%;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link {
+        background: var(--btn-secondary-background-color);
+        color: var(--btn-secondary-text-color);
+        border: var(--btn-secondary-border);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link span {
+        text-transform: lowercase;
+        display: block;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link span:first-letter {
+        text-transform: uppercase;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:hover {
+        background: var(--btn-secondary-background-color-hover);
+        color: var(--btn-secondary-text-color);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:active {
+        background: var(--btn-secondary-background-color);
+        color: var(--btn-secondary-text-color);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:focus {
+        box-shadow: var(--focus-boxshadow);
     }
 }`;
 document.head.append(headerStyle);
@@ -892,6 +1314,7 @@ document.head.append(headerStyle);
       }))
     })()
   })();
+
 $(document).ready(function() {
     /* add down arrow to nested header links for UX clarity */
     $('.header-nested-wrapper > .header-link').each(function() {
@@ -1127,6 +1550,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var sjPageLogin = document.querySelector('.sj-page-login');
     /* add footer on signup page */
     var sjPageSignup = document.querySelector('.sj-page-signup');
+    /* add footer on profile */
+    var sjPageProfile = document.querySelector('.sj-page-profile');
     /* get skilljar footer */
     var epFooter = document.getElementById('ep-footer');
     /* get today's date */
@@ -1136,27 +1561,33 @@ document.addEventListener('DOMContentLoaded', function() {
     /* Get EP Footer Copyright <li> */
     var epFooterCopyright = document.querySelector('#ep-footer #footer-left ul li');
 
-    console.log(epFooter, epFooterCopyright);
+    if (epFooterCopyright) {
+        $(epFooterCopyright).text('©' + epFooterYear + ' Administrate Limited. All rights reserved.');
+    }
 
-    if (sjPageCatalog || sjPageLogin || sjPageSignup) {
+    if (sjPageCatalog || sjPageLogin || sjPageSignup || sjPageProfile) {
         var footerBackgroundWrapper = document.querySelector('.footer-background-wrapper');
         if (footerBackgroundWrapper) {
             epFooter.parentNode.insertBefore(footerBackgroundWrapper, epFooter);
-            $(epFooterCopyright).text('©' + epFooterYear + ' Administrate Ltd.');
             footerBackgroundWrapper.style.display = 'flex';
         }
     }
 });
 // END HTML, CSS, and Javascript for Global Custom Footer
 
-// START Remove clickable course tiles on Path Detail Page. Global Code Snippet
+// START Remove clickable course tiles on Path Detail Page & add border-radius
 let courseTilesStyle = document.createElement('style');
 courseTilesStyle.textContent = `
 /* path details page - remove pointer events for course tiles */
 .sj-page-detail-path .coursebox-container {
     pointer-events: none;
+}
+.tt1-image-section {
+    border-radius: var(--border-radius);
+    overflow: hidden; 
 }`;
 document.head.append(courseTilesStyle);
+// END Remove clickable course tiles on Path Detail Page & add border-radius
 
 // Add pointer event back in to "Show Overview" button IF expanded details path
 // view setting is turned ON. Allows the lesson list to be viewed for a course
@@ -1178,30 +1609,178 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 // END Remove clickable course tiles on Path Detail Page. Global Code Snippet
 
-// START Catalog Lower Banner With Image Home Page Snippet
+// START Path page styles
+let pathPageStyle = document.createElement('style');
+pathPageStyle.textContent = ` 
+.sj-page-path .tt1-background {
+    background-color: var(--gray-50);
+}
+
+.sj-page-path .tt1-wrapper {
+    max-width: var(--max-width-xl);
+}
+
+.sj-page-path .no-catalog-filters .catalog-center-width {
+    max-width: var(--max-width-lg);
+}
+
+.sj-page-path .path-curriculum-resume-wrapper  {
+    width: unset;
+    margin: 11px;
+    margin-bottom: -40px; /* remove the padding created by the .course-listing */
+}
+
+#path-curriculum-progress-bar-annotation-text {
+    color: var(--lime-900);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+}
+.path-curriculum-progress-bar-wrapper .button-border-color {
+    border-color: var(--gray-300);
+}
+.path-curriculum-progress-bar-wrapper .progress-bar.button-background {
+    background: var(--lime-500);
+}
+
+.sj-page-detail #skilljar-content .top-row-white-v2 {
+    background: var(--gray-50);
+    max-width: unset;
+    border-bottom: none;
+}
+
+.sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
+    border-bottom: 1px solid var(--gray-300);
+    font-size: var(--font-size-large);
+    color: var(--brand-black);
+    text-align: left;
+}
+
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 .sj-course-time {
+    margin-left: 4px; */
+    color: var(--gray-500);
+}
+
+.sj-page-detail .dp-curriculum li.section {
+    font-size: var(--font-size-med);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 1px;
+    color: var(--gray-700);
+}
+
+.sj-page-detail .dp-curriculum li.section:not(:first-child) {
+    margin-top: 20px;
+}
+
+.sj-page-detail .dp-curriculum>li:not(.section) {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-comfortable);
+    padding-left: 18px;
+}
+
+.sj-page-detail .dp-curriculum {
+    margin-top: 8px;
+    padding-left: 0!important;
+}
+
+.sj-page-detail ul.dp-curriculum .type-icon {
+    opacity: 0.75;
+}
+
+.sj-page-detail ul.dp-curriculum>li .lesson-wrapper {
+    padding-left: 8px;
+}
+
+.sj-page-detail-course #dp-details {
+    max-width: var(--max-width-lg);
+    margin: 0 auto;
+}
+
+#dp-details-bundle {
+    max-width: var(--max-width-lg);
+    padding-top: 40px;
+    margin: 0 auto;
+}
+
+#dp-details-bundle h2 {
+    font-size: var(--font-size-large);
+}
+
+.sj-page-detail #skilljar-content .dp-row-flex-v2 {
+    flex-direction: row-reverse;
+    max-width: var(--max-width-lg);
+}`;
+document.head.append(pathPageStyle);
+// END Path page styles
+
+// START Move resume button and progress bar on page paths
+document.addEventListener('DOMContentLoaded', function() {
+    var sjPathPage = $('.sj-page-path');
+    var resumeButton = $('.path-curriculum-button-wrapper');
+    if (sjPathPage && resumeButton) {
+        $('.tt1-text-section').append( resumeButton.detach() );
+    }
+});
+// END Move resume button and progress bar on page paths
+
+// START Default Curriculum Page view to "About this course" tab (add to Global Code Snippet)
+document.addEventListener('DOMContentLoaded', function() {
+    var sjCurriculumPage =  $('.sj-page-curriculum');
+    if (sjCurriculumPage.length > 0) {
+        $('.sj-page-curriculum .tabs .course-long-description-header').parent().createElement('div').append( $('.sj-course-time').detach() );
+    }
+});
+// END Default Curriculum Page view to "About this course" tab (add to Global Code Snippet)
+
+
+// START Curriculum Page styles
+const curriculumPageStyles = document.createElement('style');
+curriculumPageStyles.textContent = `
+.sj-page-curricum .dp-row-flex-v2 {
+    border: none;
+}
+
+.sj-page-curricum .dp-summary-wrapper,
+.sj-page-curricum .cp-summary-wrapper {
+    border: none;
+}`;
+document.head.appendChild(curriculumPageStyles);
+// END Curriculum Page styles
+
+// START Catalog Lower Banner with Gradient HTML
 const catalogLowerBannerElement = document.createElement('div');
 catalogLowerBannerElement.innerHTML = `
 <div class="catalog-lower-wrapper">
     <div class="catalog-lower-content-wrapper">
         <div class="catalog-lower-text-wrapper">
-           <h2 class="catalog-lower-title">Stuck? We’re here to help</h2>
-           <p class="catalog-lower-text">Having an issue with a course, webinar, or other content in Administrate Learning Campus? Reach out to the Administrate team.</p>
-           <a href="https://www.getadministrate.com/contact-us/" class="catalog-lower-cta-button" target="_blank" rel="noopener">Get in touch</a>
+            <h2 class="catalog-lower-title">Stuck? We’re here to help</h2>
+            <p class="catalog-lower-text">Having an issue with a course, webinar, or other content in Administrate University? Reach out to the Administrate team.</p>
+            <a href="mailto:training@getadministrate.com" class="catalog-lower-cta-button" target="_blank" rel="noopener">Email us</a>
         </div>
     </div>
 </div>`;
 document.body.appendChild(catalogLowerBannerElement);
+// END Catalog Lower Banner with Gradient HTML
 
+// START Catalog Lower Banner with Gradient Styles
 let catalogLowerBannerStyle = document.createElement('style');
 catalogLowerBannerStyle.textContent = `
-/* No need to edit anything below this line */
 .catalog-lower-wrapper {
+    text-align: center;
     max-width: 100%;
     color: #ffffff;
     background: linear-gradient(180deg, var(--purple-500) 0%, var(--blue-700) 59%, var(--blue-900) 100%);
     margin-top: 50px;
     display: none;
     justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .catalog-lower-content-wrapper {
@@ -1234,7 +1813,11 @@ p.catalog-lower-text {
 }
 
 a.catalog-lower-cta-button:hover {
-    background-color: #4E1DCD;
+    background-color: var(--lower-button-background-color-hover);
+}
+
+a.catalog-lower-cta-button:active {
+    background-color: var(--lower-button-background-color-active);
 }
 
 a.catalog-lower-cta-button:focus {
@@ -1242,11 +1825,11 @@ a.catalog-lower-cta-button:focus {
 }
 
 h2.catalog-lower-title {
-    color: white !important;
+    color: #ffffff !important;
 }
 
 p.catalog-lower-text {
-    color: white !important;
+    color: #ffffff !important;
 }
 
 @media only screen and (max-width: 1033px) {
@@ -1263,6 +1846,7 @@ p.catalog-lower-text {
     }
 }`;
 document.head.append(catalogLowerBannerStyle);
+// END Catalog Lower Banner with Gradient Styles
 
 /* This Javascript checks if we are on the homepage and if so, adds the banner below courses */
 document.addEventListener('DOMContentLoaded', function() {
@@ -1285,8 +1869,274 @@ $('document').ready(function() {
 // Start Back to Catalog
 $(document).ready(function() {
     if ($(".sj-page-lesson").length != 0 && $(".next-lesson-button").length == 0) {
-        var backButton = '<div id="back-to-catalog"><a href="/" class="small button next-lesson-link"><span>Back to Catalog</span></a></div>';
+        var backButton = '<div id="back-to-catalog"><a href="/" class="small button next-lesson-link"><span>Back to catalog</span></a></div>';
         $(".full-footer-height-wrapper.align-vertical").prepend(backButton);
     }
 });
 // End back to catalog
+
+// START Switch order of Lesson Title and Back button
+$(document).ready(function() {
+     $("#returnToOverview").detach().insertBefore(".course-title");
+});
+// END Switch order of Lesson Title and Back button
+
+// START Hide "Summary" heading only
+$(document).ready(function() {
+    $('.sj-text-details-pane-summary').remove();
+});
+// END Hide "Summary" heading
+
+// START Lesson styling
+let lessonDetailsPaneStyle = document.createElement('style');
+lessonDetailsPaneStyle.textContent = `
+.lesson-page #lp-wrapper, 
+.lesson-page .lp-color-scheme-light #lp-wrapper {
+    background-color: var(--gray-50);
+}
+
+.lesson-page #lesson-main {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.lesson-page .course-text-content {
+    background-color: transparent; /* override white background color */
+}
+
+.lesson-page #lp-wrapper #lesson-body .lesson-top, 
+.lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.lesson-page #lp-wrapper #lesson-body .lesson-top h2, 
+.lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top h2 {
+    font-size: var(--font-size-med-2);
+    padding: 0;
+}
+
+.lp-left-nav .course-title .sj-course-time {
+    font-size: inherit;
+    margin-left: 4px;
+    white-space: nowrap;
+    color: var(--gray-500);
+    font-weight: var(--font-weight-normal);
+}
+
+.lp-left-nav .lessons-wrapper {
+    padding-top: 16px;
+}
+
+#lp-left-nav .lesson {
+    color: #ffffff;
+}
+
+@media only screen and (min-width: 768px) {
+    #lp-left-nav.cbp-spmenu-vertical {
+        margin-bottom: 0;
+    }
+}
+
+.lp-left-nav .lesson-row {
+    display: flex;
+    padding: 12px 16px;
+}
+
+#lp-left-nav .lesson-active, 
+#lp-left-nav .current-item {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    position: relative;
+}
+
+#lp-left-nav .lesson-active:before, 
+#lp-left-nav .current-item:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: var(--purple);
+}
+
+#lp-left-nav .type-icon, 
+#lp-left-nav .type-icon {
+    opacity: 0.5;
+}
+
+.lp-left-nav .lesson-row .title {
+    max-width: unset;
+    vertical-align: top;
+}
+
+.lp-left-nav .lesson-row .title .sj-lesson-time {
+    white-space: nowrap;
+    margin-left: 0;
+    opacity: 0.5;
+}
+
+.lp-color-scheme-light #lp-footer a.prev-lesson-button .button-content i, 
+.lp-color-scheme-light #lp-footer a.prev-lesson-button .button-content span,
+.lp-color-scheme-light #lp-footer .lesson-title-label {
+    color: var(--gray-600);
+}
+
+.prev-lesson-button .button-content svg {
+    margin-right: 8px;
+    color: var(--gray-300);
+    vertical-align: middle;
+}
+
+@media(min-width: 962px) {
+    #lp-footer {
+        width: calc(100% - 320px);
+        right: 0;
+        left: unset;
+    }
+
+    .sj-page-lesson:not(.cbp-spmenu-open) #lp-footer {
+        width: 100%;
+        left: 0;
+    }
+}
+
+#lp-footer .toggle-fullscreen {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-buttons);
+    color: var(--btn-secondary-text-color);
+    background: var(--btn-secondary-background-color);
+    opacity: 1;
+}
+
+#lp-footer .toggle-fullscreen:hover {
+    background: var(--btn-secondary-background-color);
+    opacity: 1;
+}
+
+#lp-footer .toggle-fullscreen:active {
+    background: var(--btn-secondary-background-color-active);
+    opacity: 1;
+}
+
+#lp-left-nav {
+    background: var(--blue-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lp-color-scheme-light .lp-left-nav .section-title {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-400);
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    padding: 16px 0 8px 0;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.lp-left-nav .course-title,
+.lp-color-scheme-light .lp-left-nav .course-title {
+    color: #FFFFFF;
+    font-weight: var(--font-weight-semibold);
+}
+
+#lp-left-nav .left-nav-return,
+.lp-left-nav .course-title,
+.lp-color-scheme-light .lp-left-nav .course-title {
+    background: linear-gradient(0deg, var(--blue-900), var(--blue-800));
+    padding: 16px;
+    margin: 0;
+    font-size: var(--font-size-med);
+    line-height: var(--line-height-comfortable);
+}
+
+#lp-left-nav .left-nav-return  {
+    background: var(--blue-800);
+    color: var(--blue-100);
+    font-size: var(--font-size-sm);
+    padding-top: 24px;
+    padding-bottom: 0;
+}
+
+#lp-left-nav .left-nav-return .left-nav-return-text {
+    margin-left: 4px;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom #details-pane {
+    z-index: 1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom #details-pane-inner {
+    border-top: 1px solid var(--gray-300);
+}
+
+.sj-more-container {
+    color: #FFFFFF !important;
+    position: relative;
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom .sj-more-container:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: linear-gradient(180deg, var(--purple-500) 0%, var(--blue-700) 59%, var(--blue-900) 100%);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+.sj-more-intro {
+    margin-bottom: 24px;
+}
+
+.sj-more-heading {
+    font-size: var(--font-size-large);
+    color: #FFFFFF;
+}
+
+.sj-more-buttons {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button {
+    margin-left: 16px;
+    color: var(--btn-secondary-text-color);
+    border: var(--btn-secondary-border);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button:hover {
+    color: var(--btn-secondary-text-color);
+    border: var(--btn-secondary-border);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button:active {
+    color: var(--btn-secondary-text-color);
+    border: var(--btn-secondary-border);
+    background-color: rgba(255, 255, 255, 0.4);
+}`;
+document.head.append(lessonDetailsPaneStyle);
+// END Lesson styling
