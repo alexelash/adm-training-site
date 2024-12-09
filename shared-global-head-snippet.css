@@ -169,7 +169,8 @@
     --lower-banner-text-color: #FFFFFF; /* banner text color */
     
     --lower-button-background-color:  var(--purple-500); /* banner text color */
-    --lower-button-background-hover-color:  var(--purple-600); /* banner text color */
+    --lower-button-background-color-hover:  var(--purple-600); /* banner text color */
+    --lower-button-background-color-active:  var(--purple-700); /* banner text color */
     --lower-button-text-color: #FFFFFF; /* banner text color */
 
     --login-page-background: url("https://6245015.fs1.hubspotusercontent-na1.net/hubfs/6245015/Administrate%20University%20and%20Learning%20Campus%20-%20Skilljar/administrate-sign-in-bkg_university.png"); /* background color or image behind form */
@@ -196,13 +197,68 @@
     --ep-footer-background-color: var(--brand-black); /* ep footer background color */
     --ep-footer-text-color: var(--gray-300); /* ep footer background color */
     --ep-footer-border-color: var(--brand-black); /* ep footer border color */
+
+    --hero-background-image: linear-gradient(180deg, var(--blue-100) 0%, #ffffff 100%) !important; /* hero area background image or color */
+    --hero-background-color: #FFFFFF; /* background color behind content */
+    --hero-title-font: var(--font-weight-semibold) var(--font-size-xxl)/var(--line-height-compact) var(--font-family) !important;
+    --hero-subtitle-font: var(--font-weight-light) var(--font-size-med-2)/var(--line-height-medium) var(--font-family) !important;
+
+    --sb-max-width: var(--max-width-lg);
+    --sb-header-font: var(--font-weight-semibold) var(--font-size-sm-2)/var(--line-height-compact) var(--font-family) !important;
+    --sb-header-color: var(--brand-black);
+    --sb-text-color: var(--gray-700); /* hero link boxes link color */
+    --sb-link-hover: var(--blue-600); /* hero link boxes link in hover state color */
+    --sb-link-active: var(--blue-600); /* hero link boxes link in active state color */
+
+    --coursebox-text-padding: 0 16px; /* coursebox text/desc padding */
+
+    --moz-font-smoothing: grayscale; /* antialiasing for light text on dark backgrounds, Firefox */ 
+    --webkit-font-smoothing: antialiased; /* antialiasing for light text on dark backgrounds, WebKit  */
+
+    /* Mobile, Max width 
+            (max-width: 767px)
+        Mobile, Min width
+            (min-width: 768px)
+        Tablet, Min width
+            (min-width: 992px)
+        Tablet, Max width
+            (max-width: 991px)
+        Medium Desktop, Max width
+            (max-width: 1100px)
+        Desktop, Min width
+            (min-width: 1200px)
+        Large Desktop, Min width
+            (min-width: 1366px)
+        XLarge Desktop, Min width
+            (min-width: 1600px) */
+    
+    /* Container max-widths */
+    --max-width-sm: 540px;
+    --max-width-md: 720px;
+    --max-width-lg: 960px;
+    --max-width-xl: 1140px;
+    --max-width-xxl: 1320px;
 }
 
 /* ///////////
    Base styles 
 ////////////// */
-html {
+html, 
+body {
     font: var(--font-weight-normal) 16px/1.45 var(--font-family) !important;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto;
+}
+
+#skilljar-content {
+    flex: 1 1 auto;
+    min-height: auto;
+    margin-bottom: 0;
 }
 
 i.fa-light,
@@ -219,13 +275,57 @@ i.fa-brands  {
     opacity: 1;
 }
 
-input::placeholder {
-    color: var(--gray-500);
+img[data-was-processed] {
+    opacity: 0;
+    transition: opacity 0.25s;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-family) !important;
-    font-weight: var(--font-weight-semibold);
-    color: var(--brand-black);
-    line-height: var(--line-height-compact);
+img[data-was-processed="true"] {
+    opacity: 1;
 }
+
+input {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+}
+
+input[type=checkbox] {
+    border-color: var(--gray-700)!important;
+}
+
+input[type=checkbox]:hover {
+    border-color: var(--blue-500)!important;
+}
+
+input[type='checkbox']:checked, 
+input[type='checkbox']:disabled:active:checked {
+    background-color: var(--purple-500);
+}
+
+input::placeholder {
+    color: var(--gray-400);
+}
+
+input:focus,
+button:focus {
+    box-shadow: var(--input-btn-focus-box-shadow)!important;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--font-weight-semibold);
+    font-family: var(--font-family);
+    line-height: var(--line-height-compact);
+    color: var(--brand-black);
+}
+
+.no-catalog-filters .catalog-center-width {
+    max-width: var(--max-width-lg);
+}
+
+.catalog-search-input-group:after, 
+.sj-search-input-group:after {
+    content: "";
+    color: var(--gray-500);
+    top: 5px;
+} 

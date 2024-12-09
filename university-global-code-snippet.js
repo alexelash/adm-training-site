@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var signInHref = document.querySelector('.sj-text-sign-in').getAttribute('href');
         var signupPageHeader = document.createElement('h1');
         signupPageHeader.classList.add('signup-custom-header');
-        signupPageHeader.textContent = 'Sign up for Administrate Learning Campus';
+        signupPageHeader.textContent = 'Sign up for Administrate University';
         var signupPageCustomLink = document.createElement('p');
         signupPageCustomLink.classList.add('signup-custom-link');
         signupPageCustomLink.innerHTML = 'Already have an account? <a href="' + signInHref + '">Sign in.</a>';
@@ -1243,7 +1243,7 @@ catalogLowerBannerElement.innerHTML = `
     <div class="catalog-lower-content-wrapper">
         <div class="catalog-lower-text-wrapper">
            <h2 class="catalog-lower-title">Stuck? We’re here to help</h2>
-           <p class="catalog-lower-text">Having an issue with a course, webinar, or other content in Administrate Learning Campus? Reach out to the Administrate team.</p>
+           <p class="catalog-lower-text">Having an issue with a course, webinar, or other content in Administrate University? Reach out to the Administrate team.</p>
            <a href="https://www.getadministrate.com/contact-us/" class="catalog-lower-cta-button" target="_blank" rel="noopener">Get in touch</a>
         </div>
     </div>
