@@ -900,8 +900,8 @@ $(document).ready(function() {
 // END Nested Header Drop Down links - Add to Global Code Snippet
 
 // START HTML, CSS, and Javascript for Global Custom Footer 
-const element = document.createElement('div');
-element.innerHTML = `
+const globalCustomFooterElement = document.createElement('div');
+globalCustomFooterElement.innerHTML = `
 <div class="footer-background-wrapper">
   <h2 class="sr-only sr-only-focusable">Footer Navigation</h2>
   <div class="footer-top-section">
@@ -972,7 +972,7 @@ element.innerHTML = `
     </div>
   </div>
 </div>`;
-document.body.appendChild(element);
+document.body.appendChild(globalCustomFooterElement);
 
 let footerStyle = document.createElement('style');
 footerStyle.textContent = `
@@ -1178,8 +1178,8 @@ document.addEventListener("DOMContentLoaded", function() {
 // END Remove clickable course tiles on Path Detail Page. Global Code Snippet
 
 // START Catalog Lower Banner With Image Home Page Snippet
-const element = document.createElement('div');
-element.innerHTML = `
+const catalogLowerBannerElement = document.createElement('div');
+catalogLowerBannerElement.innerHTML = `
 <div class="catalog-lower-wrapper">
     <div class="catalog-lower-content-wrapper">
         <div class="catalog-lower-text-wrapper">
@@ -1189,7 +1189,7 @@ element.innerHTML = `
         </div>
     </div>
 </div>`;
-document.body.appendChild(element);
+document.body.appendChild(catalogLowerBannerElement);
 
 let catalogLowerBannerStyle = document.createElement('style');
 catalogLowerBannerStyle.textContent = `
