@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');/* Add Custom Font */
+
+:root {
+    /* Grayscale */
+    --gray-100: #ECEFF1;
+    --gray-200: #DBE1E5;
+    --gray-300: #BEC6CC;
+    --gray-400: #A0ABB2;
+    --gray-500: #849099;
+    --gray-600: #6B7780;
+    --gray-700: #4D5C66;
+    --gray-800: #31414C;
+    --gray-900: #212B33;
+    --brand-black: #101619;
+
+    /* Blues */
+    --blue: #2185EC;
+    --blue-100: #D7F0FE;
+    --blue-200: #A6DDFD;
+    --blue-300: #78C4F9;
+    --blue-400: #56ABF3;
+    --blue-500: #2185EC;
+    --blue-600: #1065BC;
+    --blue-700: #0C4C8D;
+    --blue-800: #0D355E;
+    --blue-900: #071B2F;
+
+    /* Purples */
+    --purple: #6A3CE3;
+    --purple-100: #ECE2FE;
+    --purple-200: #CCB1FC;
+    --purple-300: #AD89F6;
+    --purple-400: #845AF2;
+    --purple-500: #6A3CE3;
+    --purple-600: #4E1DCD;
+    --purple-700: #3B1EA3;
+    --purple-800: #27146C;
+    --purple-900: #170C41;
+
+    /* Semantic: Yellows */
+    --yellow: #FFCD33;
+    --yellow-100: #FFF9D6;
+    --yellow-200: #FFF1AD;
+    --yellow-300: #FFE784;
+    --yellow-400: #FFDD66;
+    --yellow-500: #FFCD33;
+    --yellow-600: #C59921;
+    --yellow-700: #936910;
+    --yellow-800: #7A5309;
+    --yellow-900: #4C3406;
+
+    /* Semantic: Greens */
+    --green: #3CE36A;
+    --green-100: #DCFDD8;
+    --green-200: #B3FCB1;
+    --green-300: #89F692;
+    --green-400: #6AEE82;
+    --green-500: #3CE36A;
+    --green-600: #27AF5A;
+    --green-700: #138352;
+    --green-800: #0B6C4C;
+    --green-900: #063C2A;
+
+    /* Semantic: Reds */
+    --red: #F4423F;
+    --red-100: #FEE6D8;
+    --red-200: #FDC7B2;
+    --red-300: #FBA08B;
+    --red-400: #F87C6E;
+    --red-500: #F4423F;
+    --red-600: #BC2933;
+    --red-700: #8D1431;
+    --red-800: #750C2E;
+    --red-900: #45071B;
+
+    /* Accent: Limes */
+    --lime: #B5E33C;
+    --lime-100: #F7FDD8;
+    --lime-200: #EEFCB1;
+    --lime-300: #DEF689;
+    --lime-400: #CDEE6A;
+    --lime-500: #B5E33C;
+    --lime-600: #95C32B;
+    --lime-700: #5A8212;
+    --lime-800: #385509;
+    --lime-900: #213205;
+
+    /* Accent: Oranges */
+    --orange: #FC703A;
+    --orange-100: #FEEDD7;
+    --orange-200: #FED6B0;
+    --orange-300: #FEB988;
+    --orange-400: #FD9D6B;
+    --orange-500: #FC703A;
+    --orange-600: #D84E2A;
+    --orange-700: #B5321D;
+    --orange-800: #780B0B;
+    --orange-900: #490707;
+
+    /* Accent: Cyans */
+    --cyan: #03CEA4;
+    --cyan-100: #DDFDEA;
+    --cyan-200: #AAFDD3;
+    --cyan-300: #7FFAC7;
+    --cyan-400: #62F0B7;
+    --cyan-500: #03CEA4;
+    --cyan-600: #029C89;
+    --cyan-700: #14847F;
+    --cyan-800: #015A57;
+    --cyan-900: #013331;
+
+    /* Font Family*/
+    --font-family: 'Inter', sans-serif;
+
+    --font-size-tiny: 0.65rem;
+    --font-size-sm: 0.85rem;
+    --font-size-sm-2: 0.95rem;
+    --font-size-med: 1rem;
+    --font-size-med-2: 1.2rem;
+    --font-size-large: 1.4375rem;
+    --font-size-large-2: 2rem;
+    --font-size-xl: 2.4375rem;
+    --font-size-xxl: 3.2rem;
+
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 800;
+
+    /* Line Heights */
+    --line-height-small: 0.9;
+    --line-height-compact: 1;
+    --line-height-medium: 1.2;
+    --line-height-comfortable: 1.35;
+    --line-height-large: 1.5;
+    --line-height-large-2: 1.65;
+
+    /* UI Variables */
+    /* Buttons + Forms */
+    --focus-outline-color: 33, 133, 236;  /* blue in rgba for focus color */
+    --focus-boxshadow: 0 0 0 3px rgba(var(--focus-outline-color), 0.4); /* focus styles */
+    --border-radius: 2px;
+    --border-radius-buttons: 4px;
+
+    --input-btn-focus-width: 2px !default;
+    --input-btn-focus-color-opacity: .25 !default;
+    --input-btn-focus-color: var(--purple-700)!default;
+    --input-btn-focus-blur:  0 !default;
+    --input-btn-focus-box-shadow: 0 0 0 3px rgba(var(--focus-outline-color), 0.4); !default;
+    --input-btn-padding: 12px 16px;
+    --input-btn-background-color: var(--purple-500);
+    --input-btn-background-color-hover: var(--purple-600);
+    --input-btn-background-color-active: var(--purple-700);
+
+    --header-link-color: var(--gray-800); /* header link text color */
+    --header-link-hover-color: var(--purple-500); /* header link hover color */
+    --header-border: 1px solid var(--gray-300); /* header border color */
+    --header-background-color: #FFFFFF; /* header background color */
+    --header-boxshadow: 3px 0 10px rgb(0 0 0 / 20%); /* header shadow color */
+    --header-login-text-color: #FFFFFF; /* login button text color */
+    --header-login-text-color: #FFFFFF; /* login button text color */
+    --header-login-background-color: var(--purple-500); /* login button background color */
+    --header-login-background-hover-color: var(--purple-700); /* login button background hover color */
+
+    --lower-background-color: #E1E9ED; /* page background color behind banner */
+    --lower-banner-background-color: #FFFFFF; /* banner background color */
+    --lower-banner-text-color: #FFFFFF; /* banner text color */
+    
+    --lower-button-background-color:  var(--purple-500); /* banner text color */
+    --lower-button-background-hover-color:  var(--purple-600); /* banner text color */
+    --lower-button-text-color: #FFFFFF; /* banner text color */
+
+    --login-page-background: url("https://6245015.fs1.hubspotusercontent-na1.net/hubfs/6245015/Administrate%20University%20and%20Learning%20Campus%20-%20Skilljar/administrate-sign-in-bkg_university.png"); /* background color or image behind form */
+    --login-form-background-color: #FFFFFF; /* form background color */
+    --login-form-title-color: var(--brand-black); /* form title text color */
+    --login-form-title-font-size: var(--font-size-xl); /* form title font-size */
+    --login-form-text-color: var(--gray-800); /* form standard text color */
+    --login-form-link-color: var(--blue-600); /* Login form link color */
+    --login-form-link-hover-color: var(--blue-600); /* Login form link color */
+    --login-form-link-active: var(--blue-600); /* Login form link color */
+
+    --login-button-text-color: #ffffff;
+    --login-button-bg-color: var(--purple-500); /* CTA button background color */
+    --login-button-hover-bg-color: var(--purple-600); /* CTA button hover background color */
+    --login-button-active-bg-color: var(--purple-700); /* CTA button active background color */
+    --login-button-text-color: #FFFFFF; /* CTA button text color */
+
+    --footer-link-color: #FFFFFF; /* footer link text color */
+    --footer-link-hover-color: rgba(256, 256, 256, 0.8); /* footer link hover color */
+    --footer-header-color: var(--gray-400); /* footer header color */
+    --footer-background-color: #FFFFFF; /* footer background color */
+    --footer-boxshadow: 3px 0 10px rgb(0 0 0 / 20%); /* footer shadow color */
+
+    --ep-footer-background-color: var(--brand-black); /* ep footer background color */
+    --ep-footer-text-color: var(--gray-300); /* ep footer background color */
+    --ep-footer-border-color: var(--brand-black); /* ep footer border color */
+}
+
+/* ///////////
+   Base styles 
+////////////// */
+html {
+    font: var(--font-weight-normal) 16px/1.45 var(--font-family) !important;
+}
+
+i.fa-light,
+i.fa-regular,
+i.fa-solid,
+i.fa-brands  {
+    opacity: 0;
+}
+
+.fontawesome-i2svg-complete i.fa-light,
+.fontawesome-i2svg-complete i.fa-regular,
+.fontawesome-i2svg-complete i.fa-solid,
+.fontawesome-i2svg-complete i.fa-brands {
+    opacity: 1;
+}
+
+input::placeholder {
+    color: var(--gray-500);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family) !important;
+    font-weight: var(--font-weight-semibold);
+    color: var(--brand-black);
+    line-height: var(--line-height-compact);
+}
