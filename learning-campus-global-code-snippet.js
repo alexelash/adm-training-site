@@ -151,15 +151,16 @@ document.head.append(courseDetailStyle);
 
 // This code converts the curriculum list into clickable lesson deep links
 document.addEventListener('DOMContentLoaded', function() {
-var curriculumItems = document.querySelectorAll('.dp-curriculum > li:not(.section)');
-curriculumItems.forEach(function(item) {
-  var url = item.getAttribute('data-url') + '?reg=1';
-  var wrapper = document.createElement('a');
-  wrapper.setAttribute('href', url);
-  while (item.firstChild) {
-    wrapper.appendChild(item.firstChild);
-  }
-  item.appendChild(wrapper);
+    var curriculumItems = document.querySelectorAll('.dp-curriculum > li:not(.section)');
+    curriculumItems.forEach(function(item) {
+        var url = item.getAttribute('data-url') + '?reg=1';
+        var wrapper = document.createElement('a');
+        wrapper.setAttribute('href', url);
+        while (item.firstChild) {
+            wrapper.appendChild(item.firstChild);
+        }
+        item.appendChild(wrapper);
+    });
 });
 // END Course/Path Detail Page Styling
 
