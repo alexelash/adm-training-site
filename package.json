@@ -1,14 +1,22 @@
 {
-  "name": "compiler",
+  "name": "skilljar-adm-training-site",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css-min": "gulp css-min",
+    "js-min": "gulp js-min",
+    "watch": "gulp watch",
+    "start": "http-server -c-1 -p 8080"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "minify": "^12.0.1"
+    "gulp": "^5.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^2.0.0",
+    "http-server": "^14.1.1"
   }
 }

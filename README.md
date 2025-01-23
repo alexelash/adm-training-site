@@ -8,8 +8,7 @@ Externally hosted assets for Administrate University and Learning Campus. Conten
 | University (customer-facing)  | https://university.getadministrate.com/               |
 | Skilljar CMS  | https://app.skilljar.com/             |
 
-## How to Build
-To build the packages, follow these steps:
+## Working with the code
 
 ```bash
 # Open a terminal (Command Prompt or PowerShell for Windows, Terminal for macOS or Linux)
@@ -29,9 +28,23 @@ npm -v
 # Make sure that you have at least v20.2.0 of NODE
 node -v
 
-# Install dependencies
+# Install dev dependencies
 npm install
 
-# Once you have all node_modules installed you can compile the project
-npm run watch 
+# Install the gulp command line utility
+npm install --global gulp-cli
+
+# Test Gulp
+gulp
+```
+
+## Additional Info
+To build minified versions of css and js files in the `public` folder (production-ready code used by both sites), use the following gulp tasks:
+
+```bash
+# Navigate to the project directory
+cd skilljar-adm-training-site
+
+# Watch and minify changed js and css files with Gulp
+gulp watch
 ```

@@ -1,10 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');/* Add Custom Font */
 
-:root {
-    /* ////////////
-        Color Variables
-    ////////////// */
+/**------------------------------------*\
+ * VARIABLES CONTENTS
+ *
+ * BRAND COLOR VARIABLES
+ * 01. Grayscale
+ * 02. Core - Purple
+ * 03. Secondary - Blue
+ * 
+ * 04a. Accent - Lime
+ * 04b. Accent - Orange
+ * 04c. Accent - Cyan
+ * 
+ * 05a. Semantic - Success Green
+ * 05b. Semantic - Alert Yellow
+ * 005c. Semantic - Error Red
+ *  
+ * TYPOGRAPHY VARIABLES
+ * 01. Font Family
+ * 02. Font Sizing
+ * 03. Font Weights
+ * 04. Line Heights
+ * 
+ * ELEMENTS & INTERACTION VARIABLES
+ * 01. Focus
+ * 02. Border radius
+ * 03. Section Backgrounds
+ * 04. Inputs
+ * 
+ * 05a. Buttons - Primary (Purple)
+ * 05b. Buttons - Secondary (Gray) 
+ * 05c. Buttons - Tertiary (Outline)
+ * 
+ * 06. Max-widths
+ * 
+ * COMPONENTS VARIABLES
+ * 01. Header
+ * 02. Login
+ * 03. Lower Banner / CTA
+ * 04. Copyright & Skilljar Footer
+ * 05. Big Footer
+ * 06. Home Hero
+ * 07. Coursebox padding
+ * 
+ */
 
+:root {
+    /*------------------------------------*\
+        #BRAND COLORS VARIABLES
+    \*------------------------------------*/
     /* 01. Grayscale */
     --gray-50: #F8F9FA;
     --gray-100: #ECEFF1;
@@ -41,7 +85,7 @@
     --blue-700: #0C4C8D;
     --blue-800: #0D355E;
     --blue-900: #071B2F;
-
+    
     /* 04a. Accent - Lime */
     --lime: #B5E33C;
     --lime-100: #F7FDD8;
@@ -114,14 +158,18 @@
     --red-800: #750C2E;
     --red-900: #45071B;
 
-    /* ////////////
-        Typography Variables
-    ////////////// */
+    /*------------------------------------*\
+        #TYPOGRAPHY VARIABLES
+    \*------------------------------------*/
 
-    /* 01. Font Family */
+    /**
+     * 01. Font Family
+     */
     --font-family: 'Inter', sans-serif;
 
-    /* 02. Font Sizes */
+    /**
+     * 02. Font Sizing
+     */
     --font-size-base: 16px;
     --font-size-tiny: 0.65rem;
     --font-size-sm: 0.85rem;
@@ -133,7 +181,9 @@
     --font-size-xl: 2.4375rem;
     --font-size-xxl: 3.2rem;
 
-    /* 03. Font Weights */
+    /**
+     * 03. Font Weights
+     */
     --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
@@ -141,7 +191,9 @@
     --font-weight-bold: 700;
     --font-weight-black: 800;
 
-    /* 04. Line Heights */
+    /**
+     * 04. Line Heights
+     */
     --line-height-small: 0.9;
     --line-height-compact: 1;
     --line-height-medium: 1.2;
@@ -149,22 +201,30 @@
     --line-height-large: 1.5;
     --line-height-large-2: 1.65;
 
-    /* ////////////
-        UI Variables
-    ////////////// */
+    /*------------------------------------*\
+        #ELEMENTS & INTERACTION VARIABLES
+    \*------------------------------------*/
 
-    /* 01. Focus */
+    /**
+     * 01. Focus
+     */
     --focus-outline-color: 33, 133, 236;  /* Secondary Blue in rgba for focus color */
     --focus-boxshadow: 0 0 0 3px rgba(var(--focus-outline-color), 0.4); /* Default :focus styles */
     
-    /* 02. Border radius */
+    /**
+     * 02. Border radius
+     */
     --border-radius: 2px;
     --border-radius-buttons: 4px;
 
-    /* 03. Section Backgrounds */
+    /**
+     * 03. Section Backgrounds
+     */
     --section-background-color: var(--gray-50);
 
-    /* 04. Inputs */
+    /**
+     * 04. Inputs
+     */
     --input-btn-focus-width: 2px !default;
     --input-btn-focus-color-opacity: .25 !default;
     --input-btn-focus-color: var(--purple-700) !default;
@@ -175,7 +235,9 @@
     --input-btn-background-color-hover: var(--purple-600);
     --input-btn-background-color-active: var(--purple-700);
 
-    /* 05a. Buttons - Primary (Purple) */
+    /**
+     * 05a. Buttons - Primary (Purple)
+     */
     --btn-primary-focus-blur:  0 !default;
     --btn-primary-focus-box-shadow: var(--focus-boxshadow) !default;
     --btn-primary-padding: 12px 16px;
@@ -183,7 +245,9 @@
     --btn-primary-background-color-hover: var(--purple-600);
     --btn-primary-background-color-active: var(--purple-700);
 
-    /* 05b. Buttons - Secondary (Gray) */
+    /**
+     * 05b. Buttons - Secondary (Gray) 
+     */
     --btn-secondary-text-color: var(--brand-black) !default;
     --btn-secondary-border:  transparent !default;
     --btn-secondary-focus-box-shadow: var(--focus-boxshadow) !default;
@@ -192,7 +256,9 @@
     --btn-secondary-background-color-hover: var(--gray-300);
     --btn-secondary-background-color-active: var(--gray-400);
 
-    /* 05c. Buttons - Tertiary (Outline) */
+    /**
+     * 05c. Buttons - Tertiary (Outline)
+     */
     --btn-outline-focus-blur: 0 !default;
     --btn-outline-border: 2px solid var(--purple) !default;
     --btn-outline-focus-box-shadow: var(--focus-boxshadow) !default;
@@ -201,18 +267,22 @@
     --btn-outline-background-color-hover: rgba(106, 60, 227, .2);
     --btn-outline-background-color-active: rgba(106, 60, 227, .3);
 
-    /* 06. Max-widths */
+    /**
+     * 06. Max-widths
+     */
     --max-width-sm: 540px;
     --max-width-md: 720px;
     --max-width-lg: 960px;
     --max-width-xl: 1140px;
     --max-width-xxl: 1320px;
 
-    /* ////////////
-        Component Variables
-    ////////////// */
+    /*------------------------------------*\
+        #COMPONENTS VARIABLES
+    \*------------------------------------*/
 
-    /* 01. Header */
+    /**
+     * 01. Header
+     */
     --header-link-color: var(--gray-800);
     --header-link-hover-color: var(--purple-500);
     --header-border: 1px solid var(--gray-300);
@@ -222,8 +292,9 @@
     --header-login-background-color: var(--purple-500);
     --header-login-background-hover-color: var(--purple-700);
 
-    /* 02. Login */
-    --login-page-background: url("https://6245015.fs1.hubspotusercontent-na1.net/hubfs/6245015/Administrate%20University%20and%20Learning%20Campus%20-%20Skilljar/administrate-sign-in-bkg_university.png");
+    /**
+     * 02. Login
+     */
     --login-form-background-color: #FFFFFF; 
     --login-form-title-color: var(--brand-black);
     --login-form-title-font-size: var(--font-size-xl);
@@ -237,7 +308,9 @@
     --login-button-active-bg-color: var(--purple-700);
     --login-button-text-color: #FFFFFF;
     
-    /* 03. Lower Banner / CTA */
+    /**
+     * 03. Lower Banner / CTA
+     */
     --lower-background-color: #E1E9ED;
     --lower-banner-background-color: #FFFFFF;
     --lower-banner-text-color: #FFFFFF;
@@ -246,19 +319,25 @@
     --lower-button-background-color-active:  var(--purple-700);
     --lower-button-text-color: #FFFFFF;
 
-    /* 04. Copyright & Skilljar Footer */
+    /**
+     * 04. Copyright & Skilljar Footer
+     */
     --ep-footer-background-color: var(--brand-black);
     --ep-footer-text-color: var(--gray-300);
     --ep-footer-border-color: var(--brand-black);
     
-    /*  05. Big Footer */
+    /**
+     * 05. Big Footer
+     */
     --footer-link-color: #FFFFFF;
     --footer-link-hover-color: rgba(256, 256, 256, 0.8);
     --footer-header-color: var(--gray-400);
     --footer-background-color: #FFFFFF;
     --footer-boxshadow: 3px 0 10px rgb(0 0 0 / 20%);
 
-    /*  06. Home Hero */
+    /**
+     * 06. Home Hero
+     */
     --hero-background-image: linear-gradient(180deg, var(--blue-100) 0%, #FFFFFF 100%) !important;
     --hero-background-color: #FFFFFF;
     --hero-title-font: var(--font-weight-semibold) var(--font-size-xl)/var(--line-height-compact) var(--font-family) !important;
@@ -271,25 +350,15 @@
     --sb-link-hover: var(--blue-600); 
     --sb-link-active: var(--blue-600);
 
-    /*  07. Coursebox padding */
+    /**
+     *  07. Coursebox padding
+     */
     --coursebox-text-padding: 0 16px;
-
-/* ////////////
-   Standardized Sizes for Mobile Responsive
-////////////// */
-    /* Mobile, Max width (max-width: 767px) */
-    /* Mobile, Min width (min-width: 768px) */
-    /* Tablet, Min width (min-width: 992px) */
-    /* Tablet, Max width (max-width: 991px) */
-    /* Medium Desktop, Max width (max-width: 1100px) */
-    /* Desktop, Min width (min-width: 1200px) */
-    /* Large Desktop, Min width (min-width: 1366px) */
-    /* XLarge Desktop, Min width (min-width: 1600px) */
 }
 
-/* ///////////
-   Base styles 
-////////////// */
+/**------------------------------------*\
+ * BASE STYLES
+\*------------------------------------*/    
 html, 
 body {
     font: var(--font-weight-normal) var(--font-size-base)/var(--line-height-comfortable) var(--font-family);
@@ -376,6 +445,13 @@ select:focus,
     border: 1px solid rgb(var(--focus-outline-color));
 }
 
+.catalog-search-input-group:after, 
+.sj-search-input-group:after {
+    content: "";
+    color: var(--gray-500);
+    top: 5px;
+}
+
 .focus-link-v2::before,
 .course-text-content a::before,
 #profile-course-table td>a::before,
@@ -389,20 +465,26 @@ select:focus,
 }
 
 h1,
+.h1-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h1,
-.lp-color-scheme-light #lp-wrapper #lesson-body .h1-style
+.lp-color-scheme-light #lp-wrapper #lesson-body .h1-style,
 h2,
+.h2-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h2,
-.lp-color-scheme-light #lp-wrapper #lesson-body .h2-style
-h3,  
+.lp-color-scheme-light #lp-wrapper #lesson-body .h2-style,
+h3,
+.h3-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h3,
 .lp-color-scheme-light #lp-wrapper #lesson-body .h3-style,
-h4, 
+h4,
+.h4-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h4,
 .lp-color-scheme-light #lp-wrapper #lesson-body .h4-style,
-h5, 
+h5,
+.h5-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h5,
 h6,
+.h6-style,
 .lp-color-scheme-light #lp-wrapper #lesson-body h6 {
     font-weight: var(--font-weight-semibold);
     font-family: var(--font-family);
@@ -410,6 +492,34 @@ h6,
     color: var(--brand-black);
 }
 
+/**------------------------------------*\
+ * COMPONENT STYLES CONTENTS
+ *
+ * 00. Layout...................................Primary general layout styles.
+ * 01. Header...................................Primary top-level navigation styles.
+ * 02. Login Page...............................Login and Signup page styles.
+ * 03. Separator Containers.....................Separators in Skilljar CMS styled to create sections.
+ * 04. Catalog Pages............................Shared styles amongst catalong pages.
+ * 05. Tile Components..........................Interactive styles for the coursebox containers and tiles.
+ * 06. Catalog Collection Tiles..................Interactive styles for courseboxes that are collections 
+                                                    of courses rather than Learning Paths or Certifications.
+ * 07. Course Detail Page.......................Styles for the landing page of a course.
+ * 08. Course Tile Ribbons......................Changes colors and text for ribbons.
+ * 09. Catalog Home Filter Bar..................Adjust styling for on-page catalog filter options.
+ * 10. Catalog Sidebar Filters...................Adjust styling for the sidebar filtering on All Courses catalog.
+ * 11. Custom Footer............................Custom fat footer at bottom of pages.
+ * 12. EP Footer................................Styles for the copyright and Skilljar mention at bottom of pages.
+ * 13. Learning Path Details.....................Styles for Learning Path detail landing pages.
+ * 14. Curriculum Landing Page..................Styles for the curriculum landing page.
+ * 15. Catalog Call-to-action...................Styles for CTA at bottom of catalog pages for help.
+ * 16. Lesson pages.............................Styles for Lesson landing pages.
+ *  
+ */
+
+/**
+ * 00. Layout
+ *      Primary general layout styles.
+ */
 #main-container:not(.lesson-page) {
     display: flex;
     flex-direction: column;
@@ -429,12 +539,20 @@ h6,
     max-width: var(--max-width-lg);
 }
 
-.catalog-search-input-group:after, 
-.sj-search-input-group:after {
-    content: "";
-    color: var(--gray-500);
-    top: 5px;
+/**
+ * 01. Header
+ *      Primary top-level navigation styles.
+ */
+#header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--gray-300);
+    box-shadow: 3px 0 10px rgb(0 0 0 / 20%);
 }
+
+#header .header-nested-wrapper {
+    padding: 0;
+}
+
 
 #header .header-logo-link,
 #header .header-center-img.header-logo-svg {
@@ -443,4 +561,1443 @@ h6,
 
 #header .header-center-img.header-logo-svg[data-was-processed*="true"] {
     opacity: 1;
+}
+
+#header .header-nested-wrapper .header-nested-links,
+#header #header-drop {
+    background-color: var(--header-background-color);
+    border: var(--header-border);
+    box-shadow: var(--header-boxshadow);
+    min-width: 200px;
+    padding: 8px 0;
+}
+
+#header .header-link-container {
+    height: 100%;
+}
+
+#header #header-right .catalog-search-input-group .catalog-search-input, 
+#header #header-right .sortable-multiselect-search-input-group .catalog-search-input {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+}
+
+#header .header-nested-wrapper .header-nested-links .header-link {
+    width: 100%;
+}
+
+#header #header-drop.f-dropdown li {
+    font-size: var(--font-size-med);
+    padding: 0;
+}
+
+#header #header-right .header-nested-wrapper .header-nested-links .header-link,
+#header #header-drop.f-dropdown li a {
+    margin: 2px 0!IMPORTANT;
+}
+
+#header .header-nested-wrapper .header-nested-links .header-link.active,
+#header #header-drop.f-dropdown li a.active {
+    border-left: 2px solid var(--purple-500);
+}
+
+#header-right .header-link,
+#header #header-drop.f-dropdown li a {
+    align-items: center;
+    border-radius: 2px;
+    color: var(--gray-800);
+    display: flex;
+    height: 100%;
+    margin: 0 4px!IMPORTANT;
+    padding: 8px 12px!IMPORTANT;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 875px) {
+    .no-tags.search-location-header_right .burger {
+        align-items: center;
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+body.cbp-spmenu-open #header .burger .burger-text {
+    display: none;
+}
+
+#header .header-left .burger-text {
+    margin-left: 4px;
+}
+
+#header #header-drop.f-dropdown li a > span {
+    color: inherit;
+}
+
+#header-right .header-link:hover,
+#header #header-drop.f-dropdown li a:hover {
+    background: var(--purple-100);
+    color: var(--purple-500);
+}
+
+.header-link:focus,
+#header #header-drop.f-dropdown li a:focus {
+    box-shadow: var(--focus-boxshadow);
+}
+
+.header-mobile-dropdown {
+    background-color: var(--header-background-color);
+    position: absolute;
+    top: 45px;
+}
+
+.header-mobile-dropdown .header-nested-wrapper .header-nested-links .header-link {
+    margin-left: 0;
+}
+
+#header .header-link-parent-icon,
+.header-mobile-dropdown .header-link-parent-icon,
+.header-link .header-external-link-icon {
+    color: var(--gray-400);
+    margin-left: 5px;
+}
+
+.header-mobile-dropdown .header-link {
+    color: var(--header-link-color);
+}
+
+#header #header-right .login-link {
+    background: linear-gradient(90deg, rgba(105, 60, 226, 1) 0%, rgba(98, 73, 228, 1) 32%, rgba(82, 93, 231, 1) 55%, rgba(70, 106, 233, 1) 71%, rgba(70, 106, 233, 1) 100%);
+    border-radius: 0;
+    color: var(--header-login-text-color);
+    margin-right: 0;
+    padding: 12px 24px;
+}
+
+#header #header-right .login-link:hover {
+    background: #6A3CE3 !IMPORTANT;
+}
+
+.header-mobile-menu-bars {
+    color: var(--gray-800);
+}
+
+.header-link:focus {
+    box-shadow: var(--focus-boxshadow);
+}
+
+#header #header-right .header-dropdown-button img {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--border-radius);
+}
+
+@media(max-width: 962px) {
+    #header-right .header-mobile-menu {
+        width: 30px;
+    }
+
+    #left-nav-button {
+        align-items: center;
+        border-radius: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 30px;
+        justify-content: center;
+        width: 30px !IMPORTANT;
+    }
+
+    #left-nav-button .fa-search {
+        font-size: 22px;
+    }
+
+    #left-nav-button:hover {
+        background: transparent;
+        color: inherit;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu,
+    .cbp-spmenu-open #left-nav-button {
+        align-items: center;
+        background: var(--blue-100);
+        border-radius: 100%;
+        display: flex;
+        height: 30px;
+        justify-content: center;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:hover,
+    .cbp-spmenu-open #left-nav-button:hover {
+        background: var(--blue-200);
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:active,
+    .cbp-spmenu-open #left-nav-button:active {
+        background: var(--blue-300);
+        color: inherit;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:focus,
+    .cbp-spmenu-open #left-nav-button:focus {
+        box-shadow: var(--focus-boxshadow);
+    }
+
+    .mobile-menu-open .header-mobile-menu-close,
+    .cbp-spmenu-open #left-nav-button .header-mobile-menu-close {
+        color: var(--blue-800);
+        font-size: 16px;
+    }
+
+    .mobile-menu-open #header-right .header-mobile-menu:active .header-mobile-menu-close,
+    .cbp-spmenu-open #left-nav-button:active svg {
+        color: var(--brand-black);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-link:not(.back-to-catalog) {
+        padding: 12px 32px !IMPORTANT
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link {
+        color: var(--gray-500);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        text-transform: uppercase;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link:hover {
+        background: inherit;
+        color: var(--gray-500);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper > .header-link:focus {
+        box-shadow: none;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-link-parent-icon {
+        display: none !IMPORTANT;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper:not(:first-child) {
+        margin-top: 16px !IMPORTANT;
+    }
+    
+    .mobile-menu-open .header-mobile-dropdown .header-nested-wrapper .header-link {
+        width: 100%;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link {
+        background: var(--btn-secondary-background-color);
+        border: var(--btn-secondary-border);
+        color: var(--btn-secondary-text-color);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link span {
+        display: block;
+        text-transform: lowercase;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link span:first-letter {
+        text-transform: uppercase;
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:hover {
+        background: var(--btn-secondary-background-color-hover);
+        color: var(--btn-secondary-text-color);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:active {
+        background: var(--btn-secondary-background-color);
+        color: var(--btn-secondary-text-color);
+    }
+
+    .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:focus {
+        box-shadow: var(--focus-boxshadow);
+    }
+}
+
+/**
+ * 02. Login Page
+ *      Login and Signup page styles.
+ */
+
+/* background image or color */
+.sj-page-login #skilljar-content,
+.sj-page-signup #skilljar-content {
+    background: var(--login-page-background) !IMPORTANT; /* background color or image behind form */
+    background: transparent !IMPORTANT;
+    background-size: cover;
+}
+
+/* login form stylings */
+.sj-page-login #login-content,
+.sj-page-signup #login-content {
+    background-color: var(--login-form-background-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 12px 4px rgba(0, 0, 0, .15);
+    float: unset;
+    left: unset;
+    margin: 50px auto;
+    margin-top: 50px;
+    max-width: 680px;
+    padding: 35px 50px;
+    right: unset;
+    width: unset;
+}
+
+/* set width of login box to 100% */
+.sj-page-login #login-content .large-6.columns.push-3,
+.sj-page-signup #login-content .large-6.columns.push-3 {
+    left: 0;
+    width: 100%;
+}
+
+/* hide default login / sign up banner */
+.sj-page-login #login-tab-container,
+.sj-page-signup #login-tab-container {
+    display: none;
+}
+
+/* login page title stylings */
+.sj-page-login .sj-text-login-note {
+    color: var(--login-form-title-color);
+    font-size: var(--login-form-title-font-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-medium);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* login page custom signup text stylings */
+p.lp-sign-up-text {
+    font-size: var(--font-size-med);
+    text-align: center;
+}
+
+/* email / password field stylings */
+.sj-page-login input,
+.sj-page-signup input {
+    font-size: var(--font-size-med);
+}
+
+/* field label stylings */
+.sj-page-login label,
+.sj-page-signup label {
+    font-size: var(--font-size-sm-2);
+    margin-bottom: 5px;
+    align-self: baseline;
+    color: var(--login-form-text-color);
+}
+
+/* Sign in / forgot password wrapper stylings */
+.sj-page-login #login_form .large-12.columns,
+.sj-page-signup #login_form .large-12.columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* sign in button stylings */
+.sj-page-login button#button-sign-in,
+.sj-page-signup button#button-sign-up {
+    font-size: 17px;
+    margin-right: 0 !IMPORTANT;
+    background-color: var(--login-button-bg-color);
+    color: var(--login-button-text-color);
+    border-radius: var(--border-radius-buttons);
+}
+
+/* sign in button hover color */
+.sj-page-login button#button-sign-in:hover,
+.sj-page-signup button#button-sign-up:hover {
+    background-color: var(--login-button-hover-bg-color);
+}
+
+/* sign in button hover color */
+.sj-page-login button#button-sign-in:active,
+.sj-page-signup button#button-sign-up:active {
+    background-color: var(--login-button-active-bg-color);
+}
+
+/* sign in button focus color */
+.sj-page-login button#button-sign-in:focus,
+.sj-page-signup button#button-sign-up:focus {
+    box-shadow: var(--footer-boxshadow);
+}
+
+/* Sign Up Custom Title stylings */
+.sj-page-signup h1.signup-custom-header {
+    font-size: var(--login-form-title-font-size);
+    line-height: var(--line-height-medium);
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--login-form-title-color);
+}
+
+/* Sign Up Custom Paragraph stylings */
+.sj-page-signup p.signup-custom-link {
+    font-size: 17px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--login-form-text-color);
+}
+
+.sj-page-signup p.signup-custom-link a {
+    color: var(--login-form-link-color);
+}
+
+.sj-page-signup p.signup-custom-link a:hover {
+    color: var(--login-form-link-hover-color);
+    text-decoration: underline;
+}
+
+.sj-page-signup p.signup-custom-link a:active {
+    color: var(--login-form-link-active-color);
+    text-decoration: underline;
+}
+
+.sj-page-signup p.signup-custom-link a:focus {
+    border-radius: var(--border-radius);
+    box-shadow: var(--focus-boxshadow);
+}
+
+/* Hide social media logins */
+.socialaccount_providers {
+    display: none !IMPORTANT;
+}
+
+/**
+ * 03. Separator Containers
+ *      Separators in Skilljar CMS styled to create sections.
+ */
+
+/* Set font size for separator titles */
+a.coursebox-container[data-tags*="separator"] .coursebox-text {
+    font-size: var(--font-size-large-2) !IMPORTANT;
+    padding: 0; 
+}
+
+/* Set font size for separator sub-titles */
+a.coursebox-container[data-tags*="separator"] .coursebox-text-description {
+    color: var(--gray-700) !IMPORTANT;
+    font-size: var(--font-size-med-2) !IMPORTANT;
+    font-weight: var(--font-weight-light) !IMPORTANT;
+    line-height: var(--line-height-comfortable);
+    margin: 10px 0 16px !IMPORTANT;
+    max-width: 750px;
+    padding: 0;
+}
+
+/* remove conflicting standard tile styles */
+a.coursebox-container[data-tags*="separator"]:after {
+    display: none !IMPORTANT;
+}
+
+/* remove all standard course tile styling, add 100% page width */
+a.coursebox-container[data-tags*="separator"] {
+    background-color: transparent !IMPORTANT;
+    border: none !IMPORTANT;
+    box-shadow: none !IMPORTANT;
+    min-height: unset !IMPORTANT;
+    padding: 0 !IMPORTANT;
+    pointer-events: none !IMPORTANT;
+    width: 100% !IMPORTANT;
+}
+
+/* Hide course price/CTA text, tile image. Hide separator courses from search */
+a.coursebox-container[data-tags*="separator"] .storefront-price,
+.search a.coursebox-container[data-tags*="separator"],
+a.coursebox-container[data-tags*="separator"] .coursebox-image,
+a.coursebox-container[data-tags*="separator"] .coursebox-callout {
+    display: none !IMPORTANT;
+}
+
+/**
+ * 04. Catalog Pages
+ *      Shared styles amongst catalong pages
+ */
+.sj-page-catalog #skilljar-content:after {
+    height: 0;
+}
+
+.sj-page-catalog .course-listing-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.sj-page-catalog .course-listing-section .coursebox-container {
+    flex: 1 1 100%;
+    margin: 0;
+}
+
+@media all and (min-width: 480px) {
+    .sj-page-catalog .course-listing-section .coursebox-container {
+        flex: 1 1 50%;
+    }
+}
+
+@media all and (min-width: 768px) {
+    .sj-page-catalog .course-listing-section .coursebox-container {
+        flex:  0 1 32%;
+    }
+}
+
+.sj-page-catalog .course-listing-section .coursebox-container[data-tags*="separator"] {
+    flex: 1 1 100%;
+}
+
+section.course-listing-section:nth-child(odd):before {
+    background: var(--section-background-color);
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: 0;
+}
+
+/**
+ * 05. Tile Components
+ *      Interactive styles for the coursebox containers and tiles.
+ */
+
+/* General Tile Stylings */
+#skilljar-content .coursebox-container {
+    border: 1px solid var(--gray-300);
+    /* tile border is off by default */
+    border-radius: var(--border-radius);
+    /* rounded tile edges */
+    transition: transform 0.5s, box-shadow 0.2s;
+    /* do not modify - for hover effect */
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page {
+    border-top: 4px solid var(--purple) !IMPORTANT;
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page .coursebox-image {
+    display: none;
+}
+
+/* Hover effects for Tiles */
+#skilljar-content .coursebox-container:hover {
+    /* color of bottom border - appears on hover */
+    /* do not modify */
+    transition: 0.2s;
+    /* do not modify */
+}
+
+/* Focus effects for Tiles */
+#skilljar-content .coursebox-container:focus {
+    box-shadow: var(--focus-boxshadow);
+    /* color of bottom border - appears on hover */
+    transform: translateY(-5px);
+}
+
+/* Tile Title stylings */
+#skilljar-content .coursebox-container:not([data-tags*="separator"]) .coursebox-text {
+    color: var(--brand-black);
+    padding: var(--coursebox-text-padding);
+}
+
+#skilljar-content .coursebox-container:not([data-tags*="separator"]):hover .coursebox-text {
+    color: var(--blue-700);
+    text-decoration: underline;
+}
+
+/* Tile short description stylings */
+#skilljar-content .coursebox-container:not([data-tags*="separator"]) .coursebox-text-description {
+    color: var(--gray-700);
+    font-size: var(--font-size-med);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-comfortable);
+    margin-top: 8px;
+    padding: var(--coursebox-text-padding);
+}
+
+/**
+ * 06. Catalog Collection Tiles
+ *      Interactive styles for courseboxes that are collections of courses rather 
+ *      than Learning Paths or Certifications.
+ */
+#skilljar-content .coursebox-container.sj-catalog-page {
+    border-top: 4px solid var(--purple) !IMPORTANT;
+    padding: 0 0 32px;
+}
+
+.coursebox-container.course.sj-catalog-page .coursebox-text:before {
+    background-color: var(--purple-100);
+    color: var(--purple-700);
+    content: "Collection";
+    display: inline-block;
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    margin-right: 100%;
+    padding: 4px;
+    text-decoration: none !IMPORTANT;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Line break above Catalog Tile Callout */
+#skilljar-content .sj-courseboxes-v2:not(.search).coursebox-container .coursebox-callout {
+    border-top: 1px solid var(--gray-300);
+    /* color of line break above tile CTA */
+}
+
+a.coursebox-container[data-course] .coursebox-callout {
+    display: none !IMPORTANT; /* Hide line break on course tiles only */
+}
+
+#catalog-courses {
+    justify-content: flex-start; /* Left align tiles */
+    text-align: left;
+}
+
+.sj-page-catalog:not(.sj-page-catalog-root) #catalog-courses {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/**
+ * 07. Course Detail Page
+ *      Styles for the landing page of a course.
+ */
+
+/* Add padding to the top of the details page */
+.sj-page-detail #skilljar-content .top-row-white-v2 {
+    padding: 40px 3%;
+}
+
+/* Course Registration area stylings */
+.sj-page-detail .dp-summary-wrapper {
+    border: none;
+    padding: 40px;
+}
+
+/* course title stylings */
+.sj-page-detail .dp-summary-wrapper>h1 {
+    font-size: 36px !IMPORTANT;
+    font-weight: 600 !IMPORTANT;
+}
+
+/* hide social media links */
+.sj-page-detail .social-media-wrapper {
+    display: none;
+}
+
+/* add more padding to lower section */
+.sj-page-detail #dp-details {
+    padding: 40px;
+}
+
+/* style the "about this course" section */
+.sj-page-detail #dp-details .large-7.columns>h3 {
+    font-size: 32px !IMPORTANT;
+    font-weight: 600 !IMPORTANT;
+    margin-bottom: 20px !IMPORTANT;
+}
+
+/* style curriculum box */
+.sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
+    border-radius: 4px;
+    box-shadow: 0 0 12px 2px rgba(0, 0, 0, .15);
+    padding: 24px;
+}
+
+/* style curriculum title */
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
+    border-bottom: 1px solid #bbb;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+    text-align: center;
+}
+
+/* add margin to top of curriculum links */
+.sj-page-detail .dp-curriculum {
+    margin-top: 20px;
+}
+
+/* style curriculum link headers */
+.sj-page-detail .dp-curriculum li.section {
+    font-size: 18px !IMPORTANT;
+    font-weight: bold;
+}
+
+/* style curriculum links */
+.sj-page-detail .dp-curriculum>li {
+    font-size: 16px;
+}
+
+/**
+ * 08. Course Tile Ribbons
+ *      Changes colors and text for ribbons.
+ */
+
+.sj-ribbon-wrapper .sj-ribbon-registered { 
+    background: var(--blue) !IMPORTANT;
+    border-color: var(--blue) !IMPORTANT;
+    color: #FFFFFF !IMPORTANT;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete { 
+    background: var(--lime) !IMPORTANT;
+    border-color: var(--lime) !IMPORTANT;
+    color: var(--lime-900) !IMPORTANT;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete .sj-ribbon-text {
+    display: none !IMPORTANT; /* hide COMPLETE default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-complete:after {
+    content:"Complete!"; /* add COMPLETE custom ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed { 
+    background: var(--lime) !IMPORTANT;
+    border-color: var(--lime) !IMPORTANT;
+    color: var(--lime-900) !IMPORTANT;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed .sj-ribbon-text { 
+   display: none !IMPORTANT; /* hide PASSED default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-passed:after { 
+    content: 'Passed!' !IMPORTANT; /* add PASSED custom ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed { 
+    background: var(--red) !IMPORTANT;
+    border-color: var(--red) !IMPORTANT;
+    color: var(--red-900) !IMPORTANT;
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed .sj-ribbon-text { 
+   display: none !IMPORTANT; /* hide FAILED default ribbon text */
+}
+
+.sj-ribbon-wrapper .sj-ribbon-failed:after { 
+    content: 'Didn’t pass' !IMPORTANT; /* add FAILED custom ribbon text */
+}
+
+/**
+ * 09. Catalog Home Filter Bar
+ *      Adjust styling for on-page catalog filter options.
+ */
+.search #catalog-search-info {
+    background: var(--blue-900);
+    font-weight: inherit;
+    margin: 0 auto;
+    padding: 8px 0;
+    position: relative;
+    width: var(--max-width-lg);
+    z-index: 1;
+}
+
+.search #catalog-search-info:after {
+    background: var(--blue-900);
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: -1;
+}
+
+.search #catalog-search-info .filter-option {
+    background: #FFFFFF;
+    border-radius: var(--border-radius-buttons);
+}
+
+.search #catalog-search-info .filter-option .link-color {
+    transition: 0.25s color;
+}
+
+.search #catalog-search-info .filter-option:hover .link-color {
+    color: var(--blue-700) !IMPORTANT;
+}
+
+.search #catalog-search-info .filter-option:active .link-color {
+    color: var(--blue-800) !IMPORTANT;
+}
+
+.filter-option .fa-stack .fa-circle {
+    border: 1px solid var(--gray-300);
+    border-radius: 100%;
+    color: #FFFFFF;
+    display: block;
+    font-size: inherit;
+}
+
+.filter-option .fa-stack > svg {
+    border: 1px solid var(--gray-300);
+    border-radius: 100%;
+    width: 1em;
+}
+
+.filter-option.checked .fa-stack .fa-circle {
+    display: none;
+}
+
+.filter-option>span {
+    vertical-align: text-bottom;
+}
+
+@media(max-width: 962px) {
+    .search #catalog-search-info {
+        padding: 8px 15px;
+    }
+}
+
+/**
+ * 10. Catalog Sidebar Filters
+ *      Adjust styling for the sidebar filtering on All Courses catalog.
+ */
+
+/* remove border and background color of left nav */
+.catalog-filters #catalog-left-nav {
+    background-color: #FFFFFF;
+    border-right-color: var(--gray-300);
+}
+
+/* floating filter bar stylings */
+.catalog-filters #catalog-left-nav .catalog-left-nav-wrapper {
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: 100%;
+}
+
+#catalog-left-nav .filter-group-title {
+    border-bottom: 1px solid var(--gray-300);
+    font-weight: var(--font-weight-semibold);
+    padding-bottom: 0.75rem;
+}
+
+#catalog-left-nav .filter-group-title.filter-group-collapsed {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+#catalog-left-nav .tag-labels {
+    padding-bottom: 16px;
+}
+
+#catalog-left-nav .tag-labels .filter-option-tag {
+    font-size: var(--font-size-med);
+}
+
+.filter-option .filter-name {
+    color: var(--gray-700);
+    font-weight: var(--font-weight-normal);
+}
+
+/* add right margin to filter name */
+.filter-option .filter-counter {
+    color: var(--gray-300);
+    font-size: inherit;
+    margin-left: 5px;
+}
+
+/* hide expand/collapse all button - isn't useful */
+a#catalog-filter-expand-collapse {
+    display: none;
+}
+
+#catalog-left-nav .filter-group-title.filter-group-expanded > svg {
+    color: var(--gray-700);
+}
+
+#catalog-left-nav .filter-group-title.filter-group-collapsed > svg {
+    color: var(--gray-700);
+    transform: rotate(270deg);
+}
+
+/* lower margin below search box */
+.catalog-search-input-group {
+    margin-bottom: 10px;
+}
+
+/* ensure hero is hidden for global search results */
+.search .catalog-header {
+    display: none !IMPORTANT;
+}
+
+/* left align courses in search results */
+.search .catalog-center-width {
+    max-width: unset !IMPORTANT;
+}
+
+/**
+ * 11. Custom Footer
+ *      Custom fat footer at bottom of pages.
+ */
+.footer-background-wrapper {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--blue-900);
+    display: flex;
+    justify-content: center;
+    padding: 40px 40px;
+    width: 100%;
+}
+
+.footer-top-section {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+}
+
+.footer-company-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+img.footer-company-logo {
+    height: 30px;
+    margin-bottom: 16px;
+    width: auto;
+}
+
+.footer-company-text {
+    color: #FFFFFF;
+    font-size: var(--font-size-sm);
+    max-width: 340px;
+    /* text color of footer logo text */
+}
+
+.footer-social-list {
+    align-items: center;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-social-list-item {
+    display: inline-block;
+}
+
+.footer-social-link {
+    border-radius: 100%;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    overflow: hidden;
+    padding: 5px;
+    text-decoration: none;
+    width: 32px;
+}
+
+.footer-social-icon {
+    color: var(--footer-link-color);
+    height: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.footer-link-tree-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 75px;
+    justify-content: flex-start;
+    padding: 30px 40px;
+}
+
+.footer-link-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-header {
+    color: var(--footer-header-color) !IMPORTANT;
+    font-size: var(--font-size-sm-2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-list-item {
+    padding: 8px 0;
+}
+
+.footer-link-column-wrapper .footer-link {
+    color: var(--footer-link-color);
+}
+
+.footer-link-column-wrapper .footer-link:hover {
+    color: var(--footer-link-hover-color);
+    text-decoration: underline;
+}
+
+.footer-link-tree-wrapper a:focus,
+.footer-company-logo:focus {
+    border-radius: var(--border-radius);
+    box-shadow: var(--focus-boxshadow);
+}
+
+/* mobile view styling */
+@media only screen and (max-width: 880px) {
+    .footer-background-wrapper,
+    .footer-link-tree-wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .footer-link-column-wrapper .footer-header {
+        font-size: 15px;
+    }
+
+    .footer-link-column-wrapper .footer-link {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 875px) {
+    .catalog-filters .footer-background-wrapper {
+        padding-left: 350px
+    }
+}
+
+/**
+ * 12. EP Footer
+ *      Styles for the copyright and Skilljar mention at bottom of pages.
+ */
+#ep-footer {
+    background: var(--ep-footer-background-color);
+    border-top: 1px solid var(--ep-footer-border-color);
+    color: var(--ep-footer-text-color);
+    margin-top: 0;
+}
+
+/**
+ * 13. Learning Path Details
+ *      Styles for Learning Path detail landing pages.
+ */
+
+/* path details page - remove pointer events for course tiles */
+.sj-page-detail-path .coursebox-container {
+    pointer-events: none;
+}
+.tt1-image-section {
+    border-radius: var(--border-radius);
+    overflow: hidden; 
+}
+
+.sj-page-path .tt1-background {
+    background-color: var(--gray-50);
+}
+
+.sj-page-path .tt1-wrapper {
+    max-width: var(--max-width-xl);
+}
+
+.sj-page-path .no-catalog-filters .catalog-center-width {
+    max-width: var(--max-width-lg);
+}
+
+.sj-page-path .path-curriculum-resume-wrapper  {
+    margin-bottom: -40px; /* remove the padding created by the .course-listing */
+    margin: 11px;
+    width: unset;
+}
+
+#path-curriculum-progress-bar-annotation-text {
+    color: var(--lime-900);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+.path-curriculum-progress-bar-wrapper .button-border-color {
+    border-color: var(--gray-300);
+}
+.path-curriculum-progress-bar-wrapper .progress-bar.button-background {
+    background: var(--lime-500);
+}
+
+.sj-page-detail #skilljar-content .top-row-white-v2 {
+    background: var(--gray-50);
+    border-bottom: none;
+    max-width: unset;
+}
+
+.sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
+    border-bottom: 1px solid var(--gray-300);
+    color: var(--brand-black);
+    font-size: var(--font-size-large);
+    text-align: left;
+}
+
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 .sj-course-time {
+    color: var(--gray-500);
+    margin-left: 4px;
+}
+
+.sj-page-detail .dp-curriculum li.section {
+    color: var(--gray-700);
+    font-size: var(--font-size-med);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sj-page-detail .dp-curriculum li.section:not(:first-child) {
+    margin-top: 20px;
+}
+
+.sj-page-detail .dp-curriculum>li:not(.section) {
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-comfortable);
+    padding-left: 18px;
+}
+
+.sj-page-detail .dp-curriculum {
+    margin-top: 8px;
+    padding-left: 0!IMPORTANT;
+}
+
+.sj-page-detail ul.dp-curriculum .type-icon {
+    opacity: 0.75;
+}
+
+.sj-page-detail ul.dp-curriculum>li .lesson-wrapper {
+    padding-left: 8px;
+}
+
+.sj-page-detail-course #dp-details {
+    margin: 0 auto;
+    max-width: var(--max-width-lg);
+}
+
+#dp-details-bundle {
+    margin: 0 auto;
+    max-width: var(--max-width-lg);
+    padding-top: 40px;
+}
+
+#dp-details-bundle h2 {
+    font-size: var(--font-size-large);
+}
+
+.sj-page-detail #skilljar-content .dp-row-flex-v2 {
+    flex-direction: row-reverse;
+    max-width: var(--max-width-lg);
+}
+
+/**
+ * 14. Curriculum Landing Page
+ *      Styles for the curriculum landing page.
+ */
+.sj-page-curricum .dp-row-flex-v2 {
+    border: none;
+}
+
+.sj-page-curricum .dp-summary-wrapper,
+.sj-page-curricum .cp-summary-wrapper {
+    border: none;
+}
+
+/**
+ * 15. Catalog Call-to-action
+ *      Styles for CTA at bottom of catalog pages for help.
+ */
+.catalog-lower-wrapper {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(180deg, var(--purple-500) 0%, var(--blue-700) 59%, var(--blue-900) 100%);
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.catalog-lower-content-wrapper {
+    align-items: flex-start;
+    background-color: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: center;
+    max-width: 1000px;
+    padding: 36px 48px 48px;
+}
+
+.catalog-lower-image {
+    max-height: 350px;
+}
+
+a.catalog-lower-cta-button {
+    background-color: var(--input-btn-background-color);
+    border-radius: var(--border-radius-buttons);
+    color: var(--lower-button-text-color);
+    font-size: var(--font-size-med);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--input-btn-padding);
+}
+
+p.catalog-lower-text {
+    padding-bottom: 20px;
+}
+
+a.catalog-lower-cta-button:hover {
+    background-color: var(--lower-button-background-color-hover);
+}
+
+a.catalog-lower-cta-button:active {
+    background-color: var(--lower-button-background-color-active);
+}
+
+a.catalog-lower-cta-button:focus {
+    box-shadow: var(--focus-boxshadow);
+}
+
+h2.catalog-lower-title {
+    color: #FFFFFF !IMPORTANT;
+    font-weight: var(--font-weight-semibold);
+}
+
+p.catalog-lower-text {
+    color: #FFFFFF !IMPORTANT;
+}
+
+@media only screen and (max-width: 1033px) {
+    .catalog-lower-image {
+        max-height: 200px;
+    }
+
+    .catalog-lower-content-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+}
+
+/**
+ * 16. Lesson pages
+ *      Styles for Lesson landing pages.
+ */
+.lesson-page #lp-wrapper, 
+.lesson-page .lp-color-scheme-light #lp-wrapper {
+    background-color: var(--gray-50);
+}
+
+.lesson-page #lesson-main {
+    padding-bottom: 24px;
+    padding-top: 24px;
+}
+
+.lesson-page .course-text-content {
+    background-color: transparent; /* override white background color */
+}
+
+.lesson-page #lp-wrapper #lesson-body .lesson-top, 
+.lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top {
+    border-bottom: 1px solid var(--gray-300);
+    padding: 12px 0;
+}
+
+.lesson-page #lp-wrapper #lesson-body .lesson-top h2, 
+.lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top h2 {
+    font-size: var(--font-size-med-2);
+    padding: 0;
+}
+
+.lp-left-nav .course-title .sj-course-time {
+    color: var(--gray-500);
+    font-size: inherit;
+    font-weight: var(--font-weight-normal);
+    margin-left: 4px;
+    white-space: nowrap;
+}
+
+.lp-left-nav .lessons-wrapper {
+    padding-top: 16px;
+}
+
+#lp-left-nav .lesson {
+    color: #FFFFFF;
+}
+
+@media only screen and (min-width: 768px) {
+    #lp-left-nav.cbp-spmenu-vertical {
+        margin-bottom: 0;
+    }
+}
+
+.lp-left-nav .lesson-row {
+    display: flex;
+    padding: 12px 16px;
+}
+
+#lp-left-nav .lesson-active, 
+#lp-left-nav .current-item {
+    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    position: relative;
+}
+
+#lp-left-nav .lesson-active:before, 
+#lp-left-nav .current-item:before {
+    background: var(--purple);
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+}
+
+#lp-left-nav .type-icon, 
+#lp-left-nav .type-icon {
+    opacity: 0.5;
+}
+
+.lp-left-nav .lesson-row .title {
+    max-width: unset;
+    vertical-align: top;
+}
+
+.lp-left-nav .lesson-row .title .sj-lesson-time {
+    margin-left: 0;
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+.lp-color-scheme-light #lp-footer a.prev-lesson-button .button-content i, 
+.lp-color-scheme-light #lp-footer a.prev-lesson-button .button-content span,
+.lp-color-scheme-light #lp-footer .lesson-title-label {
+    color: var(--gray-600);
+}
+
+.prev-lesson-button .button-content svg {
+    color: var(--gray-300);
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@media(min-width: 962px) {
+    #lp-footer {
+        left: unset;
+        right: 0;
+        width: calc(100% - 320px);
+    }
+
+    .sj-page-lesson:not(.cbp-spmenu-open) #lp-footer {
+        left: 0;
+        width: 100%;
+    }
+}
+
+#lp-footer .toggle-fullscreen {
+    align-items: center;
+    background: var(--btn-secondary-background-color);
+    border-radius: var(--border-radius-buttons);
+    color: var(--btn-secondary-text-color);
+    display: inline-flex;
+    justify-content: center;
+    opacity: 1;
+}
+
+#lp-footer .toggle-fullscreen:hover {
+    background: var(--btn-secondary-background-color);
+    opacity: 1;
+}
+
+#lp-footer .toggle-fullscreen:active {
+    background: var(--btn-secondary-background-color-active);
+    opacity: 1;
+}
+
+#lp-left-nav {
+    background: var(--blue-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lp-color-scheme-light .lp-left-nav .section-title {
+    background: transparent;
+    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--gray-400);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 1px;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 16px 0 8px 0;
+    text-transform: uppercase;
+}
+
+.lp-left-nav .course-title,
+.lp-color-scheme-light .lp-left-nav .course-title {
+    color: #FFFFFF;
+    font-weight: var(--font-weight-semibold);
+}
+
+#lp-left-nav .left-nav-return,
+.lp-left-nav .course-title,
+.lp-color-scheme-light .lp-left-nav .course-title {
+    background: linear-gradient(0deg, var(--blue-900), var(--blue-800));
+    font-size: var(--font-size-med);
+    line-height: var(--line-height-comfortable);
+    margin: 0;
+    padding: 16px;
+}
+
+#lp-left-nav .left-nav-return  {
+    background: var(--blue-800);
+    color: var(--blue-100);
+    font-size: var(--font-size-sm);
+    padding-bottom: 0;
+    padding-top: 24px;
+}
+
+#lp-left-nav .left-nav-return .left-nav-return-text {
+    margin-left: 4px;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom #details-pane {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    z-index: 1;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom #details-pane-inner {
+    border-top: 1px solid var(--gray-300);
 }

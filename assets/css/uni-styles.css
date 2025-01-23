@@ -1,0 +1,81 @@
+/**
+ * CONTENTS
+ *
+ * 01. Login Page...............................Login and Signup page styles.
+ * 02. Lesson Page: "More" Component..........."More" Component at the bottom of lesson pages.
+ *  
+ */
+
+:root {
+    /**
+     * 01. Login
+     *      Login and Signup page styles.
+     */
+    --login-page-background: url("https://6245015.fs1.hubspotusercontent-na1.net/hubfs/6245015/Administrate%20University%20and%20Learning%20Campus%20-%20Skilljar/administrate-sign-in-bkg_university.png");
+}
+
+/**
+ * 02. Lesson Page: "More" Component
+ *      "More" Component at the bottom of lesson pages.
+ */
+.sj-more-container {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    border-radius: var(--border-radius);
+    color: #FFFFFF !IMPORTANT;
+    margin-top: 32px;
+    overflow: hidden;
+    padding-top: 32px;
+    position: relative;
+    text-align: center;
+}
+
+#lp-wrapper #lesson-body.details-pane-bottom .sj-more-container:after {
+    background: linear-gradient(180deg, var(--purple-500) 0%, var(--blue-700) 59%, var(--blue-900) 100%);
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.sj-more-intro {
+    margin-bottom: 24px;
+}
+
+.sj-more-heading {
+    color: #FFFFFF;
+    font-size: var(--font-size-large);
+}
+
+.sj-more-buttons {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button {
+    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: var(--btn-secondary-border);
+    color: var(--btn-secondary-text-color);
+    margin-left: 16px;
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button:hover {
+    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: var(--btn-secondary-border);
+    color: var(--btn-secondary-text-color);
+}
+
+.sj-more-button-container:not(:first-child) .sj-more-button:active {
+    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: var(--btn-secondary-border);
+    color: var(--btn-secondary-text-color);
+}
