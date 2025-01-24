@@ -10,7 +10,7 @@ var welcomeMessage = ", ",
     sjCurriculumPage =  document.querySelector('.sj-page-curriculum'),
     sjContent = document.getElementById('skilljar-content'),
     epFooter = document.getElementById('ep-footer'),
-    resumeButton = $('.path-curriculum-button-wrapper')
+    resumeButton = $('.path-curriculum-button-wrapper'),
     currentTime = new Date(),
     epFooterYear = currentTime.getFullYear(),
     epFooterCopyright = document.querySelectorAll('#ep-footer #footer-left ul li'),
@@ -56,7 +56,7 @@ const HEADER_LINKS = {
           "href": "https://support.getadministrate.com/hc/en-us/categories/115001277127-Release-Notes",
           "target": "_self",
         },
-        "Support Portal": {
+        "Support portal": {
           "href": "https://support.getadministrate.com/hc/en-us",
           "target": "_self",
         }
@@ -461,6 +461,30 @@ $(document).ready(function() {
         $(this).append('<i class="header-link-parent-icon fa-regular fa-chevron-down"></i>');
     });
 
+    /* start Back to catalog */
+    if (sjPageLesson && $(".next-lesson-button").length == 0) {
+        var backButton = '<div id="back-to-catalog"><a href="/" class="small button next-lesson-link"><span>Back to catalog</span></a></div>';
+        $(".full-footer-height-wrapper.align-vertical").prepend(backButton);
+    }
+
+    /* adjust dynamic date and ep footer text to include Administrate */
+    if (epFooterCopyright) {
+        var currentTime = new Date();
+        var epFooterYear = currentTime.getFullYear();
+
+        $(epFooterCopyright).text('©' + epFooterYear + ' Administrate Limited. All rights reserved.');
+    }
+    
+    /* remove header link for my courses when user is not logged in */
+    if (sjPageLogin || sjPageSignup) {
+        $('.header-link:contains(My courses)').remove();
+    }
+
+    /* add lower banner element, global custom footer and epFooter on certain pages */
+    if (sjPageCatalog || sjPageProfile ) {
+        sjContent.appendChild(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
+    }
+
     /* replace ilt tiles with links*/
     $('[data-catalog-page="ilt-webinars"]').attr("href", "/calendar");
 
@@ -472,24 +496,6 @@ $(document).ready(function() {
 
     /* switch order of Lesson Title and Back button */
      $("#returnToOverview").detach().insertBefore(".course-title");
-
-    /* start Back to catalog */
-    if (sjPageLesson && $(".next-lesson-button").length == 0) {
-        var backButton = '<div id="back-to-catalog"><a href="/" class="small button next-lesson-link"><span>Back to catalog</span></a></div>';
-        $(".full-footer-height-wrapper.align-vertical").prepend(backButton);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    /* adjust dynamic date and ep footer text to include Administrate */
-    if (epFooterCopyright) {
-        $(epFooterCopyright).text('©' + epFooterYear + ' Administrate Limited. All rights reserved.');
-    }
-
-    /* add custom footer elements on certain pages */
-    if (sjPageCatalog || sjPageLogin || sjPageSignup || sjPageProfile ) {
-        sjContent.append(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
-    }
 
     /* this code converts the curriculum list into clickable lesson deep links */
     var curriculumItems = document.querySelectorAll('.dp-curriculum > li:not(.section)');
@@ -508,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var loginNote = document.querySelector('.sj-text-login-note');
         var signUpText = document.createElement('p');
         signUpText.classList.add('lp-sign-up-text');
-        signUpText.innerHTML = 'Need an account? <a href="' + document.querySelector('.sj-text-sign-up').getAttribute('href') + '">Sign up</a>';
+        signUpText.innerHTML = 'Need an account? <a href="' + document.querySelector('.sj-text-sign-up').getAttribute('href') + '">Sign up.</a>';
         loginNote.parentNode.insertBefore(signUpText, loginNote.nextSibling);
         /* remove social media providers and adjust CSS if they exist */
         document.querySelector('.sj-text-login-note').parentElement.style.width = '100%';

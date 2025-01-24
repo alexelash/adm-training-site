@@ -46,10 +46,6 @@
  */
 
 :root {
-    /*------------------------------------*\
-        #BRAND COLORS VARIABLES
-    \*------------------------------------*/
-    /* 01. Grayscale */
     --gray-50: #F8F9FA;
     --gray-100: #ECEFF1;
     --gray-200: #DBE1E5;
@@ -281,7 +277,7 @@
     \*------------------------------------*/
 
     /**
-     * 01. Header
+     * 01. Header variables
      */
     --header-link-color: var(--gray-800);
     --header-link-hover-color: var(--purple-500);
@@ -293,41 +289,40 @@
     --header-login-background-hover-color: var(--purple-700);
 
     /**
-     * 02. Login
+     * 02. Login variables
      */
-    --login-form-background-color: #FFFFFF; 
-    --login-form-title-color: var(--brand-black);
-    --login-form-title-font-size: var(--font-size-xl);
-    --login-form-text-color: var(--gray-800);
-    --login-form-link-color: var(--blue-600);
-    --login-form-link-hover-color: var(--blue-600);
-    --login-form-link-active: var(--blue-600); 
-    --login-button-text-color: #FFFFFF;
-    --login-button-bg-color: var(--purple-500);
-    --login-button-hover-bg-color: var(--purple-600);
-    --login-button-active-bg-color: var(--purple-700);
-    --login-button-text-color: #FFFFFF;
+    --login-form-background-color: var(--purple-500); 
+    --login-form-title-color: #FFFFFF;
+    --login-form-title-font-size: var(--font-size-large-2);
+    --login-form-text-color: #FFFFFF;
+    --login-form-link-color: var(--purple-200);
+    --login-form-link-hover-color: var(--purple-300);
+    --login-form-link-active: var(--purple-600); 
+    --login-button-text-color: var(--purple-600);
+    --login-button-bg-color: rgba(255,255,255, 0.9);
+    --login-button-hover-bg-color: rgba(255,255,255, 0.7);
+    --login-button-active-bg-color: rgba(255,255,255, 0.4);
     
     /**
-     * 03. Lower Banner / CTA
+     * 03. Lower Banner / CTA variables
      */
     --lower-background-color: #E1E9ED;
     --lower-banner-background-color: #FFFFFF;
     --lower-banner-text-color: #FFFFFF;
-    --lower-button-background-color:  var(--purple-500);
-    --lower-button-background-color-hover:  var(--purple-600);
-    --lower-button-background-color-active:  var(--purple-700);
+    --lower-button-background-color: var(--purple-500);
+    --lower-button-background-color-hover: var(--purple-600);
+    --lower-button-background-color-active: var(--purple-700);
     --lower-button-text-color: #FFFFFF;
 
     /**
-     * 04. Copyright & Skilljar Footer
+     * 04. Copyright & Skilljar Footer variables
      */
     --ep-footer-background-color: var(--brand-black);
     --ep-footer-text-color: var(--gray-300);
     --ep-footer-border-color: var(--brand-black);
     
     /**
-     * 05. Big Footer
+     * 05. Big Footer variables
      */
     --footer-link-color: #FFFFFF;
     --footer-link-hover-color: rgba(256, 256, 256, 0.8);
@@ -336,7 +331,7 @@
     --footer-boxshadow: 3px 0 10px rgb(0 0 0 / 20%);
 
     /**
-     * 06. Home Hero
+     * 06. Home Hero variables
      */
     --hero-background-image: linear-gradient(180deg, var(--blue-100) 0%, #FFFFFF 100%) !important;
     --hero-background-color: #FFFFFF;
@@ -351,7 +346,7 @@
     --sb-link-active: var(--blue-600);
 
     /**
-     *  07. Coursebox padding
+     *  07. Coursebox padding variables
      */
     --coursebox-text-padding: 0 16px;
 }
@@ -389,7 +384,7 @@ img[data-was-processed="true"] {
 
 input {
     border: 1px solid var(--gray-300);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius) !IMPORTANT;
 }
 
 input[type=checkbox] {
@@ -421,7 +416,7 @@ input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
 input[type="month"]:focus,
 input[type="week"]:focus,
-input[type="email"]:focus
+input[type="email"]:focus,
 input[type="number"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
@@ -441,7 +436,7 @@ select:focus,
 .alert-box a:focus::before,
 #change-avatar-button #upload-new-avatar-button:focus::before,
 .linear-scale-question__choice__label:focus-within {
-    box-shadow: var(--input-btn-focus-box-shadow)!important;
+    box-shadow: var(--input-btn-focus-box-shadow) !IMPORTANT;
     border: 1px solid rgb(var(--focus-outline-color));
 }
 
@@ -520,7 +515,7 @@ h6,
  * 00. Layout
  *      Primary general layout styles.
  */
-#main-container:not(.lesson-page) {
+#main-container:not(.lesson-page)  {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -822,31 +817,66 @@ body.cbp-spmenu-open #header .burger .burger-text {
 /* background image or color */
 .sj-page-login #skilljar-content,
 .sj-page-signup #skilljar-content {
-    background: var(--login-page-background) !IMPORTANT; /* background color or image behind form */
-    background: transparent !IMPORTANT;
-    background-size: cover;
+    background-size: cover !IMPORTANT;
+    display: flex;
+    background-position: center !IMPORTANT;
+}
+
+@media(max-width: 962px) {
+    .sj-page-login #skilljar-content,
+    .sj-page-signup #skilljar-content {
+        padding-top: 45px;
+    }
+}
+
+
+.sj-page-login #skilljar-content:after,
+.sj-page-signup #skilljar-content:after {
+    height: 0;
 }
 
 /* login form stylings */
 .sj-page-login #login-content,
 .sj-page-signup #login-content {
-    background-color: var(--login-form-background-color);
-    border-radius: 4px;
-    box-shadow: 0 2px 12px 4px rgba(0, 0, 0, .15);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background: var(--login-form-background-color);
+    border-radius: 0;
+    border-top: 0;
+    box-shadow: 0 2px 12px 4px rgba(0, 0, 0, .25);
+    display: flex;
     float: unset;
-    left: unset;
-    margin: 50px auto;
-    margin-top: 50px;
-    max-width: 680px;
-    padding: 35px 50px;
-    right: unset;
-    width: unset;
+    left: 0;
+    margin: 0;
+    max-width: 450px;
+    padding: 40px 32px;
+    top: 0;
+    bottom: 50px;
+    text-align: left;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+@media(max-width: 962px) {
+    .sj-page-login #login-content,
+    .sj-page-signup #login-content {
+        position: block;
+        max-width: unset;
+    }
+}
+
+/* Sign in / forgot password wrapper stylings */
+.sj-page-login #login_form .large-12.columns,
+.sj-page-signup #login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
 /* set width of login box to 100% */
-.sj-page-login #login-content .large-6.columns.push-3,
-.sj-page-signup #login-content .large-6.columns.push-3 {
-    left: 0;
+.sj-page-login #login-content .large-6.columns,
+.sj-page-signup #login-content .large-6.columns {
     width: 100%;
 }
 
@@ -862,14 +892,40 @@ body.cbp-spmenu-open #header .burger .burger-text {
     font-size: var(--login-form-title-font-size);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-medium);
-    margin-bottom: 10px;
-    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* login page link stylings */
+.sj-page-login #skilljar-content a,
+.sj-page-signup #skilljar-content a {
+    color: var(--login-form-link-color);
+    text-decoration: underline;
+}
+
+.sj-page-login #skilljar-content a:hover,
+.sj-page-signup #skilljar-content a:hover {
+    color: var(--login-form-link-hover-color);
+    text-decoration: underline;
+}
+
+.sj-page-login #skilljar-content a:active,
+.sj-page-signup #skilljar-content a:active {
+    color: var(--login-form-link-active-color);
+    text-decoration: underline;
+}
+
+.sj-page-login a:focus,
+.sj-page-signup a:focus {
+    border-radius: var(--border-radius);
+    box-shadow: var(--focus-boxshadow);
 }
 
 /* login page custom signup text stylings */
-p.lp-sign-up-text {
-    font-size: var(--font-size-med);
-    text-align: center;
+p.lp-sign-up-text,
+p.signup-custom-link {
+    font-size: var(--font-size-med-2);
+    font-weight: var(--font-weight-300);
+    color: #FFFFFF;
 }
 
 /* email / password field stylings */
@@ -887,22 +943,17 @@ p.lp-sign-up-text {
     color: var(--login-form-text-color);
 }
 
-/* Sign in / forgot password wrapper stylings */
-.sj-page-login #login_form .large-12.columns,
-.sj-page-signup #login_form .large-12.columns {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* sign in button stylings */
 .sj-page-login button#button-sign-in,
 .sj-page-signup button#button-sign-up {
-    font-size: 17px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    margin-top: 16px;
     margin-right: 0 !IMPORTANT;
     background-color: var(--login-button-bg-color);
     color: var(--login-button-text-color);
     border-radius: var(--border-radius-buttons);
+    width: 100%;
 }
 
 /* sign in button hover color */
@@ -928,35 +979,7 @@ p.lp-sign-up-text {
     font-size: var(--login-form-title-font-size);
     line-height: var(--line-height-medium);
     margin-bottom: 15px;
-    text-align: center;
     color: var(--login-form-title-color);
-}
-
-/* Sign Up Custom Paragraph stylings */
-.sj-page-signup p.signup-custom-link {
-    font-size: 17px;
-    margin-bottom: 25px;
-    text-align: center;
-    color: var(--login-form-text-color);
-}
-
-.sj-page-signup p.signup-custom-link a {
-    color: var(--login-form-link-color);
-}
-
-.sj-page-signup p.signup-custom-link a:hover {
-    color: var(--login-form-link-hover-color);
-    text-decoration: underline;
-}
-
-.sj-page-signup p.signup-custom-link a:active {
-    color: var(--login-form-link-active-color);
-    text-decoration: underline;
-}
-
-.sj-page-signup p.signup-custom-link a:focus {
-    border-radius: var(--border-radius);
-    box-shadow: var(--focus-boxshadow);
 }
 
 /* Hide social media logins */
@@ -968,10 +991,9 @@ p.lp-sign-up-text {
  * 03. Separator Containers
  *      Separators in Skilljar CMS styled to create sections.
  */
-
 /* Set font size for separator titles */
 a.coursebox-container[data-tags*="separator"] .coursebox-text {
-    font-size: var(--font-size-large-2) !IMPORTANT;
+    font-size: var(--font-size-large-2)!IMPORTANT;
     padding: 0; 
 }
 

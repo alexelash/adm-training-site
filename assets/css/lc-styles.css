@@ -5,10 +5,12 @@
  *  
  */
 
-:root {
-    /**
-     * 01. Login
-     *      Login and Signup page styles.
-     */
-    --login-page-background: url("https://6245015.fs1.hubspotusercontent-na1.net/hubfs/6245015/Administrate%20University%20and%20Learning%20Campus%20-%20Skilljar/administrate-sign-in-bkg_learning-ca.png");
+/**
+ * 01. Login
+ *      Login and Signup page styles.
+ */
+
+.sj-page-login #skilljar-content.grey-bg.white-bg-v2, 
+.sj-page-signup #skilljar-content.grey-bg.white-bg-v2 {
+    background-image: url("/images/administrate-sign-in-bkg_learning-ca.png") !IMPORTANT;
 }
