@@ -154,6 +154,15 @@
     --red-800: #750C2E;
     --red-900: #45071B;
 
+    /* 06. Gradients   */
+    --gradient-uv: linear-gradient(90deg, #6A3CE3 0%, #6A3CE3 32%, rgb(82, 93, 231) 55%, rgb(70, 106, 233) 71%, rgb(70, 106, 233) 100%);
+    
+    --gradient-purple: linear-gradient(to bottom, rgb(70, 106, 233) 0%, rgb(70, 106, 233) 25%, rgb(82, 93, 231) 50%, #6A3CE3 75%, #6A3CE3 100%);
+    --gradient-dark-uv: linear-gradient(186deg, rgb(13, 18, 21) 39.38%, rgb(39, 20, 108) 57.57%, rgb(70, 96, 232) 78.22%, rgb(33, 133, 236) 100%),radial-gradient(55.38% 59% at 100% 41%, #C5CDD4 0%, #0D1215 100%);
+    --gradient-orange: linear-gradient(to bottom, #FC703A 0%, #B83284 50%, #6A3CE3 100%);
+    --gradient-cyan: linear-gradient(to bottom, #03CEA4 0%, #1269A8 50%, #4E1DCD 100%);
+    --gradient-lime: linear-gradient(to bottom, #B5E33C 0%, #95C32B 25%, #088855 50%, #047246 75%, #6A3CE3 100%);
+
     /*------------------------------------*\
         #TYPOGRAPHY VARIABLES
     \*------------------------------------*/
@@ -662,7 +671,7 @@ body.cbp-spmenu-open #header .burger .burger-text {
 }
 
 #header #header-right .login-link {
-    background: linear-gradient(90deg, rgba(105, 60, 226, 1) 0%, rgba(98, 73, 228, 1) 32%, rgba(82, 93, 231, 1) 55%, rgba(70, 106, 233, 1) 71%, rgba(70, 106, 233, 1) 100%);
+    background: var(--gradient-uv);
     border-radius: 0;
     color: var(--header-login-text-color);
     margin-right: 0;
@@ -900,6 +909,8 @@ body.cbp-spmenu-open #header .burger .burger-text {
 .sj-page-signup #skilljar-content a {
     color: var(--login-form-link-color);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 .sj-page-login #skilljar-content a:hover,
@@ -912,6 +923,8 @@ body.cbp-spmenu-open #header .burger .burger-text {
 .sj-page-signup #skilljar-content a:active {
     color: var(--login-form-link-active-color);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 .sj-page-login a:focus,
@@ -1100,14 +1113,6 @@ section.course-listing-section:nth-child(odd):before {
     /* do not modify - for hover effect */
 }
 
-#skilljar-content .coursebox-container.sj-catalog-page {
-    border-top: 4px solid var(--purple) !IMPORTANT;
-}
-
-#skilljar-content .coursebox-container.sj-catalog-page .coursebox-image {
-    display: none;
-}
-
 /* Hover effects for Tiles */
 #skilljar-content .coursebox-container:hover {
     /* color of bottom border - appears on hover */
@@ -1132,6 +1137,8 @@ section.course-listing-section:nth-child(odd):before {
 #skilljar-content .coursebox-container:not([data-tags*="separator"]):hover .coursebox-text {
     color: var(--blue-700);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 
 /* Tile short description stylings */
@@ -1150,13 +1157,39 @@ section.course-listing-section:nth-child(odd):before {
  *      than Learning Paths or Certifications.
  */
 #skilljar-content .coursebox-container.sj-catalog-page {
-    border-top: 4px solid var(--purple) !IMPORTANT;
     padding: 0 0 32px;
+    background: var(--gradient-purple);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+/* changing color based on what number catalog this tile is */
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(2n+1) {
+    background: var(--gradient-cyan);
+}
+
+/* changing color based on what number catalog this tile is */
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(3n+1) {
+    background: var(--gradient-lime);
+}
+
+/* changing color based on what number catalog this tile is */
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(4n+1) {
+    background: var(--gradient-orange);
+}
+
+/* changing color based on what number catalog this tile is */
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(5n+1) {
+    background: var(--gradient-dark-uv);
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page .coursebox-image {
+    display: none;
 }
 
 .coursebox-container.course.sj-catalog-page .coursebox-text:before {
-    background-color: var(--purple-100);
-    color: var(--purple-700);
+    background-color: rgba(255,255,255,0.3);
     content: "Collection";
     display: inline-block;
     font-size: var(--font-size-tiny);
@@ -1168,6 +1201,34 @@ section.course-listing-section:nth-child(odd):before {
     text-decoration: none !IMPORTANT;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]) .coursebox-text,
+#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]) .coursebox-text-description {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: #FFFFFF;
+}
+
+.coursebox-container.course.sj-catalog-page .visible-link {
+    color: rgba(255,255,255,0.8);
+    padding: var(--coursebox-text-padding);
+    margin-top: 16px;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(255,255,255,0.5);
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+.coursebox-container.course.sj-catalog-page .visible-link-icon {
+    display: inline;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(255,255,255,0.5);
+    padding-left: 4px;
 }
 
 /* Line break above Catalog Tile Callout */
@@ -1574,6 +1635,9 @@ img.footer-company-logo {
 .footer-link-column-wrapper .footer-link:hover {
     color: var(--footer-link-hover-color);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(255,255,255,0.5);
 }
 
 .footer-link-tree-wrapper a:focus,

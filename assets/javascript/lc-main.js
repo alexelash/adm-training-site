@@ -553,6 +553,15 @@ $(document).ready(function() {
         }
     });
 
+    /* add a visible link to each collection container */
+    var catalogCourseboxContainers = document.querySelectorAll('.coursebox-container.sj-catalog-page');
+    catalogCourseboxContainers.forEach(function(container) {
+        var courseboxText = container.querySelector('.coursebox-text');
+        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses<i class="visible-link-icon fa-regular fa-long-arrow-right"></i></div>';
+        
+        $(container).append($(visibleLink));
+    });
+
     /* catalog home/root page only */
     if (sjCatalogRoot) {
         /* create sections */
