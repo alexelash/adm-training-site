@@ -1148,7 +1148,17 @@ section.course-listing-section:nth-child(odd):before {
     transform: translateY(-5px);
 }
 
-/* Tile Title stylings */
+a.coursebox-container .storefront-price, a.coursebox-container .course-series-count, a.coursebox-container .path-item-count, a.coursebox-container .course-time, a.coursebox-container .coursebox-callout, a.coursebox-container .catalog-page-callout {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--gray-500);
+}
+
+a.coursebox-container .storefront-price {
+    margin-left: unset;
+}
+
+/* Tile section title stylings */
 #skilljar-content .coursebox-container:not([data-tags*="separator"]) .coursebox-text {
     color: var(--brand-black);
     padding: var(--coursebox-text-padding);
