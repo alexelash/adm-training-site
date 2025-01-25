@@ -25,7 +25,7 @@ gulp.task('js-min', () => {
             },
             noSource: true
         }))
-        .pipe(gulp.dest('public'))
+        .pipe(gulp.dest('public'));
 });
 
 gulp.task('js:watch', () => {

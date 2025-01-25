@@ -5,15 +5,14 @@ var welcomeMessage = ", ",
     sjPageCatalog = document.querySelector('.sj-page-catalog'),
     sjPageProfile = document.querySelector('.sj-page-profile'),
     sjPageLesson = document.querySelectorAll('.sj-page-lesson'),
+    sjPageDetail = document.querySelector('.sj-page-detail'),
     sjPageDetailPath = document.querySelector('.sj-page-detail-path'),
-    sjPathPage = document.querySelector('.sj-page-path'),
+    sjPagePath = document.querySelector('.sj-page-path'),
     sjCurriculumPage =  document.querySelector('.sj-page-curriculum'),
     sjContent = document.getElementById('skilljar-content'),
     epFooter = document.getElementById('ep-footer'),
-    resumeButton = $('.path-curriculum-button-wrapper'),
-    currentTime = new Date(),
-    epFooterYear = currentTime.getFullYear(),
     epFooterCopyright = document.querySelectorAll('#ep-footer #footer-left ul li'),
+    resumeButton = document.querySelector('.path-curriculum-button-wrapper'),
     siteName = "Administrate Learning Campus",
     textAlignment = 'left'; /* change value to 'left' for left aligned sections */
 
@@ -481,8 +480,8 @@ $(document).ready(function() {
     }
 
     /* add lower banner element, global custom footer and epFooter on certain pages */
-    if (sjPageCatalog || sjPageProfile ) {
-        sjContent.appendChild(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
+    if (sjPageCatalog || sjPageProfile || sjPageDetail ) {
+        sjContent.append(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
     }
 
     /* replace ilt tiles with links*/
@@ -578,7 +577,7 @@ $(document).ready(function() {
     }
 
     /* move resume button and progress bar on page paths */
-    if (sjPathPage && resumeButton) {
+    if (sjPagePath && resumeButton) {
         $('.tt1-text-section').append( resumeButton.detach() );
     }
 

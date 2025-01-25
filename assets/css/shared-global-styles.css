@@ -163,6 +163,8 @@
     --gradient-cyan: linear-gradient(to bottom, #03CEA4 0%, #1269A8 50%, #4E1DCD 100%);
     --gradient-lime: linear-gradient(to bottom, #B5E33C 0%, #95C32B 25%, #088855 50%, #047246 75%, #6A3CE3 100%);
 
+    --fade-blue: linear-gradient(180deg, var(--blue-100) 0%, #FFFFFF 100%);
+
     /*------------------------------------*\
         #TYPOGRAPHY VARIABLES
     \*------------------------------------*/
@@ -342,7 +344,7 @@
     /**
      * 06. Home Hero variables
      */
-    --hero-background-image: linear-gradient(180deg, var(--blue-100) 0%, #FFFFFF 100%) !important;
+    --hero-background-image: var(--fade-blue) !important;
     --hero-background-color: #FFFFFF;
     --hero-title-font: var(--font-weight-semibold) var(--font-size-xl)/var(--line-height-compact) var(--font-family) !important;
     --hero-title-font-mobile: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-compact) var(--font-family) !important;
@@ -496,6 +498,19 @@ h6,
     color: var(--brand-black);
 }
 
+p {
+    line-height: var(--line-height-comfortable);
+}
+
+ul li {    
+    text-indent: -1.3rem;
+    padding-left: 1.3rem;
+}
+
+ul li::marker {
+    color: var(--purple-300);
+}
+
 /**------------------------------------*\
  * COMPONENT STYLES CONTENTS
  *
@@ -537,6 +552,13 @@ h6,
     margin-bottom: 0;
     max-width: 100%;
     overflow-x: none;
+}
+
+@media(max-width: 962px) {
+    .sj-page-detail #skilljar-content,
+    .sj-page-curriculum #skilljar-content  {
+        padding-top: 0;
+    }
 }
 
 .no-catalog-filters .catalog-center-width {
@@ -838,7 +860,6 @@ body.cbp-spmenu-open #header .burger .burger-text {
     }
 }
 
-
 .sj-page-login #skilljar-content:after,
 .sj-page-signup #skilljar-content:after {
     height: 0;
@@ -916,7 +937,6 @@ body.cbp-spmenu-open #header .burger .burger-text {
 .sj-page-login #skilljar-content a:hover,
 .sj-page-signup #skilljar-content a:hover {
     color: var(--login-form-link-hover-color);
-    text-decoration: underline;
 }
 
 .sj-page-login #skilljar-content a:active,
@@ -1258,7 +1278,10 @@ a.coursebox-container[data-course] .coursebox-callout {
 
 /* Add padding to the top of the details page */
 .sj-page-detail #skilljar-content .top-row-white-v2 {
-    padding: 40px 3%;
+    padding: 40px 0;
+    background: var(--gray-50);
+    border-bottom: none;
+    max-width: unset;
 }
 
 /* Course Registration area stylings */
@@ -1269,8 +1292,21 @@ a.coursebox-container[data-course] .coursebox-callout {
 
 /* course title stylings */
 .sj-page-detail .dp-summary-wrapper>h1 {
-    font-size: 36px !IMPORTANT;
-    font-weight: 600 !IMPORTANT;
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-medium);
+}
+
+/* course title stylings */
+.sj-page-detail .sj-course-info-wrapper>h2 {
+    font-size: var(--font-size-med-2);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-comfortable);
+}
+
+/* course title stylings */
+.sj-page-detail .dp-promo-image img {
+    border-radius: var(--border-radius-buttons);
 }
 
 /* hide social media links */
@@ -1285,42 +1321,97 @@ a.coursebox-container[data-course] .coursebox-callout {
 
 /* style the "about this course" section */
 .sj-page-detail #dp-details .large-7.columns>h3 {
-    font-size: 32px !IMPORTANT;
-    font-weight: 600 !IMPORTANT;
-    margin-bottom: 20px !IMPORTANT;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-medium);
+    margin-bottom: 20px;
 }
 
 /* style curriculum box */
 .sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
-    border-radius: 4px;
-    box-shadow: 0 0 12px 2px rgba(0, 0, 0, .15);
-    padding: 24px;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
 }
 
 /* style curriculum title */
 .sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
-    border-bottom: 1px solid #bbb;
-    font-size: 32px;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-medium);
     margin-bottom: 0;
     padding-bottom: 16px;
-    text-align: center;
 }
 
 /* add margin to top of curriculum links */
 .sj-page-detail .dp-curriculum {
-    margin-top: 20px;
+/*    margin-top: 20px;*/
 }
 
 /* style curriculum link headers */
 .sj-page-detail .dp-curriculum li.section {
-    font-size: 18px !IMPORTANT;
-    font-weight: bold;
+    font-weight: var(--font-weight-normal);
 }
 
 /* style curriculum links */
 .sj-page-detail .dp-curriculum>li {
     font-size: 16px;
+    text-indent: 0;
+}
+
+.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 .sj-course-time {
+    color: var(--gray-500);
+    font-weight: var(--font-weight-normal);
+    margin-left: 4px;
+}
+
+.sj-page-detail .dp-curriculum li.section {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semibold);
+    padding-left: 0;
+}
+
+.sj-page-detail .dp-curriculum li.section:not(:first-child) {
+    margin-top: 20px;
+}
+
+.sj-page-detail .dp-curriculum>li:not(.section) {
+    font-size: var(--font-size-med);
+    line-height: var(--line-height-comfortable);
+    padding-left: 24px;
+}
+
+.sj-page-detail ul.dp-curriculum .type-icon {
+    opacity: 0.75;
+}
+
+.sj-page-detail ul.dp-curriculum>li .lesson-wrapper {
+    padding-left: 8px;
+}
+
+.sj-page-detail-course #dp-details {
+    margin: 0 auto;
+    max-width: var(--max-width-xxl);
+}
+
+#dp-details-bundle {
+    margin: 0 auto;
+    max-width: var(--max-width-lg);
+    padding-top: 40px;
+}
+
+#dp-details-bundle h2 {
+    font-size: var(--font-size-large);
+}
+
+.sj-page-detail #skilljar-content .dp-row-flex-v2 {
+    flex-direction: row-reverse;
+    max-width: var(--max-width-xxl);
+}
+
+.sj-page-detail .dp-long-description {
+    color: var(--gray-700);
+    font-size: var(--font-size-med);
 }
 
 /**
@@ -1577,6 +1668,8 @@ img.footer-company-logo {
 
 .footer-social-list-item {
     display: inline-block;
+    text-indent: unset;
+    padding-left: unset;
 }
 
 .footer-social-link {
@@ -1689,6 +1782,7 @@ img.footer-company-logo {
 .sj-page-detail-path .coursebox-container {
     pointer-events: none;
 }
+
 .tt1-image-section {
     border-radius: var(--border-radius);
     overflow: hidden; 
@@ -1724,92 +1818,83 @@ img.footer-company-logo {
     background: var(--lime-500);
 }
 
-.sj-page-detail #skilljar-content .top-row-white-v2 {
+/**
+ * 14. Curriculum Landing Page
+ *      Styles for the curriculum landing page.
+ */
+.sj-page-curriculum .dp-row-flex-v2 {
+    border: none;    
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+
+@media only screen and (min-width: 768px) {
+    .sj-page-curriculum .dp-row-flex-v2 {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+}
+
+.sj-page-curriculum .cp-summary-row-v2 {
+    text-align: left !IMPORTANT;
+}
+
+@media only screen and (min-width: 768px) {
+    .sj-page-curriculum .cp-summary-wrapper,
+    .sj-page-curriculum .cp-promo-image-wrapper {
+        left: 0;
+        right: 0;
+        float: unset;
+        width: unset;
+    }
+}
+
+.sj-page-curriculum #skilljar-content .top-row-white-v2 {
+    padding: 40px 0;
     background: var(--gray-50);
     border-bottom: none;
     max-width: unset;
 }
 
-.sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
+.sj-page-curriculum #resume-button.row  {
+    margin-left: 0;
 }
 
-.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
-    border-bottom: 1px solid var(--gray-300);
-    color: var(--brand-black);
-    font-size: var(--font-size-large);
+/* Course Registration area stylings */
+.sj-page-curriculum .dp-summary-wrapper,
+.sj-page-curriculum .cp-summary-wrapper {
+    border: none;
+    padding: 0 24px;
+}
+
+/* course title stylings */
+.sj-page-curriculum .dp-summary-wrapper>h1,
+.sj-page-curriculum .cp-summary-wrapper>h1 {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-medium);
     text-align: left;
 }
 
-.sj-page-detail #dp-details .sj-curriculum-wrapper>h3 .sj-course-time {
-    color: var(--gray-500);
-    margin-left: 4px;
-}
-
-.sj-page-detail .dp-curriculum li.section {
-    color: var(--gray-700);
-    font-size: var(--font-size-med);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.sj-page-detail .dp-curriculum li.section:not(:first-child) {
-    margin-top: 20px;
-}
-
-.sj-page-detail .dp-curriculum>li:not(.section) {
+.sj-page-curriculum .cp-lessons {
+    color: var(--lime-900);
     font-size: var(--font-size-sm);
-    line-height: var(--line-height-comfortable);
-    padding-left: 18px;
+    font-weight: var(--font-weight-semibold);
+}
+.sj-page-curriculum .progress-bar {
+    border-color: var(--gray-300);
 }
 
-.sj-page-detail .dp-curriculum {
-    margin-top: 8px;
-    padding-left: 0!IMPORTANT;
+.sj-page-curriculum .progress-inner {
+    background: var(--lime-500);
 }
 
-.sj-page-detail ul.dp-curriculum .type-icon {
-    opacity: 0.75;
-}
-
-.sj-page-detail ul.dp-curriculum>li .lesson-wrapper {
-    padding-left: 8px;
-}
-
-.sj-page-detail-course #dp-details {
-    margin: 0 auto;
-    max-width: var(--max-width-lg);
-}
-
-#dp-details-bundle {
-    margin: 0 auto;
-    max-width: var(--max-width-lg);
-    padding-top: 40px;
-}
-
-#dp-details-bundle h2 {
-    font-size: var(--font-size-large);
-}
-
-.sj-page-detail #skilljar-content .dp-row-flex-v2 {
-    flex-direction: row-reverse;
-    max-width: var(--max-width-lg);
-}
-
-/**
- * 14. Curriculum Landing Page
- *      Styles for the curriculum landing page.
- */
-.sj-page-curricum .dp-row-flex-v2 {
-    border: none;
-}
-
-.sj-page-curricum .dp-summary-wrapper,
-.sj-page-curricum .cp-summary-wrapper {
-    border: none;
+@media only screen and (min-width: 768px) {
+    .cp-promo-image img {
+        border-radius: var(--border-radius-buttons);
+        max-height: 360px;
+    }
 }
 
 /**
