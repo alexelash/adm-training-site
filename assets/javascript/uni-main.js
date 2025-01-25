@@ -12,7 +12,6 @@ var welcomeMessage = ", ",
     sjContent = document.getElementById('skilljar-content'),
     epFooter = document.getElementById('ep-footer'),
     epFooterCopyright = document.querySelectorAll('#ep-footer #footer-left ul li'),
-    resumeButton = document.querySelector('.path-curriculum-button-wrapper'),
     siteName = "Administrate University",
     textAlignment = 'left'; /* change value to 'left' for left aligned sections */
 
@@ -574,6 +573,7 @@ $(document).ready(function() {
     }
 
     /* move resume button and progress bar on page paths */
+    var resumeButton = $('.path-curriculum-button-wrapper');
     if (sjPagePath && resumeButton) {
         $('.tt1-text-section').append( resumeButton.detach() );
     }
