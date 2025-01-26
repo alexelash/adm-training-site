@@ -479,7 +479,7 @@ $(document).ready(function() {
     }
 
     /* add lower banner element, global custom footer and epFooter on certain pages */
-    if (sjPageCatalog || sjPageProfile || sjPageDetail ) {
+    if (sjPageCatalog || sjPageProfile || sjPageDetail || sjPageDetailPath || sjCurriculumPage ) {
         sjContent.append(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
     }
 
@@ -552,7 +552,7 @@ $(document).ready(function() {
     var catalogCourseboxContainers = document.querySelectorAll('.coursebox-container.sj-catalog-page');
     catalogCourseboxContainers.forEach(function(container) {
         var courseboxText = container.querySelector('.coursebox-text');
-        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses<i class="visible-link-icon fa-regular fa-long-arrow-right"></i></div>';
+        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses</div>';
         
         $(container).append($(visibleLink));
     });

@@ -479,7 +479,7 @@ $(document).ready(function() {
     }
 
     /* add lower banner element, global custom footer and epFooter on certain pages */
-    if (sjPageCatalog || sjPageProfile || sjPageDetail ) {
+    if (sjPageCatalog || sjPageProfile || sjPageDetail || sjPageDetailPath || sjCurriculumPage ) {
         sjContent.append(catalogLowerBannerElement, globalCustomFooterElement, epFooter);
     }
 

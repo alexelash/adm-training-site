@@ -532,6 +532,7 @@ ul li::marker {
  * 14. Curriculum Landing Page..................Styles for the curriculum landing page.
  * 15. Catalog Call-to-action...................Styles for CTA at bottom of catalog pages for help.
  * 16. Lesson pages.............................Styles for Lesson landing pages.
+ * 17. Styles in Skilljar overrides...............Styles to override styles that are set within Skilljar templates.
  *  
  */
 
@@ -579,7 +580,6 @@ ul li::marker {
     padding: 0;
 }
 
-
 #header .header-logo-link,
 #header .header-center-img.header-logo-svg {
     height: 25px !important;
@@ -614,7 +614,6 @@ ul li::marker {
 
 #header #header-drop.f-dropdown li {
     font-size: var(--font-size-med);
-    padding: 0;
 }
 
 #header #header-right .header-nested-wrapper .header-nested-links .header-link,
@@ -678,7 +677,7 @@ body.cbp-spmenu-open #header .burger .burger-text {
 }
 
 .header-mobile-dropdown .header-nested-wrapper .header-nested-links .header-link {
-    margin-left: 0;
+    margin-left: 0!important;
 }
 
 #header .header-link-parent-icon,
@@ -717,6 +716,14 @@ body.cbp-spmenu-open #header .burger .burger-text {
     border-radius: var(--border-radius);
 }
 
+.header-mobile-dropdown .sj-text-my-profile {
+    text-transform: lowercase;
+}
+
+.header-mobile-dropdown .sj-text-my-profile:first-letter {
+    text-transform: uppercase;
+}
+
 @media(max-width: 962px) {
     #header-right .header-mobile-menu {
         width: 30px;
@@ -744,10 +751,11 @@ body.cbp-spmenu-open #header .burger .burger-text {
     .mobile-menu-open #header-right .header-mobile-menu,
     .cbp-spmenu-open #left-nav-button {
         align-items: center;
-        background: var(--blue-100);
         border-radius: 100%;
         display: flex;
+        background: var(--blue-100);
         height: 30px;
+        width: 30px;
         justify-content: center;
     }
 
@@ -837,6 +845,12 @@ body.cbp-spmenu-open #header .burger .burger-text {
 
     .mobile-menu-open .header-mobile-dropdown .mobile-login-link .signout-link:focus {
         box-shadow: var(--focus-boxshadow);
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    .search-location-header_right #catalog-left-nav .catalog-search-input-group, .search-location-header_right #catalog-left-nav .sortable-multiselect-search-input-group {
+        width: 100%;
     }
 }
 
@@ -1026,19 +1040,38 @@ p.signup-custom-link {
  */
 /* Set font size for separator titles */
 a.coursebox-container[data-tags*="separator"] .coursebox-text {
-    font-size: var(--font-size-large-2)!IMPORTANT;
+    font-size: var(--font-size-large-2);
     padding: 0; 
+    margin: 0;
+}
+
+@media all and (max-width: 962px) {
+    a.coursebox-container[data-tags*="separator"] .coursebox-text {
+        font-size: var(--font-size-large);
+    }
 }
 
 /* Set font size for separator sub-titles */
 a.coursebox-container[data-tags*="separator"] .coursebox-text-description {
-    color: var(--gray-700) !IMPORTANT;
-    font-size: var(--font-size-med-2) !IMPORTANT;
-    font-weight: var(--font-weight-light) !IMPORTANT;
+    color: var(--gray-700);
+    font-size: var(--font-size-med-2);
+    font-weight: var(--font-weight-light);
     line-height: var(--line-height-comfortable);
-    margin: 10px 0 16px !IMPORTANT;
+    margin: 10px 0 16px;
     max-width: 750px;
     padding: 0;
+}
+
+@media all and (max-width: 962px) {
+    a.coursebox-container[data-tags*="separator"] .coursebox-text-description {
+        font-size: var(--font-size-med);
+        font-weight: var(--font-weight-normal);
+    }
+}
+
+a.coursebox-container[data-tags*="separator"] .coursebox-text-description:empty {
+    padding: 0;
+    margin: 0;
 }
 
 /* remove conflicting standard tile styles */
@@ -1083,18 +1116,24 @@ a.coursebox-container[data-tags*="separator"] .coursebox-callout {
     z-index: 1;
 }
 
+@media all and (max-width: 962px) {
+    .sj-page-catalog .course-listing-section {
+        padding: 24px 0;
+    }
+}
+
 .sj-page-catalog .course-listing-section .coursebox-container {
     flex: 1 1 100%;
     margin: 0;
 }
 
-@media all and (min-width: 480px) {
+@media all and (min-width: 768px) {
     .sj-page-catalog .course-listing-section .coursebox-container {
-        flex: 1 1 50%;
+        flex: 1 1 48%;
     }
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 962px) {
     .sj-page-catalog .course-listing-section .coursebox-container {
         flex:  0 1 32%;
     }
@@ -1307,11 +1346,24 @@ a.coursebox-container[data-course] .coursebox-callout {
     line-height: var(--line-height-medium);
 }
 
+@media all and (max-width: 962px) {
+    .sj-page-detail .dp-summary-wrapper>h1 {
+        font-size: var(--font-size-large);
+    }
+}
+
 /* course title stylings */
 .sj-page-detail .sj-course-info-wrapper>h2 {
-    font-size: var(--font-size-med-2);
+    font-size: var(--font-size-large);
     font-weight: var(--font-weight-light);
     line-height: var(--line-height-comfortable);
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-detail .sj-course-info-wrapper>h2 {
+        font-size: var(--font-size-med);
+        font-weight: var(--font-weight-normal);
+    }
 }
 
 /* course title stylings */
@@ -1337,6 +1389,12 @@ a.coursebox-container[data-course] .coursebox-callout {
     margin-bottom: 20px;
 }
 
+@media all and (max-width: 962px) {
+    .sj-page-detail #dp-details .large-7.columns>h3 {
+        font-size: var(--font-size-med-2);
+    }
+}
+
 /* style curriculum box */
 .sj-page-detail #dp-details .hide-for-small .sj-curriculum-wrapper {
     border-radius: 0;
@@ -1351,6 +1409,12 @@ a.coursebox-container[data-course] .coursebox-callout {
     line-height: var(--line-height-medium);
     margin-bottom: 0;
     padding-bottom: 16px;
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
+        font-size: var(--font-size-med-2);
+    }
 }
 
 /* add margin to top of curriculum links */
@@ -1379,6 +1443,12 @@ a.coursebox-container[data-course] .coursebox-callout {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-semibold);
     padding-left: 0;
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-detail .dp-curriculum li.section {
+        font-size: var(--font-size-med);
+    }
 }
 
 .sj-page-detail .dp-curriculum li.section:not(:first-child) {
@@ -1412,6 +1482,12 @@ a.coursebox-container[data-course] .coursebox-callout {
 
 #dp-details-bundle h2 {
     font-size: var(--font-size-large);
+}
+
+@media all and (max-width: 962px) {
+    #dp-details-bundle h2 {
+        font-size: var(--font-size-med-2);
+    }
 }
 
 .sj-page-detail #skilljar-content .dp-row-flex-v2 {
@@ -1729,6 +1805,7 @@ img.footer-company-logo {
 
 .footer-list-item {
     padding: 8px 0;
+    text-indent: unset;
 }
 
 .footer-link-column-wrapper .footer-link {
@@ -1802,8 +1879,20 @@ img.footer-company-logo {
     background-color: var(--gray-50);
 }
 
+@media all and (max-width: 962px) {
+    .sj-page-path .tt1-title {
+        font-size: var(--font-size-large) !IMPORTANT;
+    }
+}
+
 .sj-page-path .tt1-wrapper {
     max-width: var(--max-width-xl);
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-path .tt1-wrapper {
+        padding: 24px;
+    }
 }
 
 .sj-page-path .no-catalog-filters .catalog-center-width {
@@ -1828,6 +1917,10 @@ img.footer-company-logo {
     background: var(--lime-500);
 }
 
+.sj-page-path #catalog-courses {
+    margin-top: 0 !IMPORTANT;
+}
+
 /**
  * 14. Curriculum Landing Page
  *      Styles for the curriculum landing page.
@@ -1846,17 +1939,14 @@ img.footer-company-logo {
     }
 }
 
-.sj-page-curriculum .cp-summary-row-v2 {
-    text-align: left !IMPORTANT;
-}
-
 @media only screen and (min-width: 768px) {
     .sj-page-curriculum .cp-summary-wrapper,
     .sj-page-curriculum .cp-promo-image-wrapper {
         left: 0;
         right: 0;
-        float: unset;
-        width: unset;
+        float: unset !important;
+        width: unset !important;
+        flex: 1 1 50%;
     }
 }
 
@@ -1864,7 +1954,29 @@ img.footer-company-logo {
     padding: 40px 0;
     background: var(--gray-50);
     border-bottom: none;
-    max-width: unset;
+    max-width: unset !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .sj-page-curriculum #skilljar-content .top-row-white-v2 {
+        padding: 24px 0;
+    }
+}
+
+#cp-content hr {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    #cp-content {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .course-long-description-header .sj-course-time {
+        display: inline-block;
+        margin-left: 4px;
+    }
 }
 
 .sj-page-curriculum #resume-button.row  {
@@ -1878,13 +1990,26 @@ img.footer-company-logo {
     padding: 0 24px;
 }
 
+@media only screen and (max-width: 768px) {
+    .sj-page-curriculum .dp-summary-wrapper,
+    .sj-page-curriculum .cp-summary-wrapper {
+        padding: 24px 24px 0;
+    }
+}
+
 /* course title stylings */
 .sj-page-curriculum .dp-summary-wrapper>h1,
 .sj-page-curriculum .cp-summary-wrapper>h1 {
     font-size: var(--font-size-xxl);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-medium);
-    text-align: left;
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-curriculum .dp-summary-wrapper>h1,
+    .sj-page-curriculum .cp-summary-wrapper>h1 {
+        font-size: var(--font-size-large);
+    }
 }
 
 .sj-page-curriculum .cp-lessons {
@@ -1896,7 +2021,7 @@ img.footer-company-logo {
     border-color: var(--gray-300);
 }
 
-.sj-page-curriculum .progress-inner {
+.sj-page-curriculum .button-background {
     background: var(--lime-500);
 }
 
@@ -2011,10 +2136,17 @@ p.catalog-lower-text {
     padding: 12px 0;
 }
 
-.lesson-page #lp-wrapper #lesson-body .lesson-top h2, 
+.lesson-page #lp-wrapper #lesson-body .lesson-top h2,
 .lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top h2 {
-    font-size: var(--font-size-med-2);
+    font-size: var(--font-size-large);
     padding: 0;
+}
+
+@media all and (max-width: 962px) {
+    .lesson-page #lp-wrapper #lesson-body .lesson-top h2, 
+    .lesson-page .lp-color-scheme-light #lp-wrapper #lesson-body .lesson-top h2 {
+        font-size: var(--font-size-med-2);
+    }
 }
 
 .lp-left-nav .course-title .sj-course-time {
@@ -2181,4 +2313,29 @@ p.catalog-lower-text {
 
 #lp-wrapper #lesson-body.details-pane-bottom #details-pane-inner {
     border-top: 1px solid var(--gray-300);
+}
+
+
+/**
+ * 17. Styles in Skilljar overrides
+ *      Styles to override styles that are set within Skilljar templates..
+ */
+@media all and (max-width: 962px) {
+    .sj-page-catalog .ch-background {
+        margin-bottom: 0 !IMPORTANT;
+    }
+
+    .sj-page-catalog .ch-wrapper {
+        padding: 24px 24px 0!IMPORTANT;
+    }
+
+    .sj-page-catalog .ch-title {
+        font-size: var(--font-size-large) !IMPORTANT;
+    }
+
+    .sj-page-catalog .ch-sub-title {
+        font-weight: var(--font-weight-normal) !IMPORTANT;
+        font-size: var(--font-size-med) !IMPORTANT;
+        margin-bottom: 0;
+    }
 }
