@@ -26,7 +26,7 @@ const globalCustomFooterElement = document.createElement('div'),
 
 const catalogLowerBannerElement = document.createElement('div'),
        bannerHeading = "Stuck? We’re here to help",
-       bannerText = "Having an issue with a course, webinar, or other content in " + siteName + " ? Reach out to the Administrate team.",
+       bannerText = "Having an issue with a course, webinar, or other content in " + siteName + "? Reach out to the Administrate team.",
        bannerLinkHref = "mailto:training@getadministrate.com",
        bannerLinkText = "Email us";
      

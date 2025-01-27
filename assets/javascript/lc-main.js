@@ -26,7 +26,7 @@ const globalCustomFooterElement = document.createElement('div'),
 
 const catalogLowerBannerElement = document.createElement('div'),
        bannerHeading = "Stuck? We’re here to help",
-       bannerText = "Having an issue with a course, webinar, or other content in " + siteName + " ? Reach out to the Administrate team.",
+       bannerText = "Having an issue with a course, webinar, or other content in " + siteName + "? Reach out to the Administrate team.",
        bannerLinkHref = "mailto:training@getadministrate.com",
        bannerLinkText = "Email us";
      
@@ -555,7 +555,7 @@ $(document).ready(function() {
     var catalogCourseboxContainers = document.querySelectorAll('.coursebox-container.sj-catalog-page');
     catalogCourseboxContainers.forEach(function(container) {
         var courseboxText = container.querySelector('.coursebox-text');
-        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses<i class="visible-link-icon fa-regular fa-long-arrow-right"></i></div>';
+        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses</div>';
         
         $(container).append($(visibleLink));
     });
