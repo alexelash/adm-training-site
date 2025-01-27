@@ -415,11 +415,11 @@ input::placeholder {
     color: var(--gray-400);
 }
 
-button:not(.focus-after-v2):focus::before,
-a.button:focus::before,
-.focus-link-v2:focus::before,
-.course-text-content a:focus::before,
-#profile-course-table td > a:focus::before,
+button:not(.focus-after-v2):focus:::before,
+a.button:focus:::before,
+.focus-link-v2:focus:::before,
+.course-text-content a:focus:::before,
+#profile-course-table td > a:focus:::before,
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
@@ -436,33 +436,33 @@ input[type="url"]:focus,
 textarea:focus,
 input[type="text"].catalog-search-input:focus,
 input[type="text"].sj-search-input:focus,
-.focus-link-v2:focus::before,
+.focus-link-v2:focus:::before,
 a.coursebox-container:focus,
-.filter-group-title:focus::before,
+.filter-group-title:focus:::before,
 #ep-footer .language-pack-wrapper #languagePackSelect:focus,
 select:focus,
-#lp-footer .toggle-fullscreen:focus::before,
+#lp-footer .toggle-fullscreen:focus:::before,
 #header .header-dropdown-button:focus img,
-.inline-collapsible-section__label:focus::before,
-.alert-box a:focus::before,
-#change-avatar-button #upload-new-avatar-button:focus::before,
+.inline-collapsible-section__label:focus:::before,
+.alert-box a:focus:::before,
+#change-avatar-button #upload-new-avatar-button:focus:::before,
 .linear-scale-question__choice__label:focus-within {
     box-shadow: var(--input-btn-focus-box-shadow) !IMPORTANT;
     border: 1px solid rgb(var(--focus-outline-color));
 }
 
-.catalog-search-input-group:after, 
-.sj-search-input-group:after {
+.catalog-search-input-group::after, 
+.sj-search-input-group::after {
     content: "";
     color: var(--gray-500);
     top: 5px;
 }
 
-.focus-link-v2::before,
-.course-text-content a::before,
-#profile-course-table td>a::before,
-.filter-group-title::before,
-.alert-box a::before {
+.focus-link-v2:::before,
+.course-text-content a:::before,
+#profile-course-table td>a:::before,
+.filter-group-title:::before,
+.alert-box a:::before {
     top: 0;
     right: 0;
     bottom: 0;
@@ -521,7 +521,7 @@ ul li::marker {
  * 04. Catalog Pages............................Shared styles amongst catalong pages.
  * 05. Tile Components..........................Interactive styles for the coursebox containers and tiles.
  * 06. Catalog Collection Tiles..................Interactive styles for courseboxes that are collections 
-                                                    of courses rather than Learning Paths or Certifications.
+                                                        of courses rather than Learning Paths or Certifications.
  * 07. Course Detail Page.......................Styles for the landing page of a course.
  * 08. Course Tile Ribbons......................Changes colors and text for ribbons.
  * 09. Catalog Home Filter Bar..................Adjust styling for on-page catalog filter options.
@@ -533,6 +533,7 @@ ul li::marker {
  * 15. Catalog Call-to-action...................Styles for CTA at bottom of catalog pages for help.
  * 16. Lesson pages.............................Styles for Lesson landing pages.
  * 17. Styles in Skilljar overrides...............Styles to override styles that are set within Skilljar templates.
+ * 18. Live Training Page........................Styles for the live training calendar page.
  *  
  */
 
@@ -874,8 +875,8 @@ body.cbp-spmenu-open #header .burger .burger-text {
     }
 }
 
-.sj-page-login #skilljar-content:after,
-.sj-page-signup #skilljar-content:after {
+.sj-page-login #skilljar-content::after,
+.sj-page-signup #skilljar-content::after {
     height: 0;
 }
 
@@ -1075,7 +1076,7 @@ a.coursebox-container[data-tags*="separator"] .coursebox-text-description:empty 
 }
 
 /* remove conflicting standard tile styles */
-a.coursebox-container[data-tags*="separator"]:after {
+a.coursebox-container[data-tags*="separator"]::after {
     display: none !IMPORTANT;
 }
 
@@ -1102,7 +1103,7 @@ a.coursebox-container[data-tags*="separator"] .coursebox-callout {
  * 04. Catalog Pages
  *      Shared styles amongst catalong pages
  */
-.sj-page-catalog #skilljar-content:after {
+.sj-page-catalog #skilljar-content::after {
     height: 0;
 }
 
@@ -1143,7 +1144,7 @@ a.coursebox-container[data-tags*="separator"] .coursebox-callout {
     flex: 1 1 100%;
 }
 
-section.course-listing-section:nth-child(odd):before {
+section.course-listing-section:nth-child(odd)::before {
     background: var(--section-background-color);
     bottom: 0;
     content: '';
@@ -1155,6 +1156,16 @@ section.course-listing-section:nth-child(odd):before {
     transform: translateX(-50%);
     width: 100vw;
     z-index: 0;
+}
+
+@media only screen and (min-width: 875px) {
+    #catalog-left-nav.cbp-spmenu-open-large ~ #skilljar-content #ep-footer {
+        margin-left: 0 !IMPORTANT;
+    }
+
+    #catalog-left-nav.cbp-spmenu-open-large ~ #skilljar-content .footer-background-wrapper {
+        padding-left: 0 !IMPORTANT;
+    }
 }
 
 /**
@@ -1257,7 +1268,7 @@ a.coursebox-container .storefront-price {
     display: none;
 }
 
-.coursebox-container.course.sj-catalog-page .coursebox-text:before {
+.coursebox-container.course.sj-catalog-page .coursebox-text::before {
     background-color: rgba(255,255,255,0.3);
     content: "Collection";
     display: inline-block;
@@ -1333,10 +1344,22 @@ a.coursebox-container[data-course] .coursebox-callout {
     max-width: unset;
 }
 
+@media all and (max-width: 962px) {
+    .sj-page-detail #skilljar-content .top-row-white-v2 {
+        padding: 24px 0;
+    }
+}
+
 /* Course Registration area stylings */
 .sj-page-detail .dp-summary-wrapper {
     border: none;
     padding: 40px;
+}
+
+@media all and (max-width: 962px) {
+    .sj-page-detail .dp-summary-wrapper {
+        padding: 24px;
+    }
 }
 
 /* course title stylings */
@@ -1377,8 +1400,8 @@ a.coursebox-container[data-course] .coursebox-callout {
 }
 
 /* add more padding to lower section */
-.sj-page-detail #dp-details {
-    padding: 40px;
+.sj-page-detail #skilljar-content::after {
+    display: none;
 }
 
 /* style the "about this course" section */
@@ -1415,11 +1438,6 @@ a.coursebox-container[data-course] .coursebox-callout {
     .sj-page-detail #dp-details .sj-curriculum-wrapper>h3 {
         font-size: var(--font-size-med-2);
     }
-}
-
-/* add margin to top of curriculum links */
-.sj-page-detail .dp-curriculum {
-/*    margin-top: 20px;*/
 }
 
 /* style curriculum link headers */
@@ -1469,15 +1487,18 @@ a.coursebox-container[data-course] .coursebox-callout {
     padding-left: 8px;
 }
 
-.sj-page-detail-course #dp-details {
+.sj-page-detail #dp-details,
+.sj-page-detail #dp-details-bundle {
+    padding: 40px;
     margin: 0 auto;
     max-width: var(--max-width-xxl);
 }
 
-#dp-details-bundle {
-    margin: 0 auto;
-    max-width: var(--max-width-lg);
-    padding-top: 40px;
+@media all and (max-width: 962px) {
+    .sj-page-detail #dp-details,
+    .sj-page-detail #dp-details-bundle {
+        padding: 24px;
+    }
 }
 
 #dp-details-bundle h2 {
@@ -1498,6 +1519,14 @@ a.coursebox-container[data-course] .coursebox-callout {
 .sj-page-detail .dp-long-description {
     color: var(--gray-700);
     font-size: var(--font-size-med);
+}
+
+@media all and (max-width: 962px) {
+    /* Course Registration area stylings */
+    .purchase-button {
+        width: auto;
+        margin-bottom: 0 !IMPORTANT;
+    }
 }
 
 /**
@@ -1521,8 +1550,8 @@ a.coursebox-container[data-course] .coursebox-callout {
     display: none !IMPORTANT; /* hide COMPLETE default ribbon text */
 }
 
-.sj-ribbon-wrapper .sj-ribbon-complete:after {
-    content:"Complete!"; /* add COMPLETE custom ribbon text */
+.sj-ribbon-wrapper .sj-ribbon-complete::after {
+    content: "Complete!"; /* add COMPLETE custom ribbon text */
 }
 
 .sj-ribbon-wrapper .sj-ribbon-passed { 
@@ -1535,7 +1564,7 @@ a.coursebox-container[data-course] .coursebox-callout {
    display: none !IMPORTANT; /* hide PASSED default ribbon text */
 }
 
-.sj-ribbon-wrapper .sj-ribbon-passed:after { 
+.sj-ribbon-wrapper .sj-ribbon-passed::after { 
     content: 'Passed!' !IMPORTANT; /* add PASSED custom ribbon text */
 }
 
@@ -1549,7 +1578,7 @@ a.coursebox-container[data-course] .coursebox-callout {
    display: none !IMPORTANT; /* hide FAILED default ribbon text */
 }
 
-.sj-ribbon-wrapper .sj-ribbon-failed:after { 
+.sj-ribbon-wrapper .sj-ribbon-failed::after { 
     content: 'Didn’t pass' !IMPORTANT; /* add FAILED custom ribbon text */
 }
 
@@ -1567,7 +1596,7 @@ a.coursebox-container[data-course] .coursebox-callout {
     z-index: 1;
 }
 
-.search #catalog-search-info:after {
+.search #catalog-search-info::after {
     background: var(--blue-900);
     bottom: 0;
     content: "";
@@ -1715,14 +1744,26 @@ a#catalog-filter-expand-collapse {
     background-color: var(--blue-900);
     display: flex;
     justify-content: center;
-    padding: 40px 40px;
+    padding: 40px;
     width: 100%;
+}
+
+@media all and (max-width: 962px) {
+    .footer-background-wrapper {
+        padding: 24px;
+    }
 }
 
 .footer-top-section {
     display: flex;
     flex-direction: column;
     padding: 30px 40px;
+}
+
+@media all and (max-width: 962px) {
+    .footer-top-section {
+        padding: 16px 0;
+    }
 }
 
 .footer-company-info-wrapper {
@@ -1740,8 +1781,13 @@ img.footer-company-logo {
 .footer-company-text {
     color: #FFFFFF;
     font-size: var(--font-size-sm);
-    max-width: 340px;
     /* text color of footer logo text */
+}
+
+@media all and (min-width: 962px) {
+    .footer-company-text {
+        max-width: 340px;
+    }
 }
 
 .footer-social-list {
@@ -1779,9 +1825,14 @@ img.footer-company-logo {
 .footer-link-tree-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px 75px;
     justify-content: flex-start;
-    padding: 30px 40px;
+}
+
+@media all and (min-width: 962px) {
+    .footer-link-tree-wrapper{
+        gap: 24px 75px;
+        padding: 16px 0;
+    }
 }
 
 .footer-link-column-wrapper {
@@ -1795,6 +1846,12 @@ img.footer-company-logo {
     font-size: var(--font-size-sm-2);
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+@media all and (max-width: 962px) {
+    .footer-header {
+        margin-top: 24px;
+    }
 }
 
 .footer-list {
@@ -1858,6 +1915,12 @@ img.footer-company-logo {
     border-top: 1px solid var(--ep-footer-border-color);
     color: var(--ep-footer-text-color);
     margin-top: 0;
+    height: 50px;
+}
+
+#ep-footer #footer-left ul li {
+    padding-left: 0;
+    text-indent: unset;
 }
 
 /**
@@ -2184,8 +2247,8 @@ p.catalog-lower-text {
     position: relative;
 }
 
-#lp-left-nav .lesson-active:before, 
-#lp-left-nav .current-item:before {
+#lp-left-nav .lesson-active::before, 
+#lp-left-nav .current-item::before {
     background: var(--purple);
     bottom: 0;
     content: "";
@@ -2315,10 +2378,9 @@ p.catalog-lower-text {
     border-top: 1px solid var(--gray-300);
 }
 
-
 /**
  * 17. Styles in Skilljar overrides
- *      Styles to override styles that are set within Skilljar templates..
+ *      Styles to override styles that are set within Skilljar templates.
  */
 @media all and (max-width: 962px) {
     .sj-page-catalog .ch-background {
@@ -2338,4 +2400,32 @@ p.catalog-lower-text {
         font-size: var(--font-size-med) !IMPORTANT;
         margin-bottom: 0;
     }
+}
+
+/**
+ * 18. Live Training Page
+ *      Styles for the live training calendar page.
+ */
+#calendar-view {
+    background: var(--gray-50);
+}
+
+@media only screen and (min-width: 768px) {
+    #calendar-view .calendar-header .page-title #title {
+        font-size: var(--font-size-large) !IMPORTANT;
+        color: var(--brand-black);
+    }
+}
+
+#calendar-view .calendar-header {
+    margin-bottom: 16px;
+}
+
+#calendar-view .button-group li {
+    text-indent: unset;
+    padding-left: unset;
+}
+
+#skilljar-content:has(#calendar-view)::after {
+    display: none;
 }
