@@ -534,6 +534,7 @@ ul li::marker {
  * 16. Lesson pages.............................Styles for Lesson landing pages.
  * 17. Styles in Skilljar overrides...............Styles to override styles that are set within Skilljar templates.
  * 18. Live Training Page........................Styles for the live training calendar page.
+ * 19. Alerts...................................Adjust default alert styles.
  *  
  */
 
@@ -2442,4 +2443,73 @@ p.catalog-lower-text {
 
 #skilljar-content:has(#calendar-view)::after {
     display: none;
+}
+/**
+ * 19. Alerts
+ *      Adjust default alert styles.
+ */
+.alert-box {
+    font-size: var(--font-size-sm);
+}
+
+.alert-box a:not(.close) {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.alert-box a:hover {
+    opacity: 0.95;
+}
+
+.alert-box a:active {
+    opacity: 0.85;
+}
+
+.alert-box .close {
+    top: 8px;
+    background: rgba(0, 0, 0, .2);
+    display: flex;
+    height: 30px;
+    right: 14px;
+    line-height: 0 !IMPORTANT;
+    width: 30px;
+    color: #FFFFFF;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.alert-box.error {
+    border-color: var(--red-400) !IMPORTANT;
+    background: var(--red-400) !IMPORTANT;
+    color: #FFFFFF !IMPORTANT;
+}
+
+.alert-box.error .close {
+    color: var(--red-900) !IMPORTANT;
+    background: var(--red-600) !IMPORTANT;
+}
+
+.alert-box.alert {
+    border-color: var(--yellow) !IMPORTANT;
+    background: var(--yellow) !IMPORTANT;
+    color: var(--yellow-900) !IMPORTANT;
+}
+
+.alert-box.alert .close {
+    color: var(--yellow-900) !IMPORTANT;
+    background: var(--yellow-600) !IMPORTANT;
+}
+
+.alert-box.success {
+    border-color: var(--green) !IMPORTANT;
+    background: var(--green) !IMPORTANT;
+    color: var(--green-900) !IMPORTANT;
+}
+
+.alert-box.success .close {
+    color: #FFFFFF !IMPORTANT;
+    background: var(--green) !IMPORTANT;
 }
