@@ -661,6 +661,17 @@ body.cbp-spmenu-open #header .burger .burger-text {
     color: inherit;
 }
 
+.header-link[data-external="true"]::after {
+    content: "\f08e";
+    font-family: "Font Awesome 6 Pro";
+    display: inline-block;
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    margin-left: 4px;
+   -webkit-font-smoothing: antialiased;
+}
+
 #header-right .header-link:hover,
 #header #header-drop.f-dropdown li a:hover {
     background: var(--purple-100);

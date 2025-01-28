@@ -53,10 +53,12 @@ const HEADER_LINKS = {
         "Release notes": {
           "href": "https://support.getadministrate.com/hc/en-us/categories/115001277127-Release-Notes",
           "target": "_self",
+          "data-external": true
         },
         "Support portal": {
           "href": "https://support.getadministrate.com/hc/en-us",
           "target": "_self",
+          "data-external": true
         }
       }
     },
@@ -64,8 +66,8 @@ const HEADER_LINKS = {
     /* start static header link */
     "My courses": {
       "href": "/accounts/profile#profile-path-table",
-      "target": "_self",
-    }
+      "target": "_self"
+    },
 /* end static header link */
 };
 
@@ -332,21 +334,26 @@ const HEADER_LINKS = {
             return $(".sj-page-profile").length && /^\//.test(n.href) && (n.href = $(".header-logo-link").attr("href") + n.href.substr(1)), $('<a class="header-link '.concat(r, '">').concat(e, "</a>")).attr(n)
           }
           $("header .search-container").length, Object.entries(HEADER_LINKS).forEach((function(t, a) {
-            var o, d = i(t, 2),
-              l = d[0],
-              s = d[1];
+            var o, 
+                d = i(t, 2),
+                l = d[0],
+                s = d[1],
+                v = d[2];
+              
             o = "nestedLinks" in s ? function(e, n) {
               var t = $('<div class="header-nested-wrapper"/>'),
-                a = $('<div class="header-nested-links"/>');
+                  a = $('<div class="header-nested-links"/>');
+                
               Object.entries(n.nestedLinks).forEach((function(e, n) {
-                var t = i(e, 2),
-                  o = t[0],
-                  d = t[1];
-                a.append(r(o, d))
+                  var t = i(e, 2),
+                      o = t[0],
+                      d = t[1]
+                  a.append(r(o, d))
               }));
               var o = n.link ? $('<a class="header-link">'.concat(e, "</a>")).attr(n.link) : '<span class="header-link">'.concat(e, "</span>");
               return t.append(o, a), t
-            }(l, s) : r(l, s), e.append(o.clone()), n.append(o.clone())
+            }
+            (l, s) : r(l, s), e.append(o.clone()), n.append(o.clone())
           })), $(".header-link.login-link").length ? n.append($('<div class="mobile-login-link"/>').html($(".header-link.login-link").clone())) : n.append($("#header-drop .sj-text-my-profile").clone().addClass("header-link"), $('<div class="mobile-login-link"/>').html($("#header-drop .signout-link").clone().addClass("header-link"))), $("#header-right").prepend(e).append('<a class="header-mobile-menu"><i class="header-mobile-menu-bars fa-light fa-bars" title="Mobile menu"></i><i class="header-mobile-menu-close fa-light fa-times" title="Close mobile menu"></i></a>'), $("header").after(n), $(".header-mobile-menu").on("click", (function() {
             $("body").toggleClass("mobile-menu-open")
           })), $(document).on("click", (function(e) {
