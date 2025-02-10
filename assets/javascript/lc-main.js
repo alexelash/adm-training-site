@@ -10,6 +10,7 @@ var welcomeMessage = ", ",
     sjPagePath = document.querySelector('.sj-page-path'),
     sjCurriculumPage =  document.querySelector('.sj-page-curriculum'),
     sjContent = document.getElementById('skilljar-content'),
+    sjCatalogContent = document.getElementById('catalog-content'),
     epFooter = document.getElementById('ep-footer'),
     epFooterCopyright = document.querySelectorAll('#ep-footer #footer-left ul li'),
     siteName = "Administrate Learning Campus",
@@ -29,6 +30,33 @@ const catalogLowerBannerElement = document.createElement('div'),
        bannerText = "Having an issue with a course, webinar, or other content in " + siteName + "? Reach out to the Administrate team.",
        bannerLinkHref = "mailto:training@getadministrate.com",
        bannerLinkText = "Email us";
+
+const  resourceBannerElement = document.createElement('section'),
+        resourceBannerHeading = "Resources",
+
+       resourceCardIcon1 = "users-viewfinder",
+       resourceCardType1 = "sj-catalog-page",
+       resourceCardTarget1 = "_self",
+       resourceCardHeading1 = "Case studies",
+       resourceCardText1 = "Our customers deploy the Administrate training management system to automate training and save thousands of hours.",
+       resourceCardLinkText1 = "See case study links",
+       resourceCardLink1 = "/page/case-studies",
+
+       resourceCardIcon2 = "video",
+       resourceCardType2 = "sj-catalog-page",
+       resourceCardTarget2 = "_self",
+       resourceCardHeading2 = "Webinars",
+       resourceCardText2 = "Access webinars on training trends, industry insights, and Administrate demos to enhance your expertise and improve training management.",
+       resourceCardLinkText2 = "See webinar links",
+       resourceCardLink2 = "/page/webinars",
+
+       resourceCardIcon3 = "glasses",
+       resourceCardType3 = "external-link",
+       resourceCardTarget3 = "_blank",
+       resourceCardHeading3 = "Blog",
+       resourceCardText3 = "Find out what’s happening in the training world!",
+       resourceCardLinkText3 = "Browse the blog",
+       resourceCardLink3 = "https://www.getadministrate.com/blog/";
      
 const HEADER_LINKS = {
     /* start nested header link */
@@ -52,12 +80,12 @@ const HEADER_LINKS = {
       "nestedLinks": {
         "Release notes": {
           "href": "https://support.getadministrate.com/hc/en-us/categories/115001277127-Release-Notes",
-          "target": "_self",
+          "target": "_blank",
           "data-external": true
         },
         "Support portal": {
           "href": "https://support.getadministrate.com/hc/en-us",
-          "target": "_self",
+          "target": "_blank",
           "data-external": true
         }
       }
@@ -365,34 +393,71 @@ const HEADER_LINKS = {
   })();
 
 /* custom html for global custom footer element*/
+resourceBannerElement.setAttribute('class', 'course-listing-section');
+resourceBannerElement.innerHTML = `
+<a class="coursebox-container course theme-color-border-hover theme-no-hover" data-tags="separator">
+  <h2 class="coursebox-text">${resourceBannerHeading}</h2>
+</a>
+<a class="resource-list-link rl-1 coursebox-container course ${resourceCardType1} theme-color-border-hover theme-no-hover" target="${resourceCardTarget1}" href="${resourceCardLink1}"/>
+  <div class="rl-text-wrapper">
+    <div class="rl-header-icon-container">
+      <div class="rl-header-icon icon fa-light fa-${resourceCardIcon1}"></div>
+    </div>
+    <h2 class="rl-header coursebox-text">${resourceCardHeading1}</h2>
+    <p class="rl-sub-header coursebox-text-description">${resourceCardText1}</p>
+    <div class="visible-link">${resourceCardLinkText1}</div>
+  </div>
+</a>
+<a class="resource-list-link rl-1 coursebox-container course ${resourceCardType2} theme-color-border-hover theme-no-hover" target="${resourceCardTarget2}" href="${resourceCardLink2}"/>
+  <div class="rl-text-wrapper">
+    <div class="rl-header-icon-container">
+      <div class="rl-header-icon icon fa-light fa-${resourceCardIcon2}"></div>
+    </div>
+    <h2 class="rl-header coursebox-text">${resourceCardHeading2}</h2>
+    <p class="rl-sub-header coursebox-text-description">${resourceCardText2}</p>
+    <div class="visible-link">${resourceCardLinkText2}</div>
+  </div>
+</a>
+<a class="resource-list-link rl-1 coursebox-container course ${resourceCardType3} theme-color-border-hover theme-no-hover" target="${resourceCardTarget3}" href="${resourceCardLink3}"/>
+  <div class="rl-text-wrapper">
+    <div class="rl-header-icon-container">
+      <div class="rl-header-icon icon fa-light fa-${resourceCardIcon3}"></div>
+    </div>
+    <h2 class="rl-header coursebox-text">${resourceCardHeading3}</h2>
+    <p class="rl-sub-header coursebox-text-description">${resourceCardText3}</p>
+    <div class="visible-link">${resourceCardLinkText3}</div>
+  </div>
+</a>`;
+
+/* custom html for global custom footer element*/
 globalCustomFooterElement.innerHTML = `
 <div class="footer-background-wrapper">
   <h2 class="sr-only sr-only-focusable">Footer Navigation</h2>
   <div class="footer-top-section">
     <div class="footer-company-info-wrapper">
-      <a class="footer-logo-link" href="` + admSiteUrl + `" aria-label="Administrate main website."><img class="footer-company-logo" alt="Administrate Logo." src="` + admLogoSrc + `"></a>
-      <p class="footer-company-text">` + admFooterDesc + `</p>
+      <a class="footer-logo-link" href="${admSiteUrl}" aria-label="Administrate main website."><img class="footer-company-logo" alt="Administrate Logo." src="${admLogoSrc}"></a>
+      <p class="footer-company-text">${admFooterDesc}</p>
     </div>
     <div class="footer-social-wrapper">
       <p class="sr-only sr-only-focusable text">Follow us:</p>
       <ul class="footer-social-list">
         <li class="footer-social-list-item">
-          <a class="footer-social-link" href="` + admLinkedinHref + `" target="_blank" aria-label="Administrate’s LinkedIn.">
+          <a class="footer-social-link" href="${admLinkedinHref}" target="_blank" aria-label="Administrate’s LinkedIn.">
             <i class="footer-social-icon fa-brands fa-linkedin"></i>
           </a>
         </li>
         <li class="footer-social-list-item">
-          <a class="footer-social-link" href="` + admXHref + `" target="_blank" aria-label="Administrate’s Twitter.">
+          <a class="footer-social-link" href="${admXHref}" target="_blank" aria-label="Administrate’s Twitter.">
             <i class="footer-social-icon fa-brands fa-x-twitter"></i>
           </a>
         </li>
         <li class="footer-social-list-item">
-          <a class="footer-social-link" href="` + admFacebookHref + `" target="_blank" aria-label="Administrate’s Facebook.">
+          <a class="footer-social-link" href="${admFacebookHref}" target="_blank" aria-label="Administrate’s Facebook.">
             <i class="footer-social-icon fa-brands fa-facebook"></i>
           </a>
         </li>
         <li class="footer-social-list-item">
-          <a class="footer-social-link" href="` + admYoutubeHref + `" target="_blank" aria-label="Administrate’s YouTube.">
+          <a class="footer-social-link" href="${admYoutubeHref}" target="_blank" aria-label="Administrate’s YouTube.">
             <i class="footer-social-icon fa-brands fa-youtube"></i>
           </a>
         </li>
@@ -442,9 +507,9 @@ catalogLowerBannerElement.innerHTML = `
 <div class="catalog-lower-wrapper">
     <div class="catalog-lower-content-wrapper">
         <div class="catalog-lower-text-wrapper">
-            <h2 class="catalog-lower-title">` + bannerHeading + `</h2>
-            <p class="catalog-lower-text">` + bannerText + `</p>
-            <a href="` + bannerLinkHref + `" class="catalog-lower-cta-button" target="_blank" rel="noopener">` + bannerLinkText+ `</a>
+            <h2 class="catalog-lower-title">${bannerHeading}</h2>
+            <p class="catalog-lower-text">${bannerText}</p>
+            <a href="${bannerLinkHref}" class="catalog-lower-cta-button" target="_blank" rel="noopener">${bannerLinkText}</a>
         </div>
     </div>
 </div>`;
@@ -483,6 +548,18 @@ $(document).ready(function() {
     /* remove header link for my courses when user is not logged in */
     if (sjPageLogin || sjPageSignup) {
         $('.header-link:contains(My courses)').remove();
+    }
+
+    /* catalog home/root page only */
+    if (sjCatalogRoot) {
+        /* create sections */
+        var separatorCourseboxContainers = document.querySelectorAll('a.coursebox-container[data-tags*="separator"]');
+        separatorCourseboxContainers.forEach(function(container) {
+            $("<section class='course-listing-section'>").insertAfter($(container).parent()).append($(container).nextAll().addBack());
+        });
+
+        /* add resources section */
+        sjCatalogContent.append(resourceBannerElement);
     }
 
     /* add lower banner element, global custom footer and epFooter on certain pages */
@@ -559,22 +636,13 @@ $(document).ready(function() {
     });
 
     /* add a visible link to each collection container */
-    var catalogCourseboxContainers = document.querySelectorAll('.coursebox-container.sj-catalog-page');
+    var catalogCourseboxContainers = document.querySelectorAll('.coursebox-container.sj-catalog-page:not(.resource-list-link)');
     catalogCourseboxContainers.forEach(function(container) {
         var courseboxText = container.querySelector('.coursebox-text');
-        var visibleLink = '<div class="visible-link">See' + courseboxText.textContent + 'courses</div>';
+        var visibleLink = '<div class="visible-link">See ' + courseboxText.textContent + ' courses</div>';
         
         $(container).append($(visibleLink));
     });
-
-    /* catalog home/root page only */
-    if (sjCatalogRoot) {
-        /* create sections */
-        var separatorCourseboxContainers = document.querySelectorAll('a.coursebox-container[data-tags*="separator"]');
-        separatorCourseboxContainers.forEach(function(container) {
-            $("<section class='course-listing-section'>").insertAfter($(container).parent()).append($(container).nextAll().addBack());
-        });
-    }
 
     /* set add time to complete to about tab*/
     if (sjCurriculumPage) {

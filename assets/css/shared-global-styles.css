@@ -157,11 +157,12 @@
     /* 06. Gradients   */
     --gradient-uv: linear-gradient(90deg, #6A3CE3 0%, #6A3CE3 32%, rgb(82, 93, 231) 55%, rgb(70, 106, 233) 71%, rgb(70, 106, 233) 100%);
     
-    --gradient-purple: linear-gradient(to bottom, rgb(70, 106, 233) 0%, rgb(70, 106, 233) 25%, rgb(82, 93, 231) 50%, #6A3CE3 75%, #6A3CE3 100%);
+    --gradient-uv: linear-gradient(to bottom, rgb(39, 20, 108) 50%, #6A3CE3 75%, #6A3CE3 100%);
     --gradient-dark-uv: linear-gradient(186deg, rgb(13, 18, 21) 39.38%, rgb(39, 20, 108) 57.57%, rgb(70, 96, 232) 78.22%, rgb(33, 133, 236) 100%),radial-gradient(55.38% 59% at 100% 41%, #C5CDD4 0%, #0D1215 100%);
     --gradient-orange: linear-gradient(to bottom, #FC703A 0%, #B83284 50%, #6A3CE3 100%);
     --gradient-cyan: linear-gradient(to bottom, #03CEA4 0%, #1269A8 50%, #4E1DCD 100%);
     --gradient-lime: linear-gradient(to bottom, #B5E33C 0%, #95C32B 25%, #088855 50%, #047246 75%, #6A3CE3 100%);
+    --gradient-purple: linear-gradient(to bottom, rgb(70, 106, 233) 0%, rgb(70, 106, 233) 25%, rgb(82, 93, 231) 50%, #6A3CE3 75%, #6A3CE3 100%);
 
     --fade-blue: linear-gradient(180deg, var(--blue-100) 0%, #FFFFFF 100%);
 
@@ -173,6 +174,7 @@
      * 01. Font Family
      */
     --font-family: 'Inter', sans-serif;
+    --icon-font-family: 'Font Awesome 6 Pro';
 
     /**
      * 02. Font Sizing
@@ -349,7 +351,7 @@
     --hero-title-font: var(--font-weight-semibold) var(--font-size-xl)/var(--line-height-compact) var(--font-family) !important;
     --hero-title-font-mobile: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-compact) var(--font-family) !important;
     --hero-subtitle-font: var(--font-weight-light) var(--font-size-med-2)/var(--line-height-medium) var(--font-family) !important;
-    --sb-max-width: var(--max-width-lg);
+    --sb-max-width: var(--max-width-xxl);
     --sb-header-font: var(--font-weight-semibold) var(--font-size-sm-2)/var(--line-height-compact) var(--font-family) !important;
     --sb-header-color: var(--brand-black);
     --sb-text-color: var(--gray-700);
@@ -368,20 +370,6 @@
 html, 
 body {
     font: var(--font-weight-normal) var(--font-size-base)/var(--line-height-comfortable) var(--font-family);
-}
-
-i.fa-light,
-i.fa-regular,
-i.fa-solid,
-i.fa-brands  {
-    opacity: 0;
-}
-
-.fontawesome-i2svg-complete i.fa-light,
-.fontawesome-i2svg-complete i.fa-regular,
-.fontawesome-i2svg-complete i.fa-solid,
-.fontawesome-i2svg-complete i.fa-brands {
-    opacity: 1;
 }
 
 img[data-was-processed] {
@@ -449,13 +437,6 @@ select:focus,
 .linear-scale-question__choice__label:focus-within {
     box-shadow: var(--input-btn-focus-box-shadow) !IMPORTANT;
     border: 1px solid rgb(var(--focus-outline-color));
-}
-
-.catalog-search-input-group::after, 
-.sj-search-input-group::after {
-    content: "";
-    color: var(--gray-500);
-    top: 5px;
 }
 
 .focus-link-v2:::before,
@@ -535,6 +516,7 @@ ul li::marker {
  * 17. Styles in Skilljar overrides...............Styles to override styles that are set within Skilljar templates.
  * 18. Live Training Page........................Styles for the live training calendar page.
  * 19. Alerts...................................Adjust default alert styles.
+ * 20. Resource Section.........................Custom resource section on homepage.
  *  
  */
 
@@ -565,7 +547,7 @@ ul li::marker {
 }
 
 .no-catalog-filters .catalog-center-width {
-    max-width: var(--max-width-lg);
+    max-width: var(--max-width-xxl);
 }
 
 /**
@@ -663,13 +645,10 @@ body.cbp-spmenu-open #header .burger .burger-text {
 
 .header-link[data-external="true"]::after {
     content: "\f08e";
-    font-family: "Font Awesome 6 Pro";
-    display: inline-block;
-    font-style: normal;
-    font-weight: 900;
-    font-display: block;
+    font-family: var(--icon-font-family);
+    font-weight: 400;
+    font-size: 14px;
     margin-left: 4px;
-   -webkit-font-smoothing: antialiased;
 }
 
 #header-right .header-link:hover,
@@ -1148,7 +1127,7 @@ a.coursebox-container[data-tags*="separator"] .coursebox-callout {
 
 @media all and (min-width: 962px) {
     .sj-page-catalog .course-listing-section .coursebox-container {
-        flex:  0 1 32%;
+        flex:  1 1 32%;
     }
 }
 
@@ -1250,29 +1229,29 @@ a.coursebox-container .storefront-price {
  */
 #skilljar-content .coursebox-container.sj-catalog-page {
     padding: 0 0 32px;
-    background: var(--gradient-purple);
     color: #FFFFFF;
+    background: var(--gradient-uv);
     display: flex;
     flex-direction: column;
 }
 
 /* changing color based on what number catalog this tile is */
-#skilljar-content .coursebox-container.sj-catalog-page:nth-child(2n+1) {
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(3n) {
     background: var(--gradient-cyan);
 }
 
 /* changing color based on what number catalog this tile is */
-#skilljar-content .coursebox-container.sj-catalog-page:nth-child(3n+1) {
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(4n) {
     background: var(--gradient-lime);
 }
 
 /* changing color based on what number catalog this tile is */
-#skilljar-content .coursebox-container.sj-catalog-page:nth-child(4n+1) {
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(5n) {
     background: var(--gradient-orange);
 }
 
 /* changing color based on what number catalog this tile is */
-#skilljar-content .coursebox-container.sj-catalog-page:nth-child(5n+1) {
+#skilljar-content .coursebox-container.sj-catalog-page:nth-child(6n) {
     background: var(--gradient-dark-uv);
 }
 
@@ -1295,32 +1274,40 @@ a.coursebox-container .storefront-price {
     white-space: nowrap;
 }
 
-#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]) .coursebox-text,
-#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]) .coursebox-text-description {
+#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]):not(.resource-list-link) .coursebox-text,
+#skilljar-content .coursebox-container.sj-catalog-page:not([data-tags*=separator]):not(.resource-list-link) .coursebox-text-description {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: #FFFFFF;
 }
 
-.coursebox-container.course.sj-catalog-page .visible-link {
-    color: rgba(255,255,255,0.8);
+.coursebox-container.course .visible-link {
     padding: var(--coursebox-text-padding);
-    margin-top: 16px;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
-    text-decoration-color: rgba(255,255,255,0.5);
     margin-top: auto;
     padding-top: 24px;
+    padding-right: 4px;
 }
 
-.coursebox-container.course.sj-catalog-page .visible-link-icon {
-    display: inline;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
+.coursebox-container.course .visible-link::after {
+    content: "\f178";
+    font-family: var(--icon-font-family);
+    font-weight: var(--font-weight-light);
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 24px;
+    margin-left: 4px;
+}
+
+.coursebox-container.course:not(.resource-list-link) .visible-link {
+    color: rgba(255,255,255,0.8);
     text-decoration-color: rgba(255,255,255,0.5);
-    padding-left: 4px;
+}
+
+.coursebox-container.course:not(.resource-list-link) .visible-link::after {
+    text-decoration-color: rgba(255,255,255,0.5);
 }
 
 /* Line break above Catalog Tile Callout */
@@ -1618,8 +1605,14 @@ ul.dp-curriculum .type-icon svg {
     margin: 0 auto;
     padding: 8px 0;
     position: relative;
-    width: var(--max-width-lg);
+    width: var(--max-width-xxl);
     z-index: 1;
+}
+
+.catalog-search-input-group::after, 
+.sj-search-input-group::after {
+    color: var(--gray-600);
+    top: 5px;
 }
 
 .search #catalog-search-info::after {
@@ -1807,7 +1800,6 @@ img.footer-company-logo {
 .footer-company-text {
     color: #FFFFFF;
     font-size: var(--font-size-sm);
-    /* text color of footer logo text */
 }
 
 @media all and (min-width: 962px) {
@@ -1975,7 +1967,7 @@ img.footer-company-logo {
 }
 
 .sj-page-path .tt1-wrapper {
-    max-width: var(--max-width-xl);
+    max-width: var(--max-width-xxl);
 }
 
 @media all and (max-width: 962px) {
@@ -1985,7 +1977,7 @@ img.footer-company-logo {
 }
 
 .sj-page-path .no-catalog-filters .catalog-center-width {
-    max-width: var(--max-width-lg);
+    max-width: var(--max-width-xxl);
 }
 
 .sj-page-path .path-curriculum-resume-wrapper  {
@@ -2455,6 +2447,7 @@ p.catalog-lower-text {
 #skilljar-content:has(#calendar-view)::after {
     display: none;
 }
+
 /**
  * 19. Alerts
  *      Adjust default alert styles.
@@ -2523,4 +2516,52 @@ p.catalog-lower-text {
 .alert-box.success .close {
     color: #FFFFFF !IMPORTANT;
     background: var(--green) !IMPORTANT;
+}
+
+/**
+ * 20. Resource Section
+ *      Custom resource section on homepage.
+ */
+.rl-header-icon-container {
+    width: 100%;
+    display: block;
+    background: var(--purple);
+    padding: 24px;
+    text-align: center;
+}
+
+.rl-header-icon {
+    color: #FFFFFF;
+    font-size: 40px;
+}
+
+#skilljar-content .coursebox-container.sj-catalog-page.resource-list-link {
+    background: #FFFFFF !IMPORTANT;
+}
+
+.coursebox-container.course.sj-catalog-page.resource-list-link .coursebox-text  {
+    position: relative;
+}
+
+.coursebox-container.course.sj-catalog-page.resource-list-link .visible-link {
+    color: #2185EC;
+}
+
+.coursebox-container.course.sj-catalog-page.resource-list-link .coursebox-text::before,
+.coursebox-container.course.resource-list-link.external-link .coursebox-text::before {
+    background-color: rgba(106,60,227,0.3);
+}
+
+.coursebox-container.course.resource-list-link.external-link .coursebox-text::before {
+    content: "Link";
+    display: inline-block;
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    margin-right: 100%;
+    padding: 4px;
+    text-decoration: none !IMPORTANT;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
