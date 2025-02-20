@@ -23,12 +23,12 @@ const globalCustomFooterElement = document.createElement('div'),
         admLinkedinHref = "https://www.linkedin.com/company/administrate/",
         admXHref = "https://x.com/GetAdministrate",
         admFacebookHref = "https://www.facebook.com/GetAdministrate",
-        admYoutubeHref = "https://www.youtube.com/user/GetAdministrate";
+        admYoutubeHref = "https://www.youtube.com/user/GetAdministrate",
+        admContactMailTo = "mailto:training@getadministrate.com";
 
 const catalogLowerBannerElement = document.createElement('div'),
        bannerHeading = "Stuck? We’re here to help",
        bannerText = "Having an issue with a course, webinar, or other content in " + siteName + "? Reach out to the Administrate team.",
-       bannerLinkHref = "mailto:training@getadministrate.com",
        bannerLinkText = "Email us";
 
 const  resourceBannerElement = document.createElement('section'),
@@ -509,7 +509,7 @@ catalogLowerBannerElement.innerHTML = `
         <div class="catalog-lower-text-wrapper">
             <h2 class="catalog-lower-title">${bannerHeading}</h2>
             <p class="catalog-lower-text">${bannerText}</p>
-            <a href="${bannerLinkHref}" class="catalog-lower-cta-button" target="_blank" rel="noopener">${bannerLinkText}</a>
+            <a href="${admContactMailTo}" class="catalog-lower-cta-button" target="_blank" rel="noopener">${bannerLinkText}</a>
         </div>
     </div>
 </div>`;
@@ -545,9 +545,16 @@ $(document).ready(function() {
         $(epFooterCopyright).text('©' + epFooterYear + ' Administrate Limited. All rights reserved.');
     }
     
-    /* remove header link for my courses when user is not logged in */
-    if (sjPageLogin || sjPageSignup) {
-        $('.header-link:contains(My courses)').remove();
+    /* remove menu when user is trying to log in */
+    if ( sjPageLogin || sjPageSignup ) {
+        $('#header-right').remove();
+    }
+
+    /* remove specific menu items when useris not logged in */
+    var isUserLoggedIn = ( typeof skilljarUser !== 'undefined' ) ? true : false; 
+    if ( isUserLoggedIn == false ) {
+        if ($('.header-link:contains(My courses)').length) $('.header-link:contains(My courses)').remove();
+        if ($('.header-link:contains(Learn)').length) $('.header-link:contains(Learn)').closest('.header-link-container').remove();
     }
 
     /* catalog home/root page only */
@@ -596,10 +603,12 @@ $(document).ready(function() {
         var loginNote = document.querySelector('.sj-text-login-note');
         var signUpText = document.createElement('p');
         signUpText.classList.add('lp-sign-up-text');
-        signUpText.innerHTML = 'Need an account? <a href="' + document.querySelector('.sj-text-sign-up').getAttribute('href') + '">Sign up.</a>';
+        signUpText.innerHTML = 'Need an account? <a href="' + admContactMailTo + '" target="_blank" rel="noopener">Request access.</a>';
+        loginNote.innerHTML = 'Sign in';
         loginNote.parentNode.insertBefore(signUpText, loginNote.nextSibling);
         /* remove social media providers and adjust CSS if they exist */
-        document.querySelector('.sj-text-login-note').parentElement.style.width = '100%';
+        loginNote.parentElement.style.width = '100%';
+        loginNote.style.opacity = '1';
         document.querySelector('.socialaccount_providers').parentElement.style.display = 'none';
     }
 
@@ -609,11 +618,11 @@ $(document).ready(function() {
         var signInHref = document.querySelector('.sj-text-sign-in').getAttribute('href');
         var signupPageHeader = document.createElement('h1');
         signupPageHeader.classList.add('signup-custom-header');
-        signupPageHeader.textContent = 'Sign up for ' + siteName;
+        signupPageHeader.textContent = 'Request access';
         
         var signupPageCustomLink = document.createElement('p');
         signupPageCustomLink.classList.add('signup-custom-link');
-        signupPageCustomLink.innerHTML = 'Already have an account? <a href="' + signInHref + '">Sign in</a>';
+        signupPageCustomLink.innerHTML = '<p><a id="button-sign-up" class="button" href="' + admContactMailTo + '" target="_blank" rel="noopener">Email us</a></p>Already have an account? <a href="' + signInHref + '">Sign in</a>';
         loginContent.insertBefore(signupPageCustomLink, loginContent.firstChild);
         loginContent.insertBefore(signupPageHeader, signupPageCustomLink);
 

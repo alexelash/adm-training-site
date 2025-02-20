@@ -370,6 +370,7 @@
 html, 
 body {
     font: var(--font-weight-normal) var(--font-size-base)/var(--line-height-comfortable) var(--font-family);
+    overflow-x: hidden;
 }
 
 img[data-was-processed] {
@@ -517,6 +518,8 @@ ul li::marker {
  * 18. Live Training Page........................Styles for the live training calendar page.
  * 19. Alerts...................................Adjust default alert styles.
  * 20. Resource Section.........................Custom resource section on homepage.
+ * 21. Forgot Password Page.....................Styles for the forgot password flow.
+ * 22. Profile Page..............................Styles for the profile page.
  *  
  */
 
@@ -929,6 +932,12 @@ body.cbp-spmenu-open #header .burger .burger-text {
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-medium);
     margin-bottom: 24px;
+    opacity: 0;
+}
+
+/* hide the sign up / new account form*/
+#signup_form {
+    display: none !IMPORTANT;
 }
 
 /* login page link stylings */
@@ -982,34 +991,45 @@ p.signup-custom-link {
     color: var(--login-form-text-color);
 }
 
+
+
 /* sign in button stylings */
 .sj-page-login button#button-sign-in,
-.sj-page-signup button#button-sign-up {
+.sj-page-signup button#button-sign-up,
+.sj-page-signup #button-sign-up {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-semibold);
     margin-top: 16px;
     margin-right: 0 !IMPORTANT;
     background-color: var(--login-button-bg-color);
-    color: var(--login-button-text-color);
+    color: var(--login-button-text-color) !IMPORTANT;
     border-radius: var(--border-radius-buttons);
+    text-decoration: none !IMPORTANT;
     width: 100%;
+}
+
+.sj-page-signup #button-sign-up {
+    width: auto;
 }
 
 /* sign in button hover color */
 .sj-page-login button#button-sign-in:hover,
-.sj-page-signup button#button-sign-up:hover {
+.sj-page-signup button#button-sign-up:hover,
+.sj-page-signup #button-sign-up:hover {
     background-color: var(--login-button-hover-bg-color);
 }
 
 /* sign in button hover color */
 .sj-page-login button#button-sign-in:active,
-.sj-page-signup button#button-sign-up:active {
+.sj-page-signup button#button-sign-up:active,
+.sj-page-signup #button-sign-up:active {
     background-color: var(--login-button-active-bg-color);
 }
 
 /* sign in button focus color */
 .sj-page-login button#button-sign-in:focus,
-.sj-page-signup button#button-sign-up:focus {
+.sj-page-signup button#button-sign-up:focus,
+.sj-page-signup #button-sign-up:focus {
     box-shadow: var(--footer-boxshadow);
 }
 
@@ -2564,4 +2584,36 @@ p.catalog-lower-text {
     text-decoration: none !IMPORTANT;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+/**
+ * 21. Forgot Password Page
+ *      Styles for the forgot password flow.
+ */
+.sj-page-other #skilljar-content {
+    padding-top: 65px;
+}
+
+.sj-page-other #skilljar-content form { 
+    max-width: var(--max-width-sm);
+}
+
+@media only screen and (min-width: 768px) {
+    .sj-page-other #skilljar-content {
+        padding-top: 120px;
+    }
+}
+
+/**
+ * 22. Profile Page
+ *      Styles for the profile page.
+ */
+.sj-page-profile #skilljar-content {
+    padding-top: 65px;
+}
+
+@media only screen and (min-width: 768px) {
+    .sj-page-profile #skilljar-content {
+        padding-top: 120px;
+    }
 }
